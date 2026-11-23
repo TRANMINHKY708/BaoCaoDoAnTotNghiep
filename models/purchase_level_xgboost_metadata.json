@@ -1,0 +1,56 @@
+{
+    "model_name": "XGBoost",
+    "task": "Purchase Level Classification",
+    "class_mapping": {
+        "0": "Low",
+        "1": "Medium",
+        "2": "High"
+    },
+    "target": "Purchase_Level",
+    "excluded_features": [
+        "Total_Purchases"
+    ],
+    "input_features": [
+        "Age",
+        "Gender",
+        "Country",
+        "City",
+        "Membership_Years",
+        "Login_Frequency",
+        "Session_Duration_Avg",
+        "Pages_Per_Session",
+        "Cart_Abandonment_Rate",
+        "Wishlist_Items",
+        "Average_Order_Value",
+        "Days_Since_Last_Purchase",
+        "Discount_Usage_Rate",
+        "Returns_Rate",
+        "Email_Open_Rate",
+        "Customer_Service_Calls",
+        "Product_Reviews_Written",
+        "Social_Media_Engagement_Score",
+        "Mobile_App_Usage",
+        "Payment_Method_Diversity",
+        "Lifetime_Value",
+        "Credit_Balance",
+        "Churned",
+        "Signup_Quarter"
+    ],
+    "hyperparameters": {
+        "n_estimators": 200,
+        "max_depth": 3,
+        "learning_rate": 0.2,
+        "subsample": 0.9,
+        "colsample_bytree": 1.0,
+        "min_child_weight": 5,
+        "gamma": 0.1
+    },
+    "cv_macro_f1": 0.866687,
+    "test_metrics": {
+        "accuracy": 0.8748,
+        "macro_precision": 0.872877,
+        "macro_recall": 0.871391,
+        "macro_f1": 0.87184
+    },
+    "random_state": 42
+}

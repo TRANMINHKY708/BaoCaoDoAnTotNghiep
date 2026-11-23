@@ -1,0 +1,247 @@
+.account-entry {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 440px);
+  gap: clamp(24px, 5vw, 80px);
+  max-width: 1100px;
+  margin: clamp(12px, 4vh, 60px) auto;
+  align-items: center;
+}
+.account-intro h1 {
+  font-size: clamp(28px, 3vw, 44px);
+  line-height: 1.2;
+  letter-spacing: -1px;
+  max-width: 500px;
+}
+.account-intro > p {
+  font-size: 17px;
+  line-height: 1.8;
+  color: var(--text-secondary, #64748b);
+}
+.account-brand {
+  font-size: 30px;
+  letter-spacing: -1px;
+}
+.account-brand b {
+  color: #0e7490;
+}
+.account-security {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 36px;
+  color: #0e7490;
+}
+.account-security small {
+  color: #64748b;
+}
+.account-card {
+  background: #fff;
+  border: 1px solid #e5e7ef;
+  border-radius: 20px;
+  padding: clamp(18px, 3vw, 32px);
+  min-width: 0;
+  box-shadow: 0 12px 36px #1f245908;
+}
+.account-card h1,
+.account-card h2 {
+  margin-top: 0;
+}
+.account-card > p {
+  color: #64748b;
+  line-height: 1.7;
+}
+.account-card form {
+  display: grid;
+  gap: 18px;
+  margin: 24px 0;
+}
+.account-card small {
+  color: #64748b;
+  line-height: 1.6;
+}
+.account-emblem {
+  color: #0e7490;
+  margin-bottom: 18px;
+}
+.account-field {
+  display: grid;
+  gap: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  min-width: 0;
+}
+.account-field input,
+.account-field select {
+  border: 1px solid #cbd1df;
+  border-radius: 10px;
+  padding: 12px;
+  background: white;
+  color: #20273a;
+  font: inherit;
+  width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+}
+.account-field input:focus,
+.account-field select:focus {
+  outline: 2px solid #0e7490;
+  outline-offset: 2px;
+}
+.password-control {
+  display: flex;
+  border: 1px solid #cbd1df;
+  border-radius: 10px;
+  align-items: center;
+  min-width: 0;
+}
+.password-control input {
+  border: 0;
+  min-width: 0;
+}
+.password-control button {
+  flex-shrink: 0;
+  margin-right: 5px;
+}
+.account-password {
+  max-width: 650px;
+  margin: 24px auto;
+}
+.account-facts {
+  display: grid;
+  grid-template-columns: minmax(90px, 1fr) minmax(0, 2fr);
+  gap: 16px;
+  line-height: 1.7;
+}
+.account-facts dt {
+  color: #64748b;
+}
+.account-facts dd {
+  margin: 0;
+  overflow-wrap: anywhere;
+}
+.account-actions {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.account-card [role='alert'] {
+  color: #a52b41;
+}
+.account-table-wrap {
+  overflow: auto;
+  max-width: 100%;
+  border: 1px solid #e5e7ef;
+  border-radius: 12px;
+}
+.account-table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 650px;
+  font-size: 14px;
+}
+.account-table th,
+.account-table td {
+  padding: 14px;
+  text-align: left;
+  border-bottom: 1px solid #ecfeff;
+  vertical-align: middle;
+}
+.account-filter {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin: 20px 0;
+  align-items: end;
+}
+.account-filter .account-field {
+  flex: 1;
+  min-width: 130px;
+}
+.account-pagination {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  align-items: center;
+  margin: 20px 0;
+}
+.account-modal form {
+  margin: 16px 0;
+}
+.account-modal .account-actions {
+  justify-content: flex-end;
+}
+.account-status {
+  display: inline-block;
+  padding: 4px 9px;
+  border-radius: 8px;
+  background: #ecfeff;
+  font-size: 12px;
+}
+.account-toast {
+  padding: 14px 18px;
+  margin: 16px 0;
+  background: #ecf9f2;
+  color: #236749;
+  border-radius: 10px;
+}
+.permission-panel {
+  max-width: 650px;
+  margin: 40px auto;
+}
+@media (max-width: 900px) {
+  .account-entry {
+    grid-template-columns: 1fr;
+    max-width: 520px;
+    gap: 22px;
+    margin: 10px auto;
+  }
+  .account-intro h1 {
+    font-size: 30px;
+    margin: 12px 0;
+  }
+  .account-security {
+    display: none;
+  }
+}
+@media (max-width: 450px) {
+  .account-intro > p {
+    font-size: 14px;
+  }
+  .account-card {
+    border-radius: 14px;
+  }
+  .account-facts {
+    grid-template-columns: 1fr;
+    gap: 6px;
+  }
+  .account-facts dd {
+    margin-bottom: 12px;
+  }
+  .account-actions > .button {
+    width: 100%;
+    justify-content: center;
+  }
+  .account-filter {
+    align-items: stretch;
+  }
+  .account-filter .account-field {
+    min-width: 100%;
+  }
+}
+
+/* K18: live password feedback */
+.password-rules {
+  margin: 4px 0 8px;
+  padding: 0;
+  list-style: none;
+  font-size: 0.9rem;
+}
+.password-rules li {
+  margin: 2px 0;
+}
+.password-rules .is-ok {
+  color: #236749;
+}
+.password-rules .is-bad {
+  color: #a4581a;
+}

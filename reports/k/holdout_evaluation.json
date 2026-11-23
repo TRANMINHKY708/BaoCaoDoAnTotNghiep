@@ -1,0 +1,260 @@
+{
+  "protocol_sha256": "119b4318e50a946cdc9caa8b3414a10a67478139cd468b668d0d501292848894",
+  "artifact_sha256": "2763321f4d4290ccd74bd94441e04db5795d185f176a7c00a9c0a46a85042408",
+  "scored_at_utc": "2026-11-13T06:36:40+00:00",
+  "holdout_rows": 9992,
+  "holdout_churn_rate": 0.28943154523618897,
+  "primary": {
+    "feature_set": "behaviour21",
+    "metrics_at_decision_threshold": {
+      "roc_auc": 0.8858102487678491,
+      "pr_auc": 0.8231963850528248,
+      "f1": 0.7308541348276447,
+      "precision": 0.7180513847180514,
+      "recall": 0.7441217150760719,
+      "brier": 0.10812665361946146,
+      "ece_10_bins": 0.012332163400574468,
+      "log_loss": 0.35480513339918024,
+      "lift_top10": 3.337459174250322,
+      "lift_top20": 2.9535649065386274,
+      "capture_top20": 0.5905947441217151
+    },
+    "bootstrap_95ci": {
+      "roc_auc": {
+        "low": 0.8780439816818725,
+        "high": 0.8938106232045786
+      },
+      "pr_auc": {
+        "low": 0.811225210934987,
+        "high": 0.8348507917566417
+      },
+      "f1": {
+        "low": 0.7175987531971583,
+        "high": 0.7433568821930603
+      },
+      "brier": {
+        "low": 0.10406705960631371,
+        "high": 0.1118826037272811
+      }
+    },
+    "confusion_matrix_at_threshold": [
+      [
+        6255,
+        845
+      ],
+      [
+        740,
+        2152
+      ]
+    ],
+    "reliability_bins": [
+      {
+        "lower": 0.0,
+        "upper": 0.1,
+        "count": 4319,
+        "observed_rate": 0.05603148877054874,
+        "mean_probability": 0.05729711800813675
+      },
+      {
+        "lower": 0.1,
+        "upper": 0.2,
+        "count": 1477,
+        "observed_rate": 0.12999322951929587,
+        "mean_probability": 0.1439151167869568
+      },
+      {
+        "lower": 0.2,
+        "upper": 0.30000000000000004,
+        "count": 788,
+        "observed_rate": 0.23857868020304568,
+        "mean_probability": 0.24533087015151978
+      },
+      {
+        "lower": 0.30000000000000004,
+        "upper": 0.4,
+        "count": 558,
+        "observed_rate": 0.30824372759856633,
+        "mean_probability": 0.34593549370765686
+      },
+      {
+        "lower": 0.4,
+        "upper": 0.5,
+        "count": 435,
+        "observed_rate": 0.4206896551724138,
+        "mean_probability": 0.4482727646827698
+      },
+      {
+        "lower": 0.5,
+        "upper": 0.6000000000000001,
+        "count": 391,
+        "observed_rate": 0.4884910485933504,
+        "mean_probability": 0.5487545132637024
+      },
+      {
+        "lower": 0.6000000000000001,
+        "upper": 0.7000000000000001,
+        "count": 357,
+        "observed_rate": 0.6442577030812325,
+        "mean_probability": 0.6495670676231384
+      },
+      {
+        "lower": 0.7000000000000001,
+        "upper": 0.8,
+        "count": 371,
+        "observed_rate": 0.7277628032345014,
+        "mean_probability": 0.7513595819473267
+      },
+      {
+        "lower": 0.8,
+        "upper": 0.9,
+        "count": 437,
+        "observed_rate": 0.8878718535469108,
+        "mean_probability": 0.8555221557617188
+      },
+      {
+        "lower": 0.9,
+        "upper": 1.0,
+        "count": 859,
+        "observed_rate": 0.9732246798603027,
+        "mean_probability": 0.9610092639923096
+      }
+    ],
+    "lift_by_decile": [
+      {
+        "decile": 1,
+        "rows": 999,
+        "churn_rate": 0.965965965965966,
+        "lift": 3.337459174250322,
+        "cumulative_capture": 0.33367911479944673
+      },
+      {
+        "decile": 2,
+        "rows": 999,
+        "churn_rate": 0.7437437437437437,
+        "lift": 2.5696706388269317,
+        "cumulative_capture": 0.5905947441217151
+      },
+      {
+        "decile": 3,
+        "rows": 999,
+        "churn_rate": 0.4444444444444444,
+        "lift": 1.5355770708467802,
+        "cumulative_capture": 0.7441217150760719
+      },
+      {
+        "decile": 4,
+        "rows": 999,
+        "churn_rate": 0.2672672672672673,
+        "lift": 0.9234213466578612,
+        "cumulative_capture": 0.8364453665283541
+      },
+      {
+        "decile": 5,
+        "rows": 1000,
+        "churn_rate": 0.163,
+        "lift": 0.5631728907330567,
+        "cumulative_capture": 0.892807745504841
+      },
+      {
+        "decile": 6,
+        "rows": 999,
+        "churn_rate": 0.0990990990990991,
+        "lift": 0.34239218471583616,
+        "cumulative_capture": 0.9270401106500692
+      },
+      {
+        "decile": 7,
+        "rows": 999,
+        "churn_rate": 0.062062062062062065,
+        "lift": 0.2144274288119378,
+        "cumulative_capture": 0.9484785615491009
+      },
+      {
+        "decile": 8,
+        "rows": 999,
+        "churn_rate": 0.04604604604604605,
+        "lift": 0.15909131815079255,
+        "cumulative_capture": 0.9643845089903181
+      },
+      {
+        "decile": 9,
+        "rows": 999,
+        "churn_rate": 0.04604604604604605,
+        "lift": 0.15909131815079255,
+        "cumulative_capture": 0.9802904564315352
+      },
+      {
+        "decile": 10,
+        "rows": 1000,
+        "churn_rate": 0.057,
+        "lift": 0.19693775933609958,
+        "cumulative_capture": 1.0
+      }
+    ],
+    "risk_bands": {
+      "low": {
+        "rows": 4885,
+        "share_percent": 48.88911128903122,
+        "churn_rate_percent": 6.120777891504606,
+        "churners_captured_percent": 10.338865836791149
+      },
+      "medium": {
+        "rows": 3005,
+        "share_percent": 30.074059247397916,
+        "churn_rate_percent": 27.487520798668886,
+        "churners_captured_percent": 28.56154910096819
+      },
+      "high": {
+        "rows": 2102,
+        "share_percent": 21.036829463570857,
+        "churn_rate_percent": 84.0627973358706,
+        "churners_captured_percent": 61.09958506224066
+      }
+    },
+    "by_segment": [
+      {
+        "segment": "Tương tác thấp",
+        "rows": 4113,
+        "mean_churn_probability": 0.4300626814365387,
+        "observed_churn_rate": 0.4111354242645271,
+        "high_risk_share": 0.33163141259421347
+      },
+      {
+        "segment": "Tương tác trung bình",
+        "rows": 4002,
+        "mean_churn_probability": 0.21206346154212952,
+        "observed_churn_rate": 0.2086456771614193,
+        "high_risk_share": 0.12668665667166418
+      },
+      {
+        "segment": "Tương tác cao",
+        "rows": 1877,
+        "mean_churn_probability": 0.18563534319400787,
+        "observed_churn_rate": 0.1949920085242408,
+        "high_risk_share": 0.12306872669152903
+      }
+    ]
+  },
+  "reference": {
+    "feature_set": "reference22",
+    "metrics_at_decision_threshold": {
+      "roc_auc": 0.9015090682407029,
+      "pr_auc": 0.8497337242061392,
+      "f1": 0.7704133925521012,
+      "precision": 0.7613099257258609,
+      "recall": 0.7797372060857538,
+      "brier": 0.09551783156375326,
+      "ece_10_bins": 0.01631965832986098,
+      "log_loss": 0.3249432985104507,
+      "lift_top10": 3.3512932019156083,
+      "lift_top20": 3.072883395151721,
+      "capture_top20": 0.6144536652835408
+    }
+  },
+  "paired_bootstrap_roc_auc_reference_minus_primary": {
+    "mean": 0.01571363923196754,
+    "low": 0.012484446377401237,
+    "high": 0.01908981708450761
+  },
+  "caveat": "Holdout rows were used for the purchase-level task in historical notebooks, but their Churned labels were not used by any churn decision before this scoring."
+}

@@ -1,0 +1,59 @@
+.research-profiles {
+  min-width: 0;
+}
+.research-profiles p {
+  line-height: 1.65;
+  overflow-wrap: anywhere;
+}
+.research-profiles .segment-bars {
+  margin: 1rem 0;
+}
+.research-profiles .segment-bars > div {
+  display: grid;
+  gap: 0.4rem;
+}
+.profile-table {
+  overflow-x: auto;
+  max-width: 100%;
+  margin: 1.5rem 0;
+}
+.profile-table table {
+  border-collapse: collapse;
+  min-width: 680px;
+  width: 100%;
+}
+.profile-table th,
+.profile-table td {
+  text-align: left;
+  padding: 0.7rem;
+  border-bottom: 1px solid #dce3ee;
+}
+.profile-table caption {
+  text-align: left;
+  padding: 0.5rem;
+}
+.profile-comparison {
+  margin: 1rem 0;
+  padding: 1rem;
+  border: 1px solid #dce3ee;
+  border-radius: 12px;
+}
+.profile-comparison > div {
+  display: grid;
+  grid-template-columns: 90px minmax(0, 1fr);
+  align-items: center;
+  gap: 0.7rem;
+  margin: 0.5rem 0;
+}
+.profile-comparison progress {
+  width: 100%;
+  accent-color: #438477;
+}
+.profile-comparison > div:last-child progress {
+  accent-color: #0e7490;
+}
+@media (max-width: 500px) {
+  .profile-comparison > div {
+    grid-template-columns: 1fr;
+  }
+}

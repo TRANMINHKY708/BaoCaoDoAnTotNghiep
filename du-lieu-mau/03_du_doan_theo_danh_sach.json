@@ -1,0 +1,44 @@
+[
+  {
+    "Age": 56.0,
+    "Gender": "Female",
+    "Country": "USA",
+    "City": "New York",
+    "Membership_Years": 2.6,
+    "Signup_Quarter": "Q1",
+    "Login_Frequency": 10.0,
+    "Session_Duration_Avg": 38.4,
+    "Pages_Per_Session": 14.8,
+    "Wishlist_Items": 9.0,
+    "Email_Open_Rate": 41.4,
+    "Mobile_App_Usage": 31.0
+  },
+  {
+    "Age": 55.0,
+    "Gender": "Female",
+    "Country": "India",
+    "City": "Bangalore",
+    "Membership_Years": 1.2,
+    "Signup_Quarter": "Q1",
+    "Login_Frequency": 24.0,
+    "Session_Duration_Avg": 50.3,
+    "Pages_Per_Session": 16.0,
+    "Wishlist_Items": 9.0,
+    "Email_Open_Rate": 72.1,
+    "Mobile_App_Usage": 37.8
+  },
+  {
+    "Age": 34.0,
+    "Gender": "Male",
+    "Country": "Japan",
+    "City": "Yokohama",
+    "Membership_Years": 4.4,
+    "Signup_Quarter": "Q3",
+    "Login_Frequency": 12.0,
+    "Session_Duration_Avg": 42.1,
+    "Pages_Per_Session": 13.3,
+    "Wishlist_Items": 8.0,
+    "Email_Open_Rate": 23.8,
+    "Mobile_App_Usage": 28.8
+  }
+]

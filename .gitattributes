@@ -1,0 +1,16 @@
+# Research manifests hash the ORIGINAL bytes of source/notebook/metadata files.
+# Disable line-ending conversion even when the machine has core.autocrlf=true.
+# -text does not disable normal textual diffs; it only disables normalization.
+* -text
+* whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+
+*.joblib binary
+*.pkl binary
+*.pickle binary
+*.npz binary
+*.npy binary
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.zip binary
+*.bundle binary

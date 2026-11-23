@@ -1,0 +1,502 @@
+{
+  "test_only": true,
+  "source": "Public model catalog and existing Swagger example; not application records",
+  "catalog": {
+    "contract_version": "1.0.0",
+    "models": [
+      {
+        "task": "classification",
+        "model_id": "purchase-level-xgboost",
+        "model_version": "1.0.0",
+        "is_default": true,
+        "serving_mode": "legacy_default",
+        "available": true,
+        "unavailable_code": null,
+        "persistence_supported": true,
+        "artifact_sha256": "1bbde6767f3b14bc5d29da3c848e53256363638f34e3263be0238e950e527e8f",
+        "feature_count": 24,
+        "features": [
+          "Age",
+          "Gender",
+          "Country",
+          "City",
+          "Membership_Years",
+          "Login_Frequency",
+          "Session_Duration_Avg",
+          "Pages_Per_Session",
+          "Cart_Abandonment_Rate",
+          "Wishlist_Items",
+          "Average_Order_Value",
+          "Days_Since_Last_Purchase",
+          "Discount_Usage_Rate",
+          "Returns_Rate",
+          "Email_Open_Rate",
+          "Customer_Service_Calls",
+          "Product_Reviews_Written",
+          "Social_Media_Engagement_Score",
+          "Mobile_App_Usage",
+          "Payment_Method_Diversity",
+          "Lifetime_Value",
+          "Credit_Balance",
+          "Churned",
+          "Signup_Quarter"
+        ],
+        "input_schema": {
+          "additionalProperties": false,
+          "properties": {
+            "Age": {
+              "maximum": 100,
+              "minimum": 18,
+              "title": "Age",
+              "type": "number"
+            },
+            "Gender": {
+              "minLength": 1,
+              "pattern": "\\S",
+              "title": "Gender",
+              "type": "string"
+            },
+            "Country": {
+              "minLength": 1,
+              "pattern": "\\S",
+              "title": "Country",
+              "type": "string"
+            },
+            "City": {
+              "minLength": 1,
+              "pattern": "\\S",
+              "title": "City",
+              "type": "string"
+            },
+            "Membership_Years": {
+              "minimum": 0,
+              "title": "Membership Years",
+              "type": "number"
+            },
+            "Login_Frequency": {
+              "minimum": 0,
+              "title": "Login Frequency",
+              "type": "number"
+            },
+            "Session_Duration_Avg": {
+              "minimum": 0,
+              "title": "Session Duration Avg",
+              "type": "number"
+            },
+            "Pages_Per_Session": {
+              "minimum": 0,
+              "title": "Pages Per Session",
+              "type": "number"
+            },
+            "Cart_Abandonment_Rate": {
+              "maximum": 100,
+              "minimum": 0,
+              "title": "Cart Abandonment Rate",
+              "type": "number"
+            },
+            "Wishlist_Items": {
+              "minimum": 0,
+              "title": "Wishlist Items",
+              "type": "number"
+            },
+            "Average_Order_Value": {
+              "minimum": 0,
+              "title": "Average Order Value",
+              "type": "number"
+            },
+            "Days_Since_Last_Purchase": {
+              "minimum": 0,
+              "title": "Days Since Last Purchase",
+              "type": "number"
+            },
+            "Discount_Usage_Rate": {
+              "maximum": 100,
+              "minimum": 0,
+              "title": "Discount Usage Rate",
+              "type": "number"
+            },
+            "Returns_Rate": {
+              "maximum": 100,
+              "minimum": 0,
+              "title": "Returns Rate",
+              "type": "number"
+            },
+            "Email_Open_Rate": {
+              "maximum": 100,
+              "minimum": 0,
+              "title": "Email Open Rate",
+              "type": "number"
+            },
+            "Customer_Service_Calls": {
+              "minimum": 0,
+              "title": "Customer Service Calls",
+              "type": "number"
+            },
+            "Product_Reviews_Written": {
+              "minimum": 0,
+              "title": "Product Reviews Written",
+              "type": "number"
+            },
+            "Social_Media_Engagement_Score": {
+              "minimum": 0,
+              "title": "Social Media Engagement Score",
+              "type": "number"
+            },
+            "Mobile_App_Usage": {
+              "minimum": 0,
+              "title": "Mobile App Usage",
+              "type": "number"
+            },
+            "Payment_Method_Diversity": {
+              "minimum": 0,
+              "title": "Payment Method Diversity",
+              "type": "number"
+            },
+            "Lifetime_Value": {
+              "minimum": 0,
+              "title": "Lifetime Value",
+              "type": "number"
+            },
+            "Credit_Balance": {
+              "minimum": 0,
+              "title": "Credit Balance",
+              "type": "number"
+            },
+            "Churned": {
+              "maximum": 1,
+              "minimum": 0,
+              "title": "Churned",
+              "type": "number"
+            },
+            "Signup_Quarter": {
+              "enum": ["Q1", "Q2", "Q3", "Q4"],
+              "title": "Signup Quarter",
+              "type": "string"
+            }
+          },
+          "required": [
+            "Age",
+            "Gender",
+            "Country",
+            "City",
+            "Membership_Years",
+            "Login_Frequency",
+            "Session_Duration_Avg",
+            "Pages_Per_Session",
+            "Cart_Abandonment_Rate",
+            "Wishlist_Items",
+            "Average_Order_Value",
+            "Days_Since_Last_Purchase",
+            "Discount_Usage_Rate",
+            "Returns_Rate",
+            "Email_Open_Rate",
+            "Customer_Service_Calls",
+            "Product_Reviews_Written",
+            "Social_Media_Engagement_Score",
+            "Mobile_App_Usage",
+            "Payment_Method_Diversity",
+            "Lifetime_Value",
+            "Credit_Balance",
+            "Churned",
+            "Signup_Quarter"
+          ],
+          "title": "LegacyPurchaseCustomer",
+          "type": "object"
+        },
+        "label_namespace": "purchase_level",
+        "labels": {
+          "0": "Low",
+          "1": "Medium",
+          "2": "High"
+        },
+        "limitations": [
+          "Historical snapshot model; no independent new test or verified temporal availability"
+        ]
+      },
+      {
+        "task": "classification",
+        "model_id": "purchase-level-xgboost",
+        "model_version": "2.0.0-snapshot-conservative12",
+        "is_default": false,
+        "serving_mode": "explicit_research",
+        "available": true,
+        "unavailable_code": null,
+        "persistence_supported": false,
+        "artifact_sha256": "b9b15c4170dade3d1a62cbfd9ce953e8770e7ac2cb4ff03266f3da3a39515ad3",
+        "feature_count": 12,
+        "features": [
+          "Age",
+          "Gender",
+          "Country",
+          "City",
+          "Membership_Years",
+          "Login_Frequency",
+          "Session_Duration_Avg",
+          "Pages_Per_Session",
+          "Wishlist_Items",
+          "Email_Open_Rate",
+          "Mobile_App_Usage",
+          "Signup_Quarter"
+        ],
+        "input_schema": {
+          "additionalProperties": false,
+          "properties": {
+            "Age": {
+              "anyOf": [
+                {
+                  "type": "number"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Age"
+            },
+            "Gender": {
+              "anyOf": [
+                {
+                  "minLength": 1,
+                  "pattern": "\\S",
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Gender"
+            },
+            "Country": {
+              "anyOf": [
+                {
+                  "minLength": 1,
+                  "pattern": "\\S",
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Country"
+            },
+            "City": {
+              "anyOf": [
+                {
+                  "minLength": 1,
+                  "pattern": "\\S",
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "City"
+            },
+            "Membership_Years": {
+              "anyOf": [
+                {
+                  "type": "number"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Membership Years"
+            },
+            "Login_Frequency": {
+              "anyOf": [
+                {
+                  "type": "number"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Login Frequency"
+            },
+            "Session_Duration_Avg": {
+              "anyOf": [
+                {
+                  "type": "number"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Session Duration Avg"
+            },
+            "Pages_Per_Session": {
+              "anyOf": [
+                {
+                  "type": "number"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Pages Per Session"
+            },
+            "Wishlist_Items": {
+              "anyOf": [
+                {
+                  "type": "number"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Wishlist Items"
+            },
+            "Email_Open_Rate": {
+              "anyOf": [
+                {
+                  "type": "number"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Email Open Rate"
+            },
+            "Mobile_App_Usage": {
+              "anyOf": [
+                {
+                  "type": "number"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Mobile App Usage"
+            },
+            "Signup_Quarter": {
+              "anyOf": [
+                {
+                  "enum": ["Q1", "Q2", "Q3", "Q4"],
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Signup Quarter"
+            }
+          },
+          "required": [
+            "Age",
+            "Gender",
+            "Country",
+            "City",
+            "Membership_Years",
+            "Login_Frequency",
+            "Session_Duration_Avg",
+            "Pages_Per_Session",
+            "Wishlist_Items",
+            "Email_Open_Rate",
+            "Mobile_App_Usage",
+            "Signup_Quarter"
+          ],
+          "title": "T4PurchaseCustomer",
+          "type": "object"
+        },
+        "label_namespace": "purchase_level",
+        "labels": {
+          "0": "Low",
+          "1": "Medium",
+          "2": "High"
+        },
+        "limitations": [
+          "unknown event-time availability and aggregate windows",
+          "no verified real customer/session identities",
+          "no independent external cohort; possible dataset construction proxies remain",
+          "snapshot associations only; not causal or future forecasting"
+        ]
+      }
+    ]
+  },
+  "rows": [
+    {
+      "version": "1.0.0",
+      "customer": {
+        "Age": 43.0,
+        "Gender": "Male",
+        "Country": "France",
+        "City": "Marseille",
+        "Membership_Years": 2.9,
+        "Login_Frequency": 14.0,
+        "Session_Duration_Avg": 27.4,
+        "Pages_Per_Session": 6.0,
+        "Cart_Abandonment_Rate": 50.6,
+        "Wishlist_Items": 3.0,
+        "Average_Order_Value": 94.72,
+        "Days_Since_Last_Purchase": 34.0,
+        "Discount_Usage_Rate": 46.4,
+        "Returns_Rate": 2.0,
+        "Email_Open_Rate": 17.9,
+        "Customer_Service_Calls": 9.0,
+        "Product_Reviews_Written": 4.0,
+        "Social_Media_Engagement_Score": 16.3,
+        "Mobile_App_Usage": 20.8,
+        "Payment_Method_Diversity": 1.0,
+        "Lifetime_Value": 953.33,
+        "Credit_Balance": 2278.0,
+        "Churned": 0,
+        "Signup_Quarter": "Q1"
+      },
+      "result": {
+        "task": "classification",
+        "model_id": "purchase-level-xgboost",
+        "model_version": "1.0.0",
+        "generated_at": "2026-10-25T00:00:00Z",
+        "predicted_class": 0,
+        "purchase_level": "Low",
+        "probabilities": {
+          "Low": 0.5996882915496826,
+          "Medium": 0.39808565378189087,
+          "High": 0.0022260083351284266
+        },
+        "target_thresholds": {
+          "low_inclusive": 10.0,
+          "medium_inclusive": 15.0
+        },
+        "decision_rule": "argmax_probability",
+        "scope": "snapshot_classification_not_future_forecast"
+      }
+    },
+    {
+      "version": "2.0.0-snapshot-conservative12",
+      "customer": {
+        "Age": 43.0,
+        "Gender": "Male",
+        "Country": "France",
+        "City": "Marseille",
+        "Membership_Years": 2.9,
+        "Login_Frequency": 14.0,
+        "Session_Duration_Avg": 27.4,
+        "Pages_Per_Session": 6.0,
+        "Wishlist_Items": 3.0,
+        "Email_Open_Rate": 17.9,
+        "Mobile_App_Usage": 20.8,
+        "Signup_Quarter": "Q1"
+      },
+      "result": {
+        "task": "classification",
+        "model_id": "purchase-level-xgboost",
+        "model_version": "2.0.0-snapshot-conservative12",
+        "generated_at": "2026-10-25T00:00:00Z",
+        "predicted_class": 0,
+        "purchase_level": "Low",
+        "probabilities": {
+          "Low": 0.46987220644950867,
+          "Medium": 0.4473292827606201,
+          "High": 0.0827985480427742
+        },
+        "target_thresholds": {
+          "low_inclusive": 10.0,
+          "medium_inclusive": 15.0
+        },
+        "decision_rule": "argmax_probability",
+        "scope": "snapshot_classification_not_future_forecast"
+      }
+    }
+  ]
+}

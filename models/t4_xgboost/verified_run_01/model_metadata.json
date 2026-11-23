@@ -1,0 +1,286 @@
+{
+  "model_version": "2.0.0-snapshot-conservative12",
+  "feature_policy": "snapshot-conservative-12-v1",
+  "input_features": [
+    "Age",
+    "Gender",
+    "Country",
+    "City",
+    "Membership_Years",
+    "Login_Frequency",
+    "Session_Duration_Avg",
+    "Pages_Per_Session",
+    "Wishlist_Items",
+    "Email_Open_Rate",
+    "Mobile_App_Usage",
+    "Signup_Quarter"
+  ],
+  "hyperparameters": {
+    "n_estimators": 200,
+    "max_depth": 3,
+    "learning_rate": 0.2,
+    "subsample": 0.9,
+    "colsample_bytree": 1.0,
+    "min_child_weight": 5,
+    "gamma": 0.1,
+    "objective": "multi:softprob",
+    "num_class": 3,
+    "eval_metric": "mlogloss",
+    "random_state": 42,
+    "n_jobs": 2,
+    "tree_method": "hist",
+    "device": "cpu"
+  },
+  "train_rows": 39968,
+  "historical_holdout_rows": 9992,
+  "holdout_action": "quarantined; no predict/proba/score, no selection or tuning",
+  "target_thresholds": {
+    "low_inclusive": 10,
+    "medium_inclusive": 15
+  },
+  "source_sha256": {
+    "src/training/__init__.py": "eb8318243726b06f1aa5c45c136bff36d0703aa03920a9892ae449aae8b45248",
+    "src/training/xgboost_policy.py": "b6619fd486f1caed0553f4179d08985653069db58c88ecb6743f1d8f7828f26c",
+    "src/training/train_xgboost.py": "6795f0ea447813dfaf3ea9bc29b035893d6cfc4f09ccac6c6ece8dece52de29e",
+    "src/training/artifacts.py": "0fec33d1b29a4536bd11768e1a512a659c9cd7470b874fd7c334a5c600c80725",
+    "src/training/evaluation.py": "41773e2e85c531d3b1df00bf3fd34cfcef83998a46265f65fb2efd3f3b87fec4",
+    "src/preprocessing/train_only.py": "2a455049f0da08f2a1b03ab480cf600c096b7205de2e7fa8c78d793b8cf1dff1",
+    "src/data/research_split.py": "8ae7bf12812007adc780ff18e758d8146400ea80bb6fb8784cf6b59492b43f30",
+    "src/data/dataset_contract.py": "fb13e4d5f26b695803f11f962a941b1cc83fd1b73e2211bd909361eb86d43059",
+    "src/features/leakage_guard.py": "0884ba4d35a637aafbc2afa891495980556c2ed5b8dd1259c26a839a9023da02",
+    "src/features/purchase_level_rules.py": "560060796ba667fcd3f380d3a9ca3022c3ad056c78887c89cbf03f118cd72abd",
+    "requirements-ml.lock.txt": "1452a71996a53a1e393ec518c3f9becf47224cedfb4405c93522b62f5a56a8e0"
+  },
+  "raw_sha256": "ada0aaadd75c7815e3ad0270dc8d8617a2baa208f87eada665dca45182ca3889",
+  "reference_sha256": "fbe7ae7d5096dea390b0e662f28b4350866bd125008e383b9e532fb0499854b2",
+  "split_manifest_sha256": "02a064afc0a2e2e5d39aad3ca52ae0364fdaad0873ecb15cb804acc9d25e22a3",
+  "cv_folds": 5,
+  "tuning": false,
+  "feature_selection_search": false,
+  "calibration_fitting": false,
+  "decision_rule": "argmax probability in class_order",
+  "created_at_utc": "2026-10-20T13:03:26.855773+00:00",
+  "task": "snapshot Purchase_Level classification; not future prediction",
+  "target": "Purchase_Level",
+  "class_order": [
+    "Low",
+    "Medium",
+    "High"
+  ],
+  "class_mapping": {
+    "0": "Low",
+    "1": "Medium",
+    "2": "High"
+  },
+  "excluded_features": [
+    "Cart_Abandonment_Rate",
+    "Total_Purchases",
+    "Average_Order_Value",
+    "Days_Since_Last_Purchase",
+    "Discount_Usage_Rate",
+    "Returns_Rate",
+    "Customer_Service_Calls",
+    "Product_Reviews_Written",
+    "Social_Media_Engagement_Score",
+    "Payment_Method_Diversity",
+    "Lifetime_Value",
+    "Credit_Balance",
+    "Churned",
+    "Purchase_Level"
+  ],
+  "feature_schema": [
+    {
+      "name": "Age",
+      "type": "number",
+      "nullable": true,
+      "minimum": 18,
+      "maximum": 100,
+      "categories": []
+    },
+    {
+      "name": "Gender",
+      "type": "text",
+      "nullable": true,
+      "minimum": null,
+      "maximum": null,
+      "categories": []
+    },
+    {
+      "name": "Country",
+      "type": "text",
+      "nullable": true,
+      "minimum": null,
+      "maximum": null,
+      "categories": []
+    },
+    {
+      "name": "City",
+      "type": "text",
+      "nullable": true,
+      "minimum": null,
+      "maximum": null,
+      "categories": []
+    },
+    {
+      "name": "Membership_Years",
+      "type": "number",
+      "nullable": true,
+      "minimum": 0,
+      "maximum": null,
+      "categories": []
+    },
+    {
+      "name": "Login_Frequency",
+      "type": "number",
+      "nullable": true,
+      "minimum": 0,
+      "maximum": null,
+      "categories": []
+    },
+    {
+      "name": "Session_Duration_Avg",
+      "type": "number",
+      "nullable": true,
+      "minimum": 0,
+      "maximum": null,
+      "categories": []
+    },
+    {
+      "name": "Pages_Per_Session",
+      "type": "number",
+      "nullable": true,
+      "minimum": 0,
+      "maximum": null,
+      "categories": []
+    },
+    {
+      "name": "Wishlist_Items",
+      "type": "number",
+      "nullable": true,
+      "minimum": 0,
+      "maximum": null,
+      "categories": []
+    },
+    {
+      "name": "Email_Open_Rate",
+      "type": "number",
+      "nullable": true,
+      "minimum": 0,
+      "maximum": 100,
+      "categories": []
+    },
+    {
+      "name": "Mobile_App_Usage",
+      "type": "number",
+      "nullable": true,
+      "minimum": 0,
+      "maximum": null,
+      "categories": []
+    },
+    {
+      "name": "Signup_Quarter",
+      "type": "text",
+      "nullable": true,
+      "minimum": null,
+      "maximum": null,
+      "categories": [
+        "Q1",
+        "Q2",
+        "Q3",
+        "Q4"
+      ]
+    }
+  ],
+  "runtime_versions": {
+    "numpy": "2.4.6",
+    "pandas": "3.0.6",
+    "scipy": "1.17.1",
+    "scikit-learn": "1.9.1",
+    "xgboost": "3.2.0",
+    "joblib": "1.6.0",
+    "threadpoolctl": "3.7.0",
+    "python-dateutil": "2.9.0.post0",
+    "six": "1.17.0",
+    "tzdata": "2026.4",
+    "cloudpickle": "3.1.2",
+    "narwhals": "2.26.0"
+  },
+  "python": "3.11.0",
+  "platform": "Windows-10-10.0.26200-SP0",
+  "git_revision": null,
+  "artifact_sha256": "b9b15c4170dade3d1a62cbfd9ce953e8770e7ac2cb4ff03266f3da3a39515ad3",
+  "evaluation_sha256": "9777a8160be042406552ef9f3ad05ac64a18bbad882f16c4cea20844ddac1461",
+  "oof_predictions_sha256": "8824d8bfa1a6fa040823821cbe498a2909e4a52dc49e922664a91c962392c294",
+  "locked_protocol_sha256": "8ebc20a0d823564d04ee52d46a5b7e348e2ee4136c00cb0b6f32a6ac2b685908",
+  "cv_metrics": {
+    "accuracy": 0.7024868926936038,
+    "macro_precision": 0.6984639011895546,
+    "macro_recall": 0.6912922755654934,
+    "macro_f1": 0.6928295420072159,
+    "macro_roc_auc_ovr": 0.8633735614020448,
+    "macro_average_precision_ovr": 0.7445471561830421,
+    "multiclass_brier_sum": 0.3939706311652643,
+    "log_loss": 0.6544046829202097,
+    "top_label_ece_10_bins": 0.01202560492556003
+  },
+  "final_fit_seconds": 4.40653199999997,
+  "final_fit_state_audit": {
+    "fit_rows": 39968,
+    "imputer_medians": [
+      38.0,
+      2.5,
+      11.0,
+      26.8,
+      8.4,
+      4.0,
+      19.7,
+      18.6
+    ],
+    "numeric_features": [
+      "Age",
+      "Membership_Years",
+      "Login_Frequency",
+      "Session_Duration_Avg",
+      "Pages_Per_Session",
+      "Wishlist_Items",
+      "Email_Open_Rate",
+      "Mobile_App_Usage"
+    ],
+    "categorical_modes": [
+      "Female",
+      "USA",
+      "Houston",
+      "Q2"
+    ],
+    "encoder_category_counts": [
+      3,
+      8,
+      40,
+      4
+    ],
+    "scaler_samples_seen": 39968,
+    "fold_local_assertions": "PASSED"
+  },
+  "test_metrics": null,
+  "test_status": "No new independent test; old exposed holdout intentionally not scored",
+  "historical_legacy_test": {
+    "status": "HISTORICAL ONLY — different 24-feature globally-imputed legacy model; not T4 evaluation",
+    "source": "models\\purchase_level_xgboost_metadata.json",
+    "source_sha256": "f1e3b720cac81c5e078dbf45443c599c999c969d749cbbe11545bed3a78a0a65",
+    "metrics": {
+      "accuracy": 0.8748,
+      "macro_precision": 0.872877,
+      "macro_recall": 0.871391,
+      "macro_f1": 0.87184
+    }
+  },
+  "t3_status": "PARTIAL – ACCEPTED WITH LIMITATIONS",
+  "limitations": [
+    "unknown event-time availability and aggregate windows",
+    "no verified real customer/session identities",
+    "no independent external cohort; possible dataset construction proxies remain",
+    "snapshot associations only; not causal or future forecasting"
+  ],
+  "serving_promoted": false,
+  "api_contract_changed": false
+}

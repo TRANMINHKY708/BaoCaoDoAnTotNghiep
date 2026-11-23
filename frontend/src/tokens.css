@@ -1,0 +1,59 @@
+:root {
+  --font: 'Segoe UI', system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif;
+  --text: #0f172a;
+  --muted: #475569;
+  --nav-muted: #475569;
+  --surface: #ffffff;
+  --surface-soft: #f8fafc;
+  --border: #e2e8f0;
+  --cyan-500: #06b6d4;
+  --cyan-600: #0891b2;
+  --accent: #0e7490;
+  --accent-dark: #155e75;
+  --accent-soft: #ecfeff;
+  --chart-1: #155e75;
+  --chart-2: #0891b2;
+  --chart-3: #22d3ee;
+  --teal: #438477;
+  --teal-soft: #ebf5f1;
+  --focus: #0891b2;
+  --shadow: 0 3px 16px #0f172a08;
+  --sidebar-width: 248px;
+}
+
+:root {
+  --chart-track: #edf0f5;
+  --chart-grid: #e6eaf1;
+  color-scheme: light;
+}
+
+/* Night mode: deep slate surfaces, brighter accent and a vivid, high-contrast chart palette so
+   data stands out. Literal colours from the light CSS are remapped in theme-dark.css. */
+:root[data-theme='dark'] {
+  color-scheme: dark;
+  --text: #e6edf6;
+  --muted: #9fb0c6;
+  --nav-muted: #a9b8cc;
+  --surface: #111a2b;
+  --surface-soft: #0a1120;
+  --border: #22314a;
+  --cyan-500: #22d3ee;
+  --cyan-600: #06b6d4;
+  --accent: #22c3dd;
+  --accent-dark: #67e8f9;
+  --accent-soft: #0c2733;
+  --chart-1: #22d3ee;
+  --chart-2: #a78bfa;
+  --chart-3: #34d399;
+  --chart-track: #1c2940;
+  --chart-grid: #22314a;
+  --teal: #5eead4;
+  --teal-soft: #0d2a2a;
+  --focus: #67e8f9;
+  --shadow: 0 4px 20px #00000059;
+  --insight-low: #fbbf24;
+  --insight-mid: #64748b;
+  --insight-high: #22d3ee;
+  --insight-risk: #fb7185;
+  --insight-ok: #4ade80;
+}

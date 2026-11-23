@@ -1,0 +1,48 @@
+.customer-analysis {
+  min-width: 0;
+}
+.customer-analysis p,
+.customer-analysis dd {
+  overflow-wrap: anywhere;
+}
+.analysis-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin: 1rem 0;
+}
+.analysis-filters label {
+  flex: 1 1 180px;
+}
+.customer-analysis .customer-record {
+  margin: 1rem 0;
+}
+.customer-analysis .whatif-results {
+  max-width: 100%;
+  min-width: 0;
+}
+.snapshot-context select {
+  width: 100%;
+  min-width: 0;
+  max-width: 100%;
+}
+.snapshot-context-meta {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 210px), 1fr));
+  gap: 1rem;
+  margin: 1rem 0;
+}
+.snapshot-context-meta dd {
+  margin: 0.4rem 0 0;
+}
+.snapshot-context-meta > div,
+.snapshot-context section {
+  min-width: 0;
+}
+.snapshot-model-identity {
+  font-size: 0.875rem;
+  color: var(--muted);
+}
+.snapshot-unlinked {
+  margin: 1rem 0;
+}

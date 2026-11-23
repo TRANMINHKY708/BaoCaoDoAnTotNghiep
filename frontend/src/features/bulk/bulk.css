@@ -1,0 +1,109 @@
+.bulk-workspace {
+  display: grid;
+  gap: 1.25rem;
+  min-width: 0;
+}
+.bulk-section {
+  display: grid;
+  gap: 1rem;
+  padding: 1.5rem;
+  min-width: 0;
+}
+.bulk-notice {
+  padding: 1rem;
+  border-radius: 12px;
+  background: #ecfeff;
+  color: #0e7490;
+}
+.bulk-section label {
+  display: grid;
+  gap: 0.4rem;
+  min-width: 0;
+}
+.bulk-section select,
+.bulk-section input[type='file'] {
+  width: 100%;
+  min-width: 0;
+  padding: 0.7rem;
+  border: 1px solid #dbe0eb;
+  border-radius: 8px;
+  background: white;
+}
+.bulk-mapping {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 230px), 1fr));
+  gap: 0.8rem;
+}
+.bulk-mapping span {
+  overflow-wrap: anywhere;
+}
+.bulk-counts {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(125px, 1fr));
+  gap: 0.7rem;
+  margin: 0;
+}
+.bulk-counts div {
+  border: 1px solid #e2e7ef;
+  border-radius: 10px;
+  padding: 0.8rem;
+}
+.bulk-counts dt {
+  color: #606a80;
+  font-size: 0.85rem;
+}
+.bulk-counts dd {
+  margin: 0.35rem 0 0;
+  font-size: 1.4rem;
+  font-weight: 700;
+}
+.bulk-table {
+  overflow-x: auto;
+}
+.bulk-table table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 620px;
+}
+.bulk-table th,
+.bulk-table td {
+  text-align: left;
+  vertical-align: top;
+  padding: 0.7rem;
+  border-bottom: 1px solid #e2e7ef;
+  max-width: 280px;
+  overflow-wrap: anywhere;
+}
+.bulk-section details,
+.bulk-issues {
+  overflow-wrap: anywhere;
+}
+.bulk-issues {
+  max-height: 360px;
+  overflow: auto;
+  padding-left: 1.2rem;
+}
+.bulk-issues li {
+  margin-bottom: 0.7rem;
+}
+.bulk-issues small {
+  display: block;
+  color: #677187;
+}
+.bulk-section .bulk-check {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.7rem;
+}
+.bulk-check input {
+  margin-top: 0.25rem;
+}
+.bulk-actions {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  align-items: center;
+}
+.bulk-section .button {
+  justify-self: start;
+}

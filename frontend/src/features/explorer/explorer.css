@@ -1,0 +1,339 @@
+/* Interactive research pages (R2-01 EDA, R2-02 model lab, R2-03 clusters).
+   Colours come only from tokens so the night theme needs no extra overrides. */
+
+.explorer-page .panel-heading h2 {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.x-filters {
+  position: sticky;
+  top: 8px;
+  z-index: 5;
+  box-shadow: var(--shadow);
+}
+.x-filters .panel-heading {
+  margin-bottom: 12px;
+}
+.x-filter-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 10px 22px;
+}
+.x-chips {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+  min-width: 0;
+}
+.x-chips-label {
+  font-size: 11px;
+  color: var(--muted);
+  min-width: 112px;
+}
+.x-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font: inherit;
+  font-size: 11px;
+  color: var(--text);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 4px 10px;
+  cursor: pointer;
+}
+.x-chip i {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  display: inline-block;
+}
+.x-chip[aria-pressed='true'] {
+  border-color: var(--accent);
+  background: var(--accent-soft);
+  color: var(--accent-dark);
+  font-weight: 600;
+}
+.x-chip:focus-visible,
+.x-link:focus-visible,
+.x-active-range button:focus-visible {
+  outline: 2px solid var(--focus);
+  outline-offset: 2px;
+}
+.x-active {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+  margin-top: 12px;
+  font-size: 11px;
+}
+.x-active-range {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  border: 1px solid var(--accent);
+  background: var(--accent-soft);
+  color: var(--accent-dark);
+  border-radius: 999px;
+  padding: 3px 4px 3px 10px;
+}
+.x-active-range button {
+  display: grid;
+  place-items: center;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+  padding: 2px;
+}
+.x-link {
+  border: 0;
+  background: transparent;
+  color: var(--accent);
+  font: inherit;
+  cursor: pointer;
+  text-decoration: underline;
+  padding: 0;
+}
+
+.x-controls {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  gap: 12px 18px;
+  margin-bottom: 14px;
+}
+.x-controls label,
+.x-inline {
+  display: grid;
+  gap: 5px;
+  font-size: 11px;
+  color: var(--muted);
+  min-width: 0;
+}
+.x-inline {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+.x-controls select,
+.x-inline select {
+  font: inherit;
+  font-size: 12px;
+  color: var(--text);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 7px;
+  padding: 6px 9px;
+  max-width: 100%;
+}
+.x-slider {
+  display: grid;
+  gap: 8px;
+  font-size: 12px;
+  color: var(--muted);
+  margin-bottom: 14px;
+}
+.x-slider strong {
+  color: var(--text);
+  font-size: 14px;
+}
+.x-slider input {
+  accent-color: var(--chart-2);
+  width: 100%;
+}
+
+.x-chart {
+  width: 100%;
+  height: auto;
+  display: block;
+  overflow: visible;
+}
+.x-heat {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+.x-scroll {
+  overflow-x: auto;
+  max-width: 100%;
+}
+.x-grid {
+  stroke: var(--chart-grid);
+  stroke-width: 1;
+}
+.x-axis {
+  stroke: var(--muted);
+  stroke-width: 1;
+}
+.x-tick {
+  font-size: 11px;
+  fill: var(--muted);
+}
+.x-tick.strong {
+  fill: var(--text);
+  font-weight: 600;
+}
+.x-highlight {
+  fill: var(--accent-soft);
+  stroke: var(--accent);
+  stroke-dasharray: 3 3;
+}
+.x-bar {
+  opacity: 0.9;
+}
+.x-clickable {
+  cursor: pointer;
+}
+.x-bar.x-clickable:hover {
+  opacity: 1;
+  stroke: var(--text);
+  stroke-width: 1;
+}
+.x-line {
+  fill: none;
+  stroke-width: 2.2;
+  stroke-linejoin: round;
+}
+.x-reference {
+  stroke: var(--text);
+  stroke-width: 1.2;
+  stroke-dasharray: 5 4;
+  opacity: 0.7;
+}
+.x-reference-text {
+  font-size: 11px;
+  fill: var(--text);
+  font-weight: 600;
+}
+.x-cell-text {
+  font-size: 9px;
+  fill: var(--text);
+  pointer-events: none;
+}
+.x-cell-text.strong {
+  font-weight: 700;
+}
+.x-cell-selected {
+  stroke: var(--text);
+  stroke-width: 2;
+}
+.x-whisker {
+  stroke-width: 2;
+}
+.x-median {
+  stroke-width: 3;
+}
+.x-dot {
+  opacity: 0.85;
+}
+.x-mean {
+  stroke: var(--text);
+  stroke-width: 2.5;
+}
+.x-point {
+  opacity: 0.55;
+}
+.x-marker {
+  stroke: var(--text);
+  stroke-width: 2.5;
+}
+.x-marker-text {
+  font-size: 12px;
+  font-weight: 700;
+  fill: var(--text);
+  paint-order: stroke;
+  stroke: var(--surface);
+  stroke-width: 3px;
+}
+
+.x-share-rows {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 9px;
+}
+.x-share-rows li {
+  display: grid;
+  grid-template-columns: minmax(120px, 210px) minmax(0, 1fr) minmax(70px, auto);
+  align-items: center;
+  gap: 12px;
+  font-size: 12px;
+}
+.x-share-label {
+  display: grid;
+  gap: 2px;
+  min-width: 0;
+}
+.x-share-label small {
+  font-size: 10px;
+  color: var(--muted);
+}
+.x-share-rows strong {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+.x-swatch {
+  display: inline-block;
+  width: 9px;
+  height: 9px;
+  border-radius: 2px;
+  margin-right: 6px;
+}
+.x-two {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 22px;
+  align-items: start;
+}
+.x-kpi-column {
+  grid-template-columns: 1fr;
+}
+.x-verdict {
+  font-size: 12px;
+  line-height: 1.7;
+  border-radius: 8px;
+  padding: 10px 14px;
+  margin: 12px 0;
+  border: 1px solid var(--border);
+}
+.x-verdict.sig {
+  border-color: var(--insight-ok);
+  color: var(--text);
+  background: color-mix(in srgb, var(--insight-ok) 12%, var(--surface));
+}
+.x-verdict.nonsig {
+  background: var(--surface-soft);
+  color: var(--muted);
+}
+.explorer-page .insight-note,
+.explorer-page .insight-lead,
+.x-h2h .insight-note {
+  font-size: 11.5px;
+}
+
+@media (max-width: 900px) {
+  .x-two {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .x-filters {
+    position: static;
+  }
+  .x-share-rows li {
+    grid-template-columns: minmax(0, 1fr) auto;
+  }
+  .x-share-rows li .share-bar {
+    grid-column: 1 / -1;
+    grid-row: 2;
+  }
+  .x-chips-label {
+    min-width: 0;
+    width: 100%;
+  }
+}

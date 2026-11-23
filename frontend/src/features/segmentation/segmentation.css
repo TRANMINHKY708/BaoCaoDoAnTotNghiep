@@ -1,0 +1,111 @@
+.segment-distribution {
+  padding: 25px;
+}
+.segment-distribution h2 {
+  font-size: 17px;
+  margin-top: 7px;
+}
+.segment-total {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  color: var(--muted);
+  font-size: 12px;
+  margin: 22px 0;
+}
+.segment-total strong {
+  color: var(--accent);
+  font-size: 32px;
+}
+.segment-bars {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 25px;
+  margin: 20px 0;
+}
+.segment-bars > div {
+  min-width: 0;
+}
+.segment-bars > div > div {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  font-size: 11px;
+}
+.segment-bars progress {
+  display: block;
+  width: 100%;
+  height: 9px;
+  margin: 12px 0;
+  accent-color: var(--accent);
+}
+.segment-bars small,
+.segment-result-grid small {
+  font-size: 10px;
+  color: var(--muted);
+  overflow-wrap: anywhere;
+}
+.segment-notice {
+  padding: 14px 16px;
+  border: 1px solid #d8e9e5;
+  border-radius: 8px;
+  background: #f3f9f6;
+  color: #3c6b5d;
+  font-size: 11px;
+  line-height: 1.9;
+  margin: 18px 0;
+}
+.segment-definitions {
+  margin: 18px 0;
+  font-size: 11px;
+  line-height: 1.9;
+  overflow-wrap: anywhere;
+}
+.segment-definitions summary {
+  color: var(--accent);
+  cursor: pointer;
+  font-weight: 600;
+}
+.segment-definitions p {
+  margin-top: 12px;
+}
+.segment-result-grid {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap: 25px;
+  margin: 24px 0;
+}
+.segment-result-grid > div {
+  display: grid;
+  gap: 10px;
+  align-content: start;
+  min-width: 0;
+}
+.segment-result-grid h3 {
+  font-size: 25px;
+  color: var(--accent);
+  margin: 0;
+}
+.segment-result-grid code {
+  font-size: 11px;
+  overflow-wrap: anywhere;
+}
+.segment-distance {
+  font-size: 32px;
+  font-weight: 600;
+}
+.segment-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 20px;
+  flex-wrap: wrap;
+}
+@media (max-width: 700px) {
+  .segment-bars,
+  .segment-result-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .segment-distribution {
+    padding: 17px;
+  }
+}

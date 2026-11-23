@@ -1,0 +1,14 @@
+# Cấu hình riêng của từng máy, không đưa lên Git
+.env
+.env.*
+!.env.example
+
+# Môi trường và tệp sinh ra khi chạy
+.venv/
+__pycache__/
+*.py[cod]
+node_modules/
+frontend/dist/
+reports/local/
+*.log
+.mk-eai-export

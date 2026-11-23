@@ -1,0 +1,41 @@
+{
+  "contract_version": "1.0.0",
+  "entries": [
+    {
+      "task": "classification",
+      "version": "1.0.0",
+      "artifact": "models/purchase_level_xgboost_pipeline.joblib",
+      "metadata": "models/purchase_level_xgboost_metadata.json",
+      "artifact_sha256": "1bbde6767f3b14bc5d29da3c848e53256363638f34e3263be0238e950e527e8f",
+      "metadata_sha256": "f1e3b720cac81c5e078dbf45443c599c999c969d749cbbe11545bed3a78a0a65",
+      "default": true
+    },
+    {
+      "task": "classification",
+      "version": "2.0.0-snapshot-conservative12",
+      "artifact": "models/t4_xgboost/verified_run_01/pipeline.joblib",
+      "metadata": "models/t4_xgboost/verified_run_01/model_metadata.json",
+      "artifact_sha256": "b9b15c4170dade3d1a62cbfd9ce953e8770e7ac2cb4ff03266f3da3a39515ad3",
+      "metadata_sha256": "ccdaefaec31065bd5b0034ba695950f0d8660471b8402c31c46687a91b102852",
+      "default": false
+    },
+    {
+      "task": "segmentation",
+      "version": "1.0.0",
+      "artifact": "models/customer_segmentation_kmeans_pipeline.joblib",
+      "metadata": "models/customer_segmentation_kmeans_metadata.json",
+      "artifact_sha256": "5ab101792571047b832c82d9b7e64390b158b788b140486742947bfbe796d7d1",
+      "metadata_sha256": "1718061ac0a76657e9f17a2c7377d4cc4d7abcdaf1e5c09c84c8eee67d3326ae",
+      "default": true
+    },
+    {
+      "task": "segmentation",
+      "version": "2.0.0-snapshot-k3",
+      "artifact": "models/t5_kmeans/verified_run_01/pipeline.joblib",
+      "metadata": "models/t5_kmeans/verified_run_01/model_metadata.json",
+      "artifact_sha256": "fcccee53765f9d4825196411aee4a971d1df8a3595b0d4f56210145425e672e3",
+      "metadata_sha256": "929e2edc11aea9244ee60681e64f0e762eb4af1fb56fd78cb199feb290de86c3",
+      "default": false
+    }
+  ]
+}

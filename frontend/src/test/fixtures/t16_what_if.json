@@ -1,0 +1,3122 @@
+{
+  "test_only": "TEST_ONLY_WHAT_IF_T16",
+  "source": "Real model output for public Swagger synthetic TEST snapshot; no application records",
+  "customer": {
+    "id": "ec5b2ce5-5581-4d1d-9d32-18a88d9b9e69",
+    "external_id": "SYNTHETIC-T16-ONLY",
+    "is_active": true,
+    "created_at": "2026-10-26T18:29:03.827894+07:00",
+    "updated_at": "2026-10-26T18:29:03.827894+07:00",
+    "deactivated_at": null
+  },
+  "snapshot": {
+    "captured_at": "2026-10-26T18:29:03.827894+07:00",
+    "source": "video-demo",
+    "Age": 43.0,
+    "Gender": "Male",
+    "Country": "France",
+    "City": "Marseille",
+    "Membership_Years": 2.9,
+    "Login_Frequency": 14.0,
+    "Session_Duration_Avg": 27.4,
+    "Pages_Per_Session": 6.0,
+    "Cart_Abandonment_Rate": 50.6,
+    "Wishlist_Items": 3.0,
+    "Total_Purchases": 9.0,
+    "Average_Order_Value": 94.72,
+    "Days_Since_Last_Purchase": 34.0,
+    "Discount_Usage_Rate": 46.4,
+    "Returns_Rate": 2.0,
+    "Email_Open_Rate": 17.9,
+    "Customer_Service_Calls": 9.0,
+    "Product_Reviews_Written": 4.0,
+    "Social_Media_Engagement_Score": 16.3,
+    "Mobile_App_Usage": 20.8,
+    "Payment_Method_Diversity": 1.0,
+    "Lifetime_Value": 953.33,
+    "Credit_Balance": 2278.0,
+    "Churned": false,
+    "Signup_Quarter": "Q1",
+    "id": "7c8f626f-1279-451c-9420-dbcd51e31330",
+    "customer_id": "ec5b2ce5-5581-4d1d-9d32-18a88d9b9e69"
+  },
+  "schema": {
+    "contract_version": "what-if-snapshot-v1",
+    "models": [
+      {
+        "task": "classification",
+        "model_id": "purchase-level-xgboost",
+        "model_version": "1.0.0",
+        "artifact_sha256": "1bbde6767f3b14bc5d29da3c848e53256363638f34e3263be0238e950e527e8f",
+        "metadata_sha256": "f1e3b720cac81c5e078dbf45443c599c999c969d749cbbe11545bed3a78a0a65",
+        "available": true,
+        "feature_count": 24,
+        "features": [
+          {
+            "name": "Age",
+            "type": "number",
+            "minimum": 18.0,
+            "maximum": 100.0,
+            "categories": [],
+            "mutable": false,
+            "unit": "source_unit_not_fully_verified",
+            "nullable_model": false
+          },
+          {
+            "name": "Gender",
+            "type": "text",
+            "minimum": null,
+            "maximum": null,
+            "categories": [],
+            "mutable": false,
+            "unit": "source_unit_not_fully_verified",
+            "nullable_model": false
+          },
+          {
+            "name": "Country",
+            "type": "text",
+            "minimum": null,
+            "maximum": null,
+            "categories": [],
+            "mutable": false,
+            "unit": "source_unit_not_fully_verified",
+            "nullable_model": false
+          },
+          {
+            "name": "City",
+            "type": "text",
+            "minimum": null,
+            "maximum": null,
+            "categories": [],
+            "mutable": false,
+            "unit": "source_unit_not_fully_verified",
+            "nullable_model": false
+          },
+          {
+            "name": "Membership_Years",
+            "type": "number",
+            "minimum": 0.0,
+            "maximum": null,
+            "categories": [],
+            "mutable": false,
+            "unit": "source_unit_not_fully_verified",
+            "nullable_model": false
+          },
+          {
+            "name": "Login_Frequency",
+            "type": "number",
+            "minimum": 0.0,
+            "maximum": null,
+            "categories": [],
+            "mutable": true,
+            "unit": "source_unit_not_fully_verified",
+            "nullable_model": false
+          },
+          {
+            "name": "Session_Duration_Avg",
+            "type": "number",
+            "minimum": 0.0,
+            "maximum": null,
+            "categories": [],
+            "mutable": true,
+            "unit": "source_unit_not_fully_verified",
+            "nullable_model": false
+          },
+          {
+            "name": "Pages_Per_Session",
+            "type": "number",
+            "minimum": 0.0,
+            "maximum": null,
+            "categories": [],
+            "mutable": true,
+            "unit": "source_unit_not_fully_verified",
+            "nullable_model": false
+          },
+          {
+            "name": "Cart_Abandonment_Rate",
+            "type": "number",
+            "minimum": 0.0,
+            "maximum": 100.0,
+            "categories": [],
+            "mutable": false,
+            "unit": "source_unit_not_fully_verified",
+            "nullable_model": false
+          },
+          {
+            "name": "Wishlist_Items",
+            "type": "number",
+            "minimum": 0.0,
+            "maximum": null,
+            "categories": [],
+            "mutable": true,
+            "unit": "source_unit_not_fully_verified",
+            "nullable_model": false
+          },
+          {
+            "name": "Average_Order_Value",
+            "type": "number",
+            "minimum": 0.0,
+            "maximum": null,
+            "categories": [],
+            "mutable": false,
+            "unit": "source_unit_not_fully_verified",
+            "nullable_model": false
+          },
+          {
+            "name": "Days_Since_Last_Purchase",
+            "type": "number",
+            "minimum": 0.0,
+            "maximum": null,
+            "categories": [],
+            "mutable": false,
+            "unit": "source_unit_not_fully_verified",
+            "nullable_model": false
+          },
+          {
+            "name": "Discount_Usage_Rate",
+            "type": "number",
+            "minimum": 0.0,
+            "maximum": 100.0,
+            "categories": [],
+            "mutable": false,
+            "unit": "source_unit_not_fully_verified",
+            "nullable_model": false
+          },
+          {
+            "name": "Returns_Rate",
+            "type": "number",
+            "minimum": 0.0,
+            "maximum": 100.0,
+            "categories": [],
+            "mutable": false,
+            "unit": "source_unit_not_fully_verified",
+            "nullable_model": false
+          },
+          {
+            "name": "Email_Open_Rate",
+            "type": "number",
+            "minimum": 0.0,
+            "maximum": 100.0,
+            "categories": [],
+            "mutable": true,
+            "unit": "percent_0_100",
+            "nullable_model": false
+          },
+          {
+            "name": "Customer_Service_Calls",
+            "type": "number",
+            "minimum": 0.0,
+            "maximum": null,
+            "categories": [],
+            "mutable": false,
+            "unit": "source_unit_not_fully_verified",
+            "nullable_model": false
+          },
+          {
+            "name": "Product_Reviews_Written",
+            "type": "number",
+            "minimum": 0.0,
+            "maximum": null,
+            "categories": [],
+            "mutable": false,
+            "unit": "source_unit_not_fully_verified",
+            "nullable_model": false
+          },
+          {
+            "name": "Social_Media_Engagement_Score",
+            "type": "number",
+            "minimum": 0.0,
+            "maximum": null,
+            "categories": [],
+            "mutable": false,
+            "unit": "source_unit_not_fully_verified",
+            "nullable_model": false
+          },
+          {
+            "name": "Mobile_App_Usage",
+            "type": "number",
+            "minimum": 0.0,
+            "maximum": null,
+            "categories": [],
+            "mutable": true,
+            "unit": "source_unit_not_fully_verified",
+            "nullable_model": false
+          },
+          {
+            "name": "Payment_Method_Diversity",
+            "type": "number",
+            "minimum": 0.0,
+            "maximum": null,
+            "categories": [],
+            "mutable": false,
+            "unit": "source_unit_not_fully_verified",
+            "nullable_model": false
+          },
+          {
+            "name": "Lifetime_Value",
+            "type": "number",
+            "minimum": 0.0,
+            "maximum": null,
+            "categories": [],
+            "mutable": false,
+            "unit": "source_unit_not_fully_verified",
+            "nullable_model": false
+          },
+          {
+            "name": "Credit_Balance",
+            "type": "number",
+            "minimum": 0.0,
+            "maximum": null,
+            "categories": [],
+            "mutable": false,
+            "unit": "source_unit_not_fully_verified",
+            "nullable_model": false
+          },
+          {
+            "name": "Churned",
+            "type": "binary",
+            "minimum": 0.0,
+            "maximum": 1.0,
+            "categories": [],
+            "mutable": false,
+            "unit": "source_unit_not_fully_verified",
+            "nullable_model": false
+          },
+          {
+            "name": "Signup_Quarter",
+            "type": "text",
+            "minimum": null,
+            "maximum": null,
+            "categories": ["Q1", "Q2", "Q3", "Q4"],
+            "mutable": false,
+            "unit": "source_unit_not_fully_verified",
+            "nullable_model": false
+          }
+        ],
+        "input_schema": {
+          "additionalProperties": false,
+          "properties": {
+            "Age": {
+              "maximum": 100,
+              "minimum": 18,
+              "title": "Age",
+              "type": "number"
+            },
+            "Gender": {
+              "minLength": 1,
+              "pattern": "\\S",
+              "title": "Gender",
+              "type": "string"
+            },
+            "Country": {
+              "minLength": 1,
+              "pattern": "\\S",
+              "title": "Country",
+              "type": "string"
+            },
+            "City": {
+              "minLength": 1,
+              "pattern": "\\S",
+              "title": "City",
+              "type": "string"
+            },
+            "Membership_Years": {
+              "minimum": 0,
+              "title": "Membership Years",
+              "type": "number"
+            },
+            "Login_Frequency": {
+              "minimum": 0,
+              "title": "Login Frequency",
+              "type": "number"
+            },
+            "Session_Duration_Avg": {
+              "minimum": 0,
+              "title": "Session Duration Avg",
+              "type": "number"
+            },
+            "Pages_Per_Session": {
+              "minimum": 0,
+              "title": "Pages Per Session",
+              "type": "number"
+            },
+            "Cart_Abandonment_Rate": {
+              "maximum": 100,
+              "minimum": 0,
+              "title": "Cart Abandonment Rate",
+              "type": "number"
+            },
+            "Wishlist_Items": {
+              "minimum": 0,
+              "title": "Wishlist Items",
+              "type": "number"
+            },
+            "Average_Order_Value": {
+              "minimum": 0,
+              "title": "Average Order Value",
+              "type": "number"
+            },
+            "Days_Since_Last_Purchase": {
+              "minimum": 0,
+              "title": "Days Since Last Purchase",
+              "type": "number"
+            },
+            "Discount_Usage_Rate": {
+              "maximum": 100,
+              "minimum": 0,
+              "title": "Discount Usage Rate",
+              "type": "number"
+            },
+            "Returns_Rate": {
+              "maximum": 100,
+              "minimum": 0,
+              "title": "Returns Rate",
+              "type": "number"
+            },
+            "Email_Open_Rate": {
+              "maximum": 100,
+              "minimum": 0,
+              "title": "Email Open Rate",
+              "type": "number"
+            },
+            "Customer_Service_Calls": {
+              "minimum": 0,
+              "title": "Customer Service Calls",
+              "type": "number"
+            },
+            "Product_Reviews_Written": {
+              "minimum": 0,
+              "title": "Product Reviews Written",
+              "type": "number"
+            },
+            "Social_Media_Engagement_Score": {
+              "minimum": 0,
+              "title": "Social Media Engagement Score",
+              "type": "number"
+            },
+            "Mobile_App_Usage": {
+              "minimum": 0,
+              "title": "Mobile App Usage",
+              "type": "number"
+            },
+            "Payment_Method_Diversity": {
+              "minimum": 0,
+              "title": "Payment Method Diversity",
+              "type": "number"
+            },
+            "Lifetime_Value": {
+              "minimum": 0,
+              "title": "Lifetime Value",
+              "type": "number"
+            },
+            "Credit_Balance": {
+              "minimum": 0,
+              "title": "Credit Balance",
+              "type": "number"
+            },
+            "Churned": {
+              "maximum": 1,
+              "minimum": 0,
+              "title": "Churned",
+              "type": "number"
+            },
+            "Signup_Quarter": {
+              "enum": ["Q1", "Q2", "Q3", "Q4"],
+              "title": "Signup Quarter",
+              "type": "string"
+            }
+          },
+          "required": [
+            "Age",
+            "Gender",
+            "Country",
+            "City",
+            "Membership_Years",
+            "Login_Frequency",
+            "Session_Duration_Avg",
+            "Pages_Per_Session",
+            "Cart_Abandonment_Rate",
+            "Wishlist_Items",
+            "Average_Order_Value",
+            "Days_Since_Last_Purchase",
+            "Discount_Usage_Rate",
+            "Returns_Rate",
+            "Email_Open_Rate",
+            "Customer_Service_Calls",
+            "Product_Reviews_Written",
+            "Social_Media_Engagement_Score",
+            "Mobile_App_Usage",
+            "Payment_Method_Diversity",
+            "Lifetime_Value",
+            "Credit_Balance",
+            "Churned",
+            "Signup_Quarter"
+          ],
+          "title": "LegacyPurchaseCustomer",
+          "type": "object"
+        },
+        "persistence_supported": true,
+        "label_namespace": "purchase_level",
+        "labels": {
+          "0": "Low",
+          "1": "Medium",
+          "2": "High"
+        },
+        "supports_probabilities": true,
+        "distance_kind": null
+      },
+      {
+        "task": "classification",
+        "model_id": "purchase-level-xgboost",
+        "model_version": "2.0.0-snapshot-conservative12",
+        "artifact_sha256": "b9b15c4170dade3d1a62cbfd9ce953e8770e7ac2cb4ff03266f3da3a39515ad3",
+        "metadata_sha256": "ccdaefaec31065bd5b0034ba695950f0d8660471b8402c31c46687a91b102852",
+        "available": true,
+        "feature_count": 12,
+        "features": [
+          {
+            "name": "Age",
+            "type": "number",
+            "minimum": 18.0,
+            "maximum": 100.0,
+            "categories": [],
+            "mutable": false,
+            "unit": "source_unit_not_fully_verified",
+            "nullable_model": true
+          },
+          {
+            "name": "Gender",
+            "type": "text",
+            "minimum": null,
+            "maximum": null,
+            "categories": [],
+            "mutable": false,
+            "unit": "source_unit_not_fully_verified",
+            "nullable_model": true
+          },
+          {
+            "name": "Country",
+            "type": "text",
+            "minimum": null,
+            "maximum": null,
+            "categories": [],
+            "mutable": false,
+            "unit": "source_unit_not_fully_verified",
+            "nullable_model": true
+          },
+          {
+            "name": "City",
+            "type": "text",
+            "minimum": null,
+            "maximum": null,
+            "categories": [],
+            "mutable": false,
+            "unit": "source_unit_not_fully_verified",
+            "nullable_model": true
+          },
+          {
+            "name": "Membership_Years",
+            "type": "number",
+            "minimum": 0.0,
+            "maximum": null,
+            "categories": [],
+            "mutable": false,
+            "unit": "source_unit_not_fully_verified",
+            "nullable_model": true
+          },
+          {
+            "name": "Login_Frequency",
+            "type": "number",
+            "minimum": 0.0,
+            "maximum": null,
+            "categories": [],
+            "mutable": true,
+            "unit": "source_unit_not_fully_verified",
+            "nullable_model": true
+          },
+          {
+            "name": "Session_Duration_Avg",
+            "type": "number",
+            "minimum": 0.0,
+            "maximum": null,
+            "categories": [],
+            "mutable": true,
+            "unit": "source_unit_not_fully_verified",
+            "nullable_model": true
+          },
+          {
+            "name": "Pages_Per_Session",
+            "type": "number",
+            "minimum": 0.0,
+            "maximum": null,
+            "categories": [],
+            "mutable": true,
+            "unit": "source_unit_not_fully_verified",
+            "nullable_model": true
+          },
+          {
+            "name": "Wishlist_Items",
+            "type": "number",
+            "minimum": 0.0,
+            "maximum": null,
+            "categories": [],
+            "mutable": true,
+            "unit": "source_unit_not_fully_verified",
+            "nullable_model": true
+          },
+          {
+            "name": "Email_Open_Rate",
+            "type": "number",
+            "minimum": 0.0,
+            "maximum": 100.0,
+            "categories": [],
+            "mutable": true,
+            "unit": "percent_0_100",
+            "nullable_model": true
+          },
+          {
+            "name": "Mobile_App_Usage",
+            "type": "number",
+            "minimum": 0.0,
+            "maximum": null,
+            "categories": [],
+            "mutable": true,
+            "unit": "source_unit_not_fully_verified",
+            "nullable_model": true
+          },
+          {
+            "name": "Signup_Quarter",
+            "type": "text",
+            "minimum": null,
+            "maximum": null,
+            "categories": ["Q1", "Q2", "Q3", "Q4"],
+            "mutable": false,
+            "unit": "source_unit_not_fully_verified",
+            "nullable_model": true
+          }
+        ],
+        "input_schema": {
+          "additionalProperties": false,
+          "properties": {
+            "Age": {
+              "anyOf": [
+                {
+                  "type": "number"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Age"
+            },
+            "Gender": {
+              "anyOf": [
+                {
+                  "minLength": 1,
+                  "pattern": "\\S",
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Gender"
+            },
+            "Country": {
+              "anyOf": [
+                {
+                  "minLength": 1,
+                  "pattern": "\\S",
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Country"
+            },
+            "City": {
+              "anyOf": [
+                {
+                  "minLength": 1,
+                  "pattern": "\\S",
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "City"
+            },
+            "Membership_Years": {
+              "anyOf": [
+                {
+                  "type": "number"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Membership Years"
+            },
+            "Login_Frequency": {
+              "anyOf": [
+                {
+                  "type": "number"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Login Frequency"
+            },
+            "Session_Duration_Avg": {
+              "anyOf": [
+                {
+                  "type": "number"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Session Duration Avg"
+            },
+            "Pages_Per_Session": {
+              "anyOf": [
+                {
+                  "type": "number"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Pages Per Session"
+            },
+            "Wishlist_Items": {
+              "anyOf": [
+                {
+                  "type": "number"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Wishlist Items"
+            },
+            "Email_Open_Rate": {
+              "anyOf": [
+                {
+                  "type": "number"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Email Open Rate"
+            },
+            "Mobile_App_Usage": {
+              "anyOf": [
+                {
+                  "type": "number"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Mobile App Usage"
+            },
+            "Signup_Quarter": {
+              "anyOf": [
+                {
+                  "enum": ["Q1", "Q2", "Q3", "Q4"],
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Signup Quarter"
+            }
+          },
+          "required": [
+            "Age",
+            "Gender",
+            "Country",
+            "City",
+            "Membership_Years",
+            "Login_Frequency",
+            "Session_Duration_Avg",
+            "Pages_Per_Session",
+            "Wishlist_Items",
+            "Email_Open_Rate",
+            "Mobile_App_Usage",
+            "Signup_Quarter"
+          ],
+          "title": "T4PurchaseCustomer",
+          "type": "object"
+        },
+        "persistence_supported": false,
+        "label_namespace": "purchase_level",
+        "labels": {
+          "0": "Low",
+          "1": "Medium",
+          "2": "High"
+        },
+        "supports_probabilities": true,
+        "distance_kind": null
+      },
+      {
+        "task": "segmentation",
+        "model_id": "customer-segmentation-kmeans",
+        "model_version": "1.0.0",
+        "artifact_sha256": "5ab101792571047b832c82d9b7e64390b158b788b140486742947bfbe796d7d1",
+        "metadata_sha256": "1718061ac0a76657e9f17a2c7377d4cc4d7abcdaf1e5c09c84c8eee67d3326ae",
+        "available": true,
+        "feature_count": 10,
+        "features": [
+          {
+            "name": "Login_Frequency",
+            "type": "number",
+            "minimum": 0.0,
+            "maximum": null,
+            "categories": [],
+            "mutable": true,
+            "unit": "source_unit_not_fully_verified",
+            "nullable_model": false
+          },
+          {
+            "name": "Session_Duration_Avg",
+            "type": "number",
+            "minimum": 0.0,
+            "maximum": null,
+            "categories": [],
+            "mutable": true,
+            "unit": "source_unit_not_fully_verified",
+            "nullable_model": false
+          },
+          {
+            "name": "Pages_Per_Session",
+            "type": "number",
+            "minimum": 0.0,
+            "maximum": null,
+            "categories": [],
+            "mutable": true,
+            "unit": "source_unit_not_fully_verified",
+            "nullable_model": false
+          },
+          {
+            "name": "Cart_Abandonment_Rate",
+            "type": "number",
+            "minimum": 0.0,
+            "maximum": 100.0,
+            "categories": [],
+            "mutable": false,
+            "unit": "source_unit_not_fully_verified",
+            "nullable_model": false
+          },
+          {
+            "name": "Wishlist_Items",
+            "type": "number",
+            "minimum": 0.0,
+            "maximum": null,
+            "categories": [],
+            "mutable": true,
+            "unit": "source_unit_not_fully_verified",
+            "nullable_model": false
+          },
+          {
+            "name": "Total_Purchases",
+            "type": "number",
+            "minimum": 0.0,
+            "maximum": null,
+            "categories": [],
+            "mutable": false,
+            "unit": "source_unit_not_fully_verified",
+            "nullable_model": false
+          },
+          {
+            "name": "Average_Order_Value",
+            "type": "number",
+            "minimum": 0.0,
+            "maximum": null,
+            "categories": [],
+            "mutable": false,
+            "unit": "source_unit_not_fully_verified",
+            "nullable_model": false
+          },
+          {
+            "name": "Days_Since_Last_Purchase",
+            "type": "number",
+            "minimum": 0.0,
+            "maximum": null,
+            "categories": [],
+            "mutable": false,
+            "unit": "source_unit_not_fully_verified",
+            "nullable_model": false
+          },
+          {
+            "name": "Discount_Usage_Rate",
+            "type": "number",
+            "minimum": 0.0,
+            "maximum": 100.0,
+            "categories": [],
+            "mutable": false,
+            "unit": "source_unit_not_fully_verified",
+            "nullable_model": false
+          },
+          {
+            "name": "Mobile_App_Usage",
+            "type": "number",
+            "minimum": 0.0,
+            "maximum": null,
+            "categories": [],
+            "mutable": true,
+            "unit": "source_unit_not_fully_verified",
+            "nullable_model": false
+          }
+        ],
+        "input_schema": {
+          "additionalProperties": false,
+          "properties": {
+            "Login_Frequency": {
+              "minimum": 0,
+              "title": "Login Frequency",
+              "type": "number"
+            },
+            "Session_Duration_Avg": {
+              "minimum": 0,
+              "title": "Session Duration Avg",
+              "type": "number"
+            },
+            "Pages_Per_Session": {
+              "minimum": 0,
+              "title": "Pages Per Session",
+              "type": "number"
+            },
+            "Cart_Abandonment_Rate": {
+              "maximum": 100,
+              "minimum": 0,
+              "title": "Cart Abandonment Rate",
+              "type": "number"
+            },
+            "Wishlist_Items": {
+              "minimum": 0,
+              "title": "Wishlist Items",
+              "type": "number"
+            },
+            "Total_Purchases": {
+              "minimum": 0,
+              "title": "Total Purchases",
+              "type": "number"
+            },
+            "Average_Order_Value": {
+              "minimum": 0,
+              "title": "Average Order Value",
+              "type": "number"
+            },
+            "Days_Since_Last_Purchase": {
+              "minimum": 0,
+              "title": "Days Since Last Purchase",
+              "type": "number"
+            },
+            "Discount_Usage_Rate": {
+              "maximum": 100,
+              "minimum": 0,
+              "title": "Discount Usage Rate",
+              "type": "number"
+            },
+            "Mobile_App_Usage": {
+              "minimum": 0,
+              "title": "Mobile App Usage",
+              "type": "number"
+            }
+          },
+          "required": [
+            "Login_Frequency",
+            "Session_Duration_Avg",
+            "Pages_Per_Session",
+            "Cart_Abandonment_Rate",
+            "Wishlist_Items",
+            "Total_Purchases",
+            "Average_Order_Value",
+            "Days_Since_Last_Purchase",
+            "Discount_Usage_Rate",
+            "Mobile_App_Usage"
+          ],
+          "title": "LegacySegmentCustomer",
+          "type": "object"
+        },
+        "persistence_supported": true,
+        "label_namespace": "legacy_clusters_v1",
+        "labels": {
+          "0": "Khách hàng tích cực",
+          "1": "Khách hàng ít tương tác",
+          "2": "Khách hàng tiềm năng"
+        },
+        "supports_probabilities": false,
+        "distance_kind": "standardized_euclidean_not_probability"
+      },
+      {
+        "task": "segmentation",
+        "model_id": "customer-segmentation-kmeans",
+        "model_version": "2.0.0-snapshot-k3",
+        "artifact_sha256": "fcccee53765f9d4825196411aee4a971d1df8a3595b0d4f56210145425e672e3",
+        "metadata_sha256": "929e2edc11aea9244ee60681e64f0e762eb4af1fb56fd78cb199feb290de86c3",
+        "available": true,
+        "feature_count": 10,
+        "features": [
+          {
+            "name": "Login_Frequency",
+            "type": "number",
+            "minimum": 0.0,
+            "maximum": null,
+            "categories": [],
+            "mutable": true,
+            "unit": "source_unit_not_fully_verified",
+            "nullable_model": true
+          },
+          {
+            "name": "Session_Duration_Avg",
+            "type": "number",
+            "minimum": 0.0,
+            "maximum": null,
+            "categories": [],
+            "mutable": true,
+            "unit": "source_unit_not_fully_verified",
+            "nullable_model": true
+          },
+          {
+            "name": "Pages_Per_Session",
+            "type": "number",
+            "minimum": 0.0,
+            "maximum": null,
+            "categories": [],
+            "mutable": true,
+            "unit": "source_unit_not_fully_verified",
+            "nullable_model": true
+          },
+          {
+            "name": "Cart_Abandonment_Rate",
+            "type": "number",
+            "minimum": 0.0,
+            "maximum": 100.0,
+            "categories": [],
+            "mutable": false,
+            "unit": "source_unit_not_fully_verified",
+            "nullable_model": true
+          },
+          {
+            "name": "Wishlist_Items",
+            "type": "number",
+            "minimum": 0.0,
+            "maximum": null,
+            "categories": [],
+            "mutable": true,
+            "unit": "source_unit_not_fully_verified",
+            "nullable_model": true
+          },
+          {
+            "name": "Total_Purchases",
+            "type": "number",
+            "minimum": 0.0,
+            "maximum": null,
+            "categories": [],
+            "mutable": false,
+            "unit": "source_unit_not_fully_verified",
+            "nullable_model": true
+          },
+          {
+            "name": "Average_Order_Value",
+            "type": "number",
+            "minimum": 0.0,
+            "maximum": null,
+            "categories": [],
+            "mutable": false,
+            "unit": "source_unit_not_fully_verified",
+            "nullable_model": true
+          },
+          {
+            "name": "Days_Since_Last_Purchase",
+            "type": "number",
+            "minimum": 0.0,
+            "maximum": null,
+            "categories": [],
+            "mutable": false,
+            "unit": "source_unit_not_fully_verified",
+            "nullable_model": true
+          },
+          {
+            "name": "Discount_Usage_Rate",
+            "type": "number",
+            "minimum": 0.0,
+            "maximum": 100.0,
+            "categories": [],
+            "mutable": false,
+            "unit": "source_unit_not_fully_verified",
+            "nullable_model": true
+          },
+          {
+            "name": "Mobile_App_Usage",
+            "type": "number",
+            "minimum": 0.0,
+            "maximum": null,
+            "categories": [],
+            "mutable": true,
+            "unit": "source_unit_not_fully_verified",
+            "nullable_model": true
+          }
+        ],
+        "input_schema": {
+          "additionalProperties": false,
+          "properties": {
+            "Login_Frequency": {
+              "anyOf": [
+                {
+                  "type": "number"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Login Frequency"
+            },
+            "Session_Duration_Avg": {
+              "anyOf": [
+                {
+                  "type": "number"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Session Duration Avg"
+            },
+            "Pages_Per_Session": {
+              "anyOf": [
+                {
+                  "type": "number"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Pages Per Session"
+            },
+            "Cart_Abandonment_Rate": {
+              "anyOf": [
+                {
+                  "type": "number"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Cart Abandonment Rate"
+            },
+            "Wishlist_Items": {
+              "anyOf": [
+                {
+                  "type": "number"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Wishlist Items"
+            },
+            "Total_Purchases": {
+              "anyOf": [
+                {
+                  "type": "number"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Total Purchases"
+            },
+            "Average_Order_Value": {
+              "anyOf": [
+                {
+                  "type": "number"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Average Order Value"
+            },
+            "Days_Since_Last_Purchase": {
+              "anyOf": [
+                {
+                  "type": "number"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Days Since Last Purchase"
+            },
+            "Discount_Usage_Rate": {
+              "anyOf": [
+                {
+                  "type": "number"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Discount Usage Rate"
+            },
+            "Mobile_App_Usage": {
+              "anyOf": [
+                {
+                  "type": "number"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Mobile App Usage"
+            }
+          },
+          "required": [
+            "Login_Frequency",
+            "Session_Duration_Avg",
+            "Pages_Per_Session",
+            "Cart_Abandonment_Rate",
+            "Wishlist_Items",
+            "Total_Purchases",
+            "Average_Order_Value",
+            "Days_Since_Last_Purchase",
+            "Discount_Usage_Rate",
+            "Mobile_App_Usage"
+          ],
+          "title": "T5SegmentCustomer",
+          "type": "object"
+        },
+        "persistence_supported": false,
+        "label_namespace": "engagement_snapshot_v2",
+        "labels": {
+          "0": "Tương tác thấp",
+          "1": "Tương tác trung bình",
+          "2": "Tương tác cao"
+        },
+        "supports_probabilities": false,
+        "distance_kind": "standardized_euclidean_not_probability"
+      }
+    ],
+    "mutable_features": [
+      "Login_Frequency",
+      "Session_Duration_Avg",
+      "Pages_Per_Session",
+      "Wishlist_Items",
+      "Email_Open_Rate",
+      "Mobile_App_Usage"
+    ],
+    "limits": {
+      "body_bytes": 65536,
+      "nesting_depth": 8,
+      "changes": 6,
+      "scenarios_per_request": 1,
+      "history_limit": 100
+    },
+    "scope": "snapshot_input_sensitivity_not_causal_or_future",
+    "disclaimer": "Mô phỏng phản ứng của mô hình với input giả định; không phải tác động nhân quả hay dự báo giao dịch tương lai.",
+    "limitations": [
+      "snapshot_only",
+      "not_causal_or_future",
+      "legacy_proxy_risks_remain",
+      "research_inference_only",
+      "local_single_owner_no_auth",
+      "advisory_lock_not_database_unique"
+    ]
+  },
+  "rows": [
+    {
+      "request": {
+        "contract_version": "what-if-snapshot-v1",
+        "models": {
+          "classification": "1.0.0",
+          "segmentation": null
+        },
+        "baseline": {
+          "kind": "customer",
+          "customer_id": "ec5b2ce5-5581-4d1d-9d32-18a88d9b9e69",
+          "snapshot_id": "7c8f626f-1279-451c-9420-dbcd51e31330"
+        }
+      },
+      "preview": {
+        "contract_version": "what-if-snapshot-v1",
+        "baseline_input": {
+          "Age": 43.0,
+          "Payment_Method_Diversity": 1.0,
+          "Average_Order_Value": 94.72,
+          "Returns_Rate": 2.0,
+          "Mobile_App_Usage": 20.8,
+          "Country": "France",
+          "Discount_Usage_Rate": 46.4,
+          "Credit_Balance": 2278.0,
+          "Days_Since_Last_Purchase": 34.0,
+          "Lifetime_Value": 953.33,
+          "Signup_Quarter": "Q1",
+          "Login_Frequency": 14.0,
+          "Customer_Service_Calls": 9.0,
+          "Wishlist_Items": 3.0,
+          "Social_Media_Engagement_Score": 16.3,
+          "Product_Reviews_Written": 4.0,
+          "Churned": 0.0,
+          "Cart_Abandonment_Rate": 50.6,
+          "City": "Marseille",
+          "Gender": "Male",
+          "Membership_Years": 2.9,
+          "Email_Open_Rate": 17.9,
+          "Session_Duration_Avg": 27.4,
+          "Pages_Per_Session": 6.0
+        },
+        "baseline_fingerprint": "5a715b42ec0e183bc465d95f5c6240718fa2becbf01d29c71564bd5e73e5eb78",
+        "classification": {
+          "task": "classification",
+          "model": {
+            "model_id": "purchase-level-xgboost",
+            "model_version": "1.0.0",
+            "artifact_sha256": "1bbde6767f3b14bc5d29da3c848e53256363638f34e3263be0238e950e527e8f",
+            "metadata_sha256": "f1e3b720cac81c5e078dbf45443c599c999c969d749cbbe11545bed3a78a0a65",
+            "validation_policy": "what-if-snapshot-v1"
+          },
+          "predicted_class": 0,
+          "purchase_level": "Low",
+          "probabilities": {
+            "Low": 0.5996882915496826,
+            "Medium": 0.39808565378189087,
+            "High": 0.0022260083351284266
+          },
+          "decision_rule": "argmax_probability",
+          "target_thresholds": {
+            "low_inclusive": 10.0,
+            "medium_inclusive": 15.0
+          }
+        },
+        "segmentation": null,
+        "resolved_customer_id": "ec5b2ce5-5581-4d1d-9d32-18a88d9b9e69",
+        "resolved_snapshot_id": "7c8f626f-1279-451c-9420-dbcd51e31330",
+        "generated_at": "2026-10-26T11:29:04.715825Z",
+        "warnings": [
+          "AVAILABILITY_UNKNOWN",
+          "LEGACY_PROXY_FEATURES_UNVERIFIED",
+          "NON_CAUSAL",
+          "PLAUSIBILITY_NOT_VERIFIED",
+          "SNAPSHOT_ONLY",
+          "SUPPORT_RANGE_UNKNOWN"
+        ],
+        "scope": "snapshot_input_sensitivity_not_causal_or_future",
+        "disclaimer": "Mô phỏng phản ứng của mô hình với input giả định; không phải tác động nhân quả hay dự báo giao dịch tương lai.",
+        "persisted": false
+      },
+      "intent": {
+        "contract_version": "what-if-snapshot-v1",
+        "models": {
+          "classification": "1.0.0",
+          "segmentation": null
+        },
+        "baseline": {
+          "kind": "customer",
+          "customer_id": "ec5b2ce5-5581-4d1d-9d32-18a88d9b9e69",
+          "snapshot_id": "7c8f626f-1279-451c-9420-dbcd51e31330"
+        },
+        "changes": {
+          "Login_Frequency": 20.4,
+          "Email_Open_Rate": 75.5
+        },
+        "expected_baseline_fingerprint": "5a715b42ec0e183bc465d95f5c6240718fa2becbf01d29c71564bd5e73e5eb78"
+      },
+      "comparison": {
+        "contract_version": "what-if-snapshot-v1",
+        "baseline": {
+          "contract_version": "what-if-snapshot-v1",
+          "baseline_input": {
+            "Age": 43.0,
+            "Payment_Method_Diversity": 1.0,
+            "Average_Order_Value": 94.72,
+            "Returns_Rate": 2.0,
+            "Mobile_App_Usage": 20.8,
+            "Country": "France",
+            "Discount_Usage_Rate": 46.4,
+            "Credit_Balance": 2278.0,
+            "Days_Since_Last_Purchase": 34.0,
+            "Lifetime_Value": 953.33,
+            "Signup_Quarter": "Q1",
+            "Login_Frequency": 14.0,
+            "Customer_Service_Calls": 9.0,
+            "Wishlist_Items": 3.0,
+            "Social_Media_Engagement_Score": 16.3,
+            "Product_Reviews_Written": 4.0,
+            "Churned": 0.0,
+            "Cart_Abandonment_Rate": 50.6,
+            "City": "Marseille",
+            "Gender": "Male",
+            "Membership_Years": 2.9,
+            "Email_Open_Rate": 17.9,
+            "Session_Duration_Avg": 27.4,
+            "Pages_Per_Session": 6.0
+          },
+          "baseline_fingerprint": "5a715b42ec0e183bc465d95f5c6240718fa2becbf01d29c71564bd5e73e5eb78",
+          "classification": {
+            "task": "classification",
+            "model": {
+              "model_id": "purchase-level-xgboost",
+              "model_version": "1.0.0",
+              "artifact_sha256": "1bbde6767f3b14bc5d29da3c848e53256363638f34e3263be0238e950e527e8f",
+              "metadata_sha256": "f1e3b720cac81c5e078dbf45443c599c999c969d749cbbe11545bed3a78a0a65",
+              "validation_policy": "what-if-snapshot-v1"
+            },
+            "predicted_class": 0,
+            "purchase_level": "Low",
+            "probabilities": {
+              "Low": 0.5996882915496826,
+              "Medium": 0.39808565378189087,
+              "High": 0.0022260083351284266
+            },
+            "decision_rule": "argmax_probability",
+            "target_thresholds": {
+              "low_inclusive": 10.0,
+              "medium_inclusive": 15.0
+            }
+          },
+          "segmentation": null,
+          "resolved_customer_id": "ec5b2ce5-5581-4d1d-9d32-18a88d9b9e69",
+          "resolved_snapshot_id": "7c8f626f-1279-451c-9420-dbcd51e31330",
+          "generated_at": "2026-10-26T11:29:04.837061Z",
+          "warnings": [
+            "AVAILABILITY_UNKNOWN",
+            "LEGACY_PROXY_FEATURES_UNVERIFIED",
+            "NON_CAUSAL",
+            "PLAUSIBILITY_NOT_VERIFIED",
+            "SNAPSHOT_ONLY",
+            "SUPPORT_RANGE_UNKNOWN"
+          ],
+          "scope": "snapshot_input_sensitivity_not_causal_or_future",
+          "disclaimer": "Mô phỏng phản ứng của mô hình với input giả định; không phải tác động nhân quả hay dự báo giao dịch tương lai.",
+          "persisted": false
+        },
+        "scenario_input": {
+          "Age": 43.0,
+          "Payment_Method_Diversity": 1.0,
+          "Average_Order_Value": 94.72,
+          "Returns_Rate": 2.0,
+          "Mobile_App_Usage": 20.8,
+          "Country": "France",
+          "Discount_Usage_Rate": 46.4,
+          "Credit_Balance": 2278.0,
+          "Days_Since_Last_Purchase": 34.0,
+          "Lifetime_Value": 953.33,
+          "Signup_Quarter": "Q1",
+          "Login_Frequency": 20.4,
+          "Customer_Service_Calls": 9.0,
+          "Wishlist_Items": 3.0,
+          "Social_Media_Engagement_Score": 16.3,
+          "Product_Reviews_Written": 4.0,
+          "Churned": 0.0,
+          "Cart_Abandonment_Rate": 50.6,
+          "City": "Marseille",
+          "Gender": "Male",
+          "Membership_Years": 2.9,
+          "Email_Open_Rate": 75.5,
+          "Session_Duration_Avg": 27.4,
+          "Pages_Per_Session": 6.0
+        },
+        "scenario_classification": {
+          "task": "classification",
+          "model": {
+            "model_id": "purchase-level-xgboost",
+            "model_version": "1.0.0",
+            "artifact_sha256": "1bbde6767f3b14bc5d29da3c848e53256363638f34e3263be0238e950e527e8f",
+            "metadata_sha256": "f1e3b720cac81c5e078dbf45443c599c999c969d749cbbe11545bed3a78a0a65",
+            "validation_policy": "what-if-snapshot-v1"
+          },
+          "predicted_class": 1,
+          "purchase_level": "Medium",
+          "probabilities": {
+            "Low": 0.37513935565948486,
+            "Medium": 0.6224080920219421,
+            "High": 0.0024525364860892296
+          },
+          "decision_rule": "argmax_probability",
+          "target_thresholds": {
+            "low_inclusive": 10.0,
+            "medium_inclusive": 15.0
+          }
+        },
+        "scenario_segmentation": null,
+        "changed_fields": [
+          {
+            "feature": "Login_Frequency",
+            "before": 14.0,
+            "after": 20.4
+          },
+          {
+            "feature": "Email_Open_Rate",
+            "before": 17.9,
+            "after": 75.5
+          }
+        ],
+        "classification_label_changed": true,
+        "probability_deltas": {
+          "absolute": {
+            "Low": -0.22454893589019775,
+            "Medium": 0.22432243824005127,
+            "High": 0.00022652815096080303
+          },
+          "percentage_points": {
+            "Low": -22.454893589019775,
+            "Medium": 22.432243824005127,
+            "High": 0.022652815096080303
+          },
+          "relative": {
+            "Low": -0.3744427547683653,
+            "Medium": 0.5635029449289233,
+            "High": 0.10176428694627228
+          }
+        },
+        "comparison_fingerprint": "27515ea4a81a1038b0f1d73dae5404ebad6dd47edb04484ce3d6ccb93dfad785",
+        "warnings": [
+          "AVAILABILITY_UNKNOWN",
+          "LEGACY_PROXY_FEATURES_UNVERIFIED",
+          "NON_CAUSAL",
+          "PLAUSIBILITY_NOT_VERIFIED",
+          "SNAPSHOT_ONLY",
+          "SUPPORT_RANGE_UNKNOWN"
+        ],
+        "disclaimer": "Mô phỏng phản ứng của mô hình với input giả định; không phải tác động nhân quả hay dự báo giao dịch tương lai.",
+        "persisted": false
+      },
+      "no_op": {
+        "contract_version": "what-if-snapshot-v1",
+        "baseline": {
+          "contract_version": "what-if-snapshot-v1",
+          "baseline_input": {
+            "Age": 43.0,
+            "Payment_Method_Diversity": 1.0,
+            "Average_Order_Value": 94.72,
+            "Returns_Rate": 2.0,
+            "Mobile_App_Usage": 20.8,
+            "Country": "France",
+            "Discount_Usage_Rate": 46.4,
+            "Credit_Balance": 2278.0,
+            "Days_Since_Last_Purchase": 34.0,
+            "Lifetime_Value": 953.33,
+            "Signup_Quarter": "Q1",
+            "Login_Frequency": 14.0,
+            "Customer_Service_Calls": 9.0,
+            "Wishlist_Items": 3.0,
+            "Social_Media_Engagement_Score": 16.3,
+            "Product_Reviews_Written": 4.0,
+            "Churned": 0.0,
+            "Cart_Abandonment_Rate": 50.6,
+            "City": "Marseille",
+            "Gender": "Male",
+            "Membership_Years": 2.9,
+            "Email_Open_Rate": 17.9,
+            "Session_Duration_Avg": 27.4,
+            "Pages_Per_Session": 6.0
+          },
+          "baseline_fingerprint": "5a715b42ec0e183bc465d95f5c6240718fa2becbf01d29c71564bd5e73e5eb78",
+          "classification": {
+            "task": "classification",
+            "model": {
+              "model_id": "purchase-level-xgboost",
+              "model_version": "1.0.0",
+              "artifact_sha256": "1bbde6767f3b14bc5d29da3c848e53256363638f34e3263be0238e950e527e8f",
+              "metadata_sha256": "f1e3b720cac81c5e078dbf45443c599c999c969d749cbbe11545bed3a78a0a65",
+              "validation_policy": "what-if-snapshot-v1"
+            },
+            "predicted_class": 0,
+            "purchase_level": "Low",
+            "probabilities": {
+              "Low": 0.5996882915496826,
+              "Medium": 0.39808565378189087,
+              "High": 0.0022260083351284266
+            },
+            "decision_rule": "argmax_probability",
+            "target_thresholds": {
+              "low_inclusive": 10.0,
+              "medium_inclusive": 15.0
+            }
+          },
+          "segmentation": null,
+          "resolved_customer_id": "ec5b2ce5-5581-4d1d-9d32-18a88d9b9e69",
+          "resolved_snapshot_id": "7c8f626f-1279-451c-9420-dbcd51e31330",
+          "generated_at": "2026-10-26T11:29:04.908727Z",
+          "warnings": [
+            "AVAILABILITY_UNKNOWN",
+            "LEGACY_PROXY_FEATURES_UNVERIFIED",
+            "NON_CAUSAL",
+            "PLAUSIBILITY_NOT_VERIFIED",
+            "SNAPSHOT_ONLY",
+            "SUPPORT_RANGE_UNKNOWN"
+          ],
+          "scope": "snapshot_input_sensitivity_not_causal_or_future",
+          "disclaimer": "Mô phỏng phản ứng của mô hình với input giả định; không phải tác động nhân quả hay dự báo giao dịch tương lai.",
+          "persisted": false
+        },
+        "scenario_input": {
+          "Age": 43.0,
+          "Payment_Method_Diversity": 1.0,
+          "Average_Order_Value": 94.72,
+          "Returns_Rate": 2.0,
+          "Mobile_App_Usage": 20.8,
+          "Country": "France",
+          "Discount_Usage_Rate": 46.4,
+          "Credit_Balance": 2278.0,
+          "Days_Since_Last_Purchase": 34.0,
+          "Lifetime_Value": 953.33,
+          "Signup_Quarter": "Q1",
+          "Login_Frequency": 14.0,
+          "Customer_Service_Calls": 9.0,
+          "Wishlist_Items": 3.0,
+          "Social_Media_Engagement_Score": 16.3,
+          "Product_Reviews_Written": 4.0,
+          "Churned": 0.0,
+          "Cart_Abandonment_Rate": 50.6,
+          "City": "Marseille",
+          "Gender": "Male",
+          "Membership_Years": 2.9,
+          "Email_Open_Rate": 17.9,
+          "Session_Duration_Avg": 27.4,
+          "Pages_Per_Session": 6.0
+        },
+        "scenario_classification": {
+          "task": "classification",
+          "model": {
+            "model_id": "purchase-level-xgboost",
+            "model_version": "1.0.0",
+            "artifact_sha256": "1bbde6767f3b14bc5d29da3c848e53256363638f34e3263be0238e950e527e8f",
+            "metadata_sha256": "f1e3b720cac81c5e078dbf45443c599c999c969d749cbbe11545bed3a78a0a65",
+            "validation_policy": "what-if-snapshot-v1"
+          },
+          "predicted_class": 0,
+          "purchase_level": "Low",
+          "probabilities": {
+            "Low": 0.5996882915496826,
+            "Medium": 0.39808565378189087,
+            "High": 0.0022260083351284266
+          },
+          "decision_rule": "argmax_probability",
+          "target_thresholds": {
+            "low_inclusive": 10.0,
+            "medium_inclusive": 15.0
+          }
+        },
+        "scenario_segmentation": null,
+        "changed_fields": [],
+        "classification_label_changed": false,
+        "probability_deltas": {
+          "absolute": {
+            "Low": 0.0,
+            "Medium": 0.0,
+            "High": 0.0
+          },
+          "percentage_points": {
+            "Low": 0.0,
+            "Medium": 0.0,
+            "High": 0.0
+          },
+          "relative": {
+            "Low": 0.0,
+            "Medium": 0.0,
+            "High": 0.0
+          }
+        },
+        "comparison_fingerprint": "9703a820fa70fe4f2b196002b5d15891f824456b0188cb6a431de7314851d3a1",
+        "warnings": [
+          "AVAILABILITY_UNKNOWN",
+          "LEGACY_PROXY_FEATURES_UNVERIFIED",
+          "NON_CAUSAL",
+          "NO_INPUT_CHANGE",
+          "PLAUSIBILITY_NOT_VERIFIED",
+          "SNAPSHOT_ONLY",
+          "SUPPORT_RANGE_UNKNOWN"
+        ],
+        "disclaimer": "Mô phỏng phản ứng của mô hình với input giả định; không phải tác động nhân quả hay dự báo giao dịch tương lai.",
+        "persisted": false
+      }
+    },
+    {
+      "request": {
+        "contract_version": "what-if-snapshot-v1",
+        "models": {
+          "classification": "2.0.0-snapshot-conservative12",
+          "segmentation": null
+        },
+        "baseline": {
+          "kind": "customer",
+          "customer_id": "ec5b2ce5-5581-4d1d-9d32-18a88d9b9e69",
+          "snapshot_id": "7c8f626f-1279-451c-9420-dbcd51e31330"
+        }
+      },
+      "preview": {
+        "contract_version": "what-if-snapshot-v1",
+        "baseline_input": {
+          "Age": 43.0,
+          "Mobile_App_Usage": 20.8,
+          "Pages_Per_Session": 6.0,
+          "Country": "France",
+          "City": "Marseille",
+          "Gender": "Male",
+          "Login_Frequency": 14.0,
+          "Wishlist_Items": 3.0,
+          "Email_Open_Rate": 17.9,
+          "Session_Duration_Avg": 27.4,
+          "Signup_Quarter": "Q1",
+          "Membership_Years": 2.9
+        },
+        "baseline_fingerprint": "4753da0a2cd01a6d5608ecdad4902ad00fa3574da674102e4e1cdbe3d7c05e9a",
+        "classification": {
+          "task": "classification",
+          "model": {
+            "model_id": "purchase-level-xgboost",
+            "model_version": "2.0.0-snapshot-conservative12",
+            "artifact_sha256": "b9b15c4170dade3d1a62cbfd9ce953e8770e7ac2cb4ff03266f3da3a39515ad3",
+            "metadata_sha256": "ccdaefaec31065bd5b0034ba695950f0d8660471b8402c31c46687a91b102852",
+            "validation_policy": "what-if-snapshot-v1"
+          },
+          "predicted_class": 0,
+          "purchase_level": "Low",
+          "probabilities": {
+            "Low": 0.46987220644950867,
+            "Medium": 0.4473292827606201,
+            "High": 0.0827985480427742
+          },
+          "decision_rule": "argmax_probability",
+          "target_thresholds": {
+            "low_inclusive": 10.0,
+            "medium_inclusive": 15.0
+          }
+        },
+        "segmentation": null,
+        "resolved_customer_id": "ec5b2ce5-5581-4d1d-9d32-18a88d9b9e69",
+        "resolved_snapshot_id": "7c8f626f-1279-451c-9420-dbcd51e31330",
+        "generated_at": "2026-10-26T11:29:05.005724Z",
+        "warnings": [
+          "AVAILABILITY_UNKNOWN",
+          "NON_CAUSAL",
+          "PLAUSIBILITY_NOT_VERIFIED",
+          "SNAPSHOT_ONLY",
+          "SUPPORT_RANGE_UNKNOWN"
+        ],
+        "scope": "snapshot_input_sensitivity_not_causal_or_future",
+        "disclaimer": "Mô phỏng phản ứng của mô hình với input giả định; không phải tác động nhân quả hay dự báo giao dịch tương lai.",
+        "persisted": false
+      },
+      "intent": {
+        "contract_version": "what-if-snapshot-v1",
+        "models": {
+          "classification": "2.0.0-snapshot-conservative12",
+          "segmentation": null
+        },
+        "baseline": {
+          "kind": "customer",
+          "customer_id": "ec5b2ce5-5581-4d1d-9d32-18a88d9b9e69",
+          "snapshot_id": "7c8f626f-1279-451c-9420-dbcd51e31330"
+        },
+        "changes": {
+          "Login_Frequency": 20.4,
+          "Email_Open_Rate": 75.5
+        },
+        "expected_baseline_fingerprint": "4753da0a2cd01a6d5608ecdad4902ad00fa3574da674102e4e1cdbe3d7c05e9a"
+      },
+      "comparison": {
+        "contract_version": "what-if-snapshot-v1",
+        "baseline": {
+          "contract_version": "what-if-snapshot-v1",
+          "baseline_input": {
+            "Age": 43.0,
+            "Mobile_App_Usage": 20.8,
+            "Pages_Per_Session": 6.0,
+            "Country": "France",
+            "City": "Marseille",
+            "Gender": "Male",
+            "Login_Frequency": 14.0,
+            "Wishlist_Items": 3.0,
+            "Email_Open_Rate": 17.9,
+            "Session_Duration_Avg": 27.4,
+            "Signup_Quarter": "Q1",
+            "Membership_Years": 2.9
+          },
+          "baseline_fingerprint": "4753da0a2cd01a6d5608ecdad4902ad00fa3574da674102e4e1cdbe3d7c05e9a",
+          "classification": {
+            "task": "classification",
+            "model": {
+              "model_id": "purchase-level-xgboost",
+              "model_version": "2.0.0-snapshot-conservative12",
+              "artifact_sha256": "b9b15c4170dade3d1a62cbfd9ce953e8770e7ac2cb4ff03266f3da3a39515ad3",
+              "metadata_sha256": "ccdaefaec31065bd5b0034ba695950f0d8660471b8402c31c46687a91b102852",
+              "validation_policy": "what-if-snapshot-v1"
+            },
+            "predicted_class": 0,
+            "purchase_level": "Low",
+            "probabilities": {
+              "Low": 0.46987220644950867,
+              "Medium": 0.4473292827606201,
+              "High": 0.0827985480427742
+            },
+            "decision_rule": "argmax_probability",
+            "target_thresholds": {
+              "low_inclusive": 10.0,
+              "medium_inclusive": 15.0
+            }
+          },
+          "segmentation": null,
+          "resolved_customer_id": "ec5b2ce5-5581-4d1d-9d32-18a88d9b9e69",
+          "resolved_snapshot_id": "7c8f626f-1279-451c-9420-dbcd51e31330",
+          "generated_at": "2026-10-26T11:29:05.045214Z",
+          "warnings": [
+            "AVAILABILITY_UNKNOWN",
+            "NON_CAUSAL",
+            "PLAUSIBILITY_NOT_VERIFIED",
+            "SNAPSHOT_ONLY",
+            "SUPPORT_RANGE_UNKNOWN"
+          ],
+          "scope": "snapshot_input_sensitivity_not_causal_or_future",
+          "disclaimer": "Mô phỏng phản ứng của mô hình với input giả định; không phải tác động nhân quả hay dự báo giao dịch tương lai.",
+          "persisted": false
+        },
+        "scenario_input": {
+          "Age": 43.0,
+          "Mobile_App_Usage": 20.8,
+          "Pages_Per_Session": 6.0,
+          "Country": "France",
+          "City": "Marseille",
+          "Gender": "Male",
+          "Login_Frequency": 20.4,
+          "Wishlist_Items": 3.0,
+          "Email_Open_Rate": 75.5,
+          "Session_Duration_Avg": 27.4,
+          "Signup_Quarter": "Q1",
+          "Membership_Years": 2.9
+        },
+        "scenario_classification": {
+          "task": "classification",
+          "model": {
+            "model_id": "purchase-level-xgboost",
+            "model_version": "2.0.0-snapshot-conservative12",
+            "artifact_sha256": "b9b15c4170dade3d1a62cbfd9ce953e8770e7ac2cb4ff03266f3da3a39515ad3",
+            "metadata_sha256": "ccdaefaec31065bd5b0034ba695950f0d8660471b8402c31c46687a91b102852",
+            "validation_policy": "what-if-snapshot-v1"
+          },
+          "predicted_class": 1,
+          "purchase_level": "Medium",
+          "probabilities": {
+            "Low": 0.1840684860944748,
+            "Medium": 0.6343451142311096,
+            "High": 0.1815863996744156
+          },
+          "decision_rule": "argmax_probability",
+          "target_thresholds": {
+            "low_inclusive": 10.0,
+            "medium_inclusive": 15.0
+          }
+        },
+        "scenario_segmentation": null,
+        "changed_fields": [
+          {
+            "feature": "Login_Frequency",
+            "before": 14.0,
+            "after": 20.4
+          },
+          {
+            "feature": "Email_Open_Rate",
+            "before": 17.9,
+            "after": 75.5
+          }
+        ],
+        "classification_label_changed": true,
+        "probability_deltas": {
+          "absolute": {
+            "Low": -0.2858037203550339,
+            "Medium": 0.1870158314704895,
+            "High": 0.09878785163164139
+          },
+          "percentage_points": {
+            "Low": -28.580372035503387,
+            "Medium": 18.70158314704895,
+            "High": 9.878785163164139
+          },
+          "relative": {
+            "Low": -0.6082584082056057,
+            "Medium": 0.4180719632668616,
+            "High": 1.193110917604582
+          }
+        },
+        "comparison_fingerprint": "815c853547f8464fe6c5df6d40564bc95fc04501ccd2ba8bdb3115ecc3f5bc1c",
+        "warnings": [
+          "AVAILABILITY_UNKNOWN",
+          "NON_CAUSAL",
+          "PLAUSIBILITY_NOT_VERIFIED",
+          "SNAPSHOT_ONLY",
+          "SUPPORT_RANGE_UNKNOWN"
+        ],
+        "disclaimer": "Mô phỏng phản ứng của mô hình với input giả định; không phải tác động nhân quả hay dự báo giao dịch tương lai.",
+        "persisted": false
+      },
+      "no_op": {
+        "contract_version": "what-if-snapshot-v1",
+        "baseline": {
+          "contract_version": "what-if-snapshot-v1",
+          "baseline_input": {
+            "Age": 43.0,
+            "Mobile_App_Usage": 20.8,
+            "Pages_Per_Session": 6.0,
+            "Country": "France",
+            "City": "Marseille",
+            "Gender": "Male",
+            "Login_Frequency": 14.0,
+            "Wishlist_Items": 3.0,
+            "Email_Open_Rate": 17.9,
+            "Session_Duration_Avg": 27.4,
+            "Signup_Quarter": "Q1",
+            "Membership_Years": 2.9
+          },
+          "baseline_fingerprint": "4753da0a2cd01a6d5608ecdad4902ad00fa3574da674102e4e1cdbe3d7c05e9a",
+          "classification": {
+            "task": "classification",
+            "model": {
+              "model_id": "purchase-level-xgboost",
+              "model_version": "2.0.0-snapshot-conservative12",
+              "artifact_sha256": "b9b15c4170dade3d1a62cbfd9ce953e8770e7ac2cb4ff03266f3da3a39515ad3",
+              "metadata_sha256": "ccdaefaec31065bd5b0034ba695950f0d8660471b8402c31c46687a91b102852",
+              "validation_policy": "what-if-snapshot-v1"
+            },
+            "predicted_class": 0,
+            "purchase_level": "Low",
+            "probabilities": {
+              "Low": 0.46987220644950867,
+              "Medium": 0.4473292827606201,
+              "High": 0.0827985480427742
+            },
+            "decision_rule": "argmax_probability",
+            "target_thresholds": {
+              "low_inclusive": 10.0,
+              "medium_inclusive": 15.0
+            }
+          },
+          "segmentation": null,
+          "resolved_customer_id": "ec5b2ce5-5581-4d1d-9d32-18a88d9b9e69",
+          "resolved_snapshot_id": "7c8f626f-1279-451c-9420-dbcd51e31330",
+          "generated_at": "2026-10-26T11:29:05.114725Z",
+          "warnings": [
+            "AVAILABILITY_UNKNOWN",
+            "NON_CAUSAL",
+            "PLAUSIBILITY_NOT_VERIFIED",
+            "SNAPSHOT_ONLY",
+            "SUPPORT_RANGE_UNKNOWN"
+          ],
+          "scope": "snapshot_input_sensitivity_not_causal_or_future",
+          "disclaimer": "Mô phỏng phản ứng của mô hình với input giả định; không phải tác động nhân quả hay dự báo giao dịch tương lai.",
+          "persisted": false
+        },
+        "scenario_input": {
+          "Age": 43.0,
+          "Mobile_App_Usage": 20.8,
+          "Pages_Per_Session": 6.0,
+          "Country": "France",
+          "City": "Marseille",
+          "Gender": "Male",
+          "Login_Frequency": 14.0,
+          "Wishlist_Items": 3.0,
+          "Email_Open_Rate": 17.9,
+          "Session_Duration_Avg": 27.4,
+          "Signup_Quarter": "Q1",
+          "Membership_Years": 2.9
+        },
+        "scenario_classification": {
+          "task": "classification",
+          "model": {
+            "model_id": "purchase-level-xgboost",
+            "model_version": "2.0.0-snapshot-conservative12",
+            "artifact_sha256": "b9b15c4170dade3d1a62cbfd9ce953e8770e7ac2cb4ff03266f3da3a39515ad3",
+            "metadata_sha256": "ccdaefaec31065bd5b0034ba695950f0d8660471b8402c31c46687a91b102852",
+            "validation_policy": "what-if-snapshot-v1"
+          },
+          "predicted_class": 0,
+          "purchase_level": "Low",
+          "probabilities": {
+            "Low": 0.46987220644950867,
+            "Medium": 0.4473292827606201,
+            "High": 0.0827985480427742
+          },
+          "decision_rule": "argmax_probability",
+          "target_thresholds": {
+            "low_inclusive": 10.0,
+            "medium_inclusive": 15.0
+          }
+        },
+        "scenario_segmentation": null,
+        "changed_fields": [],
+        "classification_label_changed": false,
+        "probability_deltas": {
+          "absolute": {
+            "Low": 0.0,
+            "Medium": 0.0,
+            "High": 0.0
+          },
+          "percentage_points": {
+            "Low": 0.0,
+            "Medium": 0.0,
+            "High": 0.0
+          },
+          "relative": {
+            "Low": 0.0,
+            "Medium": 0.0,
+            "High": 0.0
+          }
+        },
+        "comparison_fingerprint": "1ce815dbc0836703fdd511c526c615d1e18173e1c96af546d4ff3f2a1678147f",
+        "warnings": [
+          "AVAILABILITY_UNKNOWN",
+          "NON_CAUSAL",
+          "NO_INPUT_CHANGE",
+          "PLAUSIBILITY_NOT_VERIFIED",
+          "SNAPSHOT_ONLY",
+          "SUPPORT_RANGE_UNKNOWN"
+        ],
+        "disclaimer": "Mô phỏng phản ứng của mô hình với input giả định; không phải tác động nhân quả hay dự báo giao dịch tương lai.",
+        "persisted": false
+      }
+    },
+    {
+      "request": {
+        "contract_version": "what-if-snapshot-v1",
+        "models": {
+          "classification": "1.0.0",
+          "segmentation": "1.0.0"
+        },
+        "baseline": {
+          "kind": "customer",
+          "customer_id": "ec5b2ce5-5581-4d1d-9d32-18a88d9b9e69",
+          "snapshot_id": "7c8f626f-1279-451c-9420-dbcd51e31330"
+        }
+      },
+      "preview": {
+        "contract_version": "what-if-snapshot-v1",
+        "baseline_input": {
+          "Age": 43.0,
+          "Payment_Method_Diversity": 1.0,
+          "Average_Order_Value": 94.72,
+          "Returns_Rate": 2.0,
+          "Mobile_App_Usage": 20.8,
+          "Country": "France",
+          "Discount_Usage_Rate": 46.4,
+          "Credit_Balance": 2278.0,
+          "Days_Since_Last_Purchase": 34.0,
+          "Lifetime_Value": 953.33,
+          "Signup_Quarter": "Q1",
+          "Login_Frequency": 14.0,
+          "Customer_Service_Calls": 9.0,
+          "Wishlist_Items": 3.0,
+          "Social_Media_Engagement_Score": 16.3,
+          "Total_Purchases": 9.0,
+          "Product_Reviews_Written": 4.0,
+          "Churned": 0.0,
+          "Cart_Abandonment_Rate": 50.6,
+          "City": "Marseille",
+          "Gender": "Male",
+          "Membership_Years": 2.9,
+          "Email_Open_Rate": 17.9,
+          "Session_Duration_Avg": 27.4,
+          "Pages_Per_Session": 6.0
+        },
+        "baseline_fingerprint": "90fc8fc2299e141f4258bac1b4ecdcdc8e1b3ba5cb71cb329f417eb39fce81ca",
+        "classification": {
+          "task": "classification",
+          "model": {
+            "model_id": "purchase-level-xgboost",
+            "model_version": "1.0.0",
+            "artifact_sha256": "1bbde6767f3b14bc5d29da3c848e53256363638f34e3263be0238e950e527e8f",
+            "metadata_sha256": "f1e3b720cac81c5e078dbf45443c599c999c969d749cbbe11545bed3a78a0a65",
+            "validation_policy": "what-if-snapshot-v1"
+          },
+          "predicted_class": 0,
+          "purchase_level": "Low",
+          "probabilities": {
+            "Low": 0.5996882915496826,
+            "Medium": 0.39808565378189087,
+            "High": 0.0022260083351284266
+          },
+          "decision_rule": "argmax_probability",
+          "target_thresholds": {
+            "low_inclusive": 10.0,
+            "medium_inclusive": 15.0
+          }
+        },
+        "segmentation": {
+          "task": "segmentation",
+          "model": {
+            "model_id": "customer-segmentation-kmeans",
+            "model_version": "1.0.0",
+            "artifact_sha256": "5ab101792571047b832c82d9b7e64390b158b788b140486742947bfbe796d7d1",
+            "metadata_sha256": "1718061ac0a76657e9f17a2c7377d4cc4d7abcdaf1e5c09c84c8eee67d3326ae",
+            "validation_policy": "what-if-snapshot-v1"
+          },
+          "cluster": 2,
+          "segment_id": "legacy:1.0.0:cluster:2",
+          "segment_name": "Khách hàng tiềm năng",
+          "distance_to_centroid": 1.525176066149531,
+          "distance_kind": "standardized_euclidean_not_probability"
+        },
+        "resolved_customer_id": "ec5b2ce5-5581-4d1d-9d32-18a88d9b9e69",
+        "resolved_snapshot_id": "7c8f626f-1279-451c-9420-dbcd51e31330",
+        "generated_at": "2026-10-26T11:29:05.241001Z",
+        "warnings": [
+          "AVAILABILITY_UNKNOWN",
+          "LEGACY_PROXY_FEATURES_UNVERIFIED",
+          "NON_CAUSAL",
+          "PLAUSIBILITY_NOT_VERIFIED",
+          "SNAPSHOT_ONLY",
+          "SUPPORT_RANGE_UNKNOWN"
+        ],
+        "scope": "snapshot_input_sensitivity_not_causal_or_future",
+        "disclaimer": "Mô phỏng phản ứng của mô hình với input giả định; không phải tác động nhân quả hay dự báo giao dịch tương lai.",
+        "persisted": false
+      },
+      "intent": {
+        "contract_version": "what-if-snapshot-v1",
+        "models": {
+          "classification": "1.0.0",
+          "segmentation": "1.0.0"
+        },
+        "baseline": {
+          "kind": "customer",
+          "customer_id": "ec5b2ce5-5581-4d1d-9d32-18a88d9b9e69",
+          "snapshot_id": "7c8f626f-1279-451c-9420-dbcd51e31330"
+        },
+        "changes": {
+          "Login_Frequency": 20.4,
+          "Email_Open_Rate": 75.5
+        },
+        "expected_baseline_fingerprint": "90fc8fc2299e141f4258bac1b4ecdcdc8e1b3ba5cb71cb329f417eb39fce81ca"
+      },
+      "comparison": {
+        "contract_version": "what-if-snapshot-v1",
+        "baseline": {
+          "contract_version": "what-if-snapshot-v1",
+          "baseline_input": {
+            "Age": 43.0,
+            "Payment_Method_Diversity": 1.0,
+            "Average_Order_Value": 94.72,
+            "Returns_Rate": 2.0,
+            "Mobile_App_Usage": 20.8,
+            "Country": "France",
+            "Discount_Usage_Rate": 46.4,
+            "Credit_Balance": 2278.0,
+            "Days_Since_Last_Purchase": 34.0,
+            "Lifetime_Value": 953.33,
+            "Signup_Quarter": "Q1",
+            "Login_Frequency": 14.0,
+            "Customer_Service_Calls": 9.0,
+            "Wishlist_Items": 3.0,
+            "Social_Media_Engagement_Score": 16.3,
+            "Total_Purchases": 9.0,
+            "Product_Reviews_Written": 4.0,
+            "Churned": 0.0,
+            "Cart_Abandonment_Rate": 50.6,
+            "City": "Marseille",
+            "Gender": "Male",
+            "Membership_Years": 2.9,
+            "Email_Open_Rate": 17.9,
+            "Session_Duration_Avg": 27.4,
+            "Pages_Per_Session": 6.0
+          },
+          "baseline_fingerprint": "90fc8fc2299e141f4258bac1b4ecdcdc8e1b3ba5cb71cb329f417eb39fce81ca",
+          "classification": {
+            "task": "classification",
+            "model": {
+              "model_id": "purchase-level-xgboost",
+              "model_version": "1.0.0",
+              "artifact_sha256": "1bbde6767f3b14bc5d29da3c848e53256363638f34e3263be0238e950e527e8f",
+              "metadata_sha256": "f1e3b720cac81c5e078dbf45443c599c999c969d749cbbe11545bed3a78a0a65",
+              "validation_policy": "what-if-snapshot-v1"
+            },
+            "predicted_class": 0,
+            "purchase_level": "Low",
+            "probabilities": {
+              "Low": 0.5996882915496826,
+              "Medium": 0.39808565378189087,
+              "High": 0.0022260083351284266
+            },
+            "decision_rule": "argmax_probability",
+            "target_thresholds": {
+              "low_inclusive": 10.0,
+              "medium_inclusive": 15.0
+            }
+          },
+          "segmentation": {
+            "task": "segmentation",
+            "model": {
+              "model_id": "customer-segmentation-kmeans",
+              "model_version": "1.0.0",
+              "artifact_sha256": "5ab101792571047b832c82d9b7e64390b158b788b140486742947bfbe796d7d1",
+              "metadata_sha256": "1718061ac0a76657e9f17a2c7377d4cc4d7abcdaf1e5c09c84c8eee67d3326ae",
+              "validation_policy": "what-if-snapshot-v1"
+            },
+            "cluster": 2,
+            "segment_id": "legacy:1.0.0:cluster:2",
+            "segment_name": "Khách hàng tiềm năng",
+            "distance_to_centroid": 1.525176066149531,
+            "distance_kind": "standardized_euclidean_not_probability"
+          },
+          "resolved_customer_id": "ec5b2ce5-5581-4d1d-9d32-18a88d9b9e69",
+          "resolved_snapshot_id": "7c8f626f-1279-451c-9420-dbcd51e31330",
+          "generated_at": "2026-10-26T11:29:05.286409Z",
+          "warnings": [
+            "AVAILABILITY_UNKNOWN",
+            "LEGACY_PROXY_FEATURES_UNVERIFIED",
+            "NON_CAUSAL",
+            "PLAUSIBILITY_NOT_VERIFIED",
+            "SNAPSHOT_ONLY",
+            "SUPPORT_RANGE_UNKNOWN"
+          ],
+          "scope": "snapshot_input_sensitivity_not_causal_or_future",
+          "disclaimer": "Mô phỏng phản ứng của mô hình với input giả định; không phải tác động nhân quả hay dự báo giao dịch tương lai.",
+          "persisted": false
+        },
+        "scenario_input": {
+          "Age": 43.0,
+          "Payment_Method_Diversity": 1.0,
+          "Average_Order_Value": 94.72,
+          "Returns_Rate": 2.0,
+          "Mobile_App_Usage": 20.8,
+          "Country": "France",
+          "Discount_Usage_Rate": 46.4,
+          "Credit_Balance": 2278.0,
+          "Days_Since_Last_Purchase": 34.0,
+          "Lifetime_Value": 953.33,
+          "Signup_Quarter": "Q1",
+          "Login_Frequency": 20.4,
+          "Customer_Service_Calls": 9.0,
+          "Wishlist_Items": 3.0,
+          "Social_Media_Engagement_Score": 16.3,
+          "Total_Purchases": 9.0,
+          "Product_Reviews_Written": 4.0,
+          "Churned": 0.0,
+          "Cart_Abandonment_Rate": 50.6,
+          "City": "Marseille",
+          "Gender": "Male",
+          "Membership_Years": 2.9,
+          "Email_Open_Rate": 75.5,
+          "Session_Duration_Avg": 27.4,
+          "Pages_Per_Session": 6.0
+        },
+        "scenario_classification": {
+          "task": "classification",
+          "model": {
+            "model_id": "purchase-level-xgboost",
+            "model_version": "1.0.0",
+            "artifact_sha256": "1bbde6767f3b14bc5d29da3c848e53256363638f34e3263be0238e950e527e8f",
+            "metadata_sha256": "f1e3b720cac81c5e078dbf45443c599c999c969d749cbbe11545bed3a78a0a65",
+            "validation_policy": "what-if-snapshot-v1"
+          },
+          "predicted_class": 1,
+          "purchase_level": "Medium",
+          "probabilities": {
+            "Low": 0.37513935565948486,
+            "Medium": 0.6224080920219421,
+            "High": 0.0024525364860892296
+          },
+          "decision_rule": "argmax_probability",
+          "target_thresholds": {
+            "low_inclusive": 10.0,
+            "medium_inclusive": 15.0
+          }
+        },
+        "scenario_segmentation": {
+          "task": "segmentation",
+          "model": {
+            "model_id": "customer-segmentation-kmeans",
+            "model_version": "1.0.0",
+            "artifact_sha256": "5ab101792571047b832c82d9b7e64390b158b788b140486742947bfbe796d7d1",
+            "metadata_sha256": "1718061ac0a76657e9f17a2c7377d4cc4d7abcdaf1e5c09c84c8eee67d3326ae",
+            "validation_policy": "what-if-snapshot-v1"
+          },
+          "cluster": 2,
+          "segment_id": "legacy:1.0.0:cluster:2",
+          "segment_name": "Khách hàng tiềm năng",
+          "distance_to_centroid": 1.7960118660205269,
+          "distance_kind": "standardized_euclidean_not_probability"
+        },
+        "changed_fields": [
+          {
+            "feature": "Login_Frequency",
+            "before": 14.0,
+            "after": 20.4
+          },
+          {
+            "feature": "Email_Open_Rate",
+            "before": 17.9,
+            "after": 75.5
+          }
+        ],
+        "classification_label_changed": true,
+        "probability_deltas": {
+          "absolute": {
+            "Low": -0.22454893589019775,
+            "Medium": 0.22432243824005127,
+            "High": 0.00022652815096080303
+          },
+          "percentage_points": {
+            "Low": -22.454893589019775,
+            "Medium": 22.432243824005127,
+            "High": 0.022652815096080303
+          },
+          "relative": {
+            "Low": -0.3744427547683653,
+            "Medium": 0.5635029449289233,
+            "High": 0.10176428694627228
+          }
+        },
+        "comparison_fingerprint": "ef9d7b818a5a0a38c064b75d32eb57fbd4f020035f631f70c998107fc70462c2",
+        "warnings": [
+          "AVAILABILITY_UNKNOWN",
+          "LEGACY_PROXY_FEATURES_UNVERIFIED",
+          "NON_CAUSAL",
+          "PLAUSIBILITY_NOT_VERIFIED",
+          "SNAPSHOT_ONLY",
+          "SUPPORT_RANGE_UNKNOWN"
+        ],
+        "disclaimer": "Mô phỏng phản ứng của mô hình với input giả định; không phải tác động nhân quả hay dự báo giao dịch tương lai.",
+        "persisted": false
+      },
+      "no_op": {
+        "contract_version": "what-if-snapshot-v1",
+        "baseline": {
+          "contract_version": "what-if-snapshot-v1",
+          "baseline_input": {
+            "Age": 43.0,
+            "Payment_Method_Diversity": 1.0,
+            "Average_Order_Value": 94.72,
+            "Returns_Rate": 2.0,
+            "Mobile_App_Usage": 20.8,
+            "Country": "France",
+            "Discount_Usage_Rate": 46.4,
+            "Credit_Balance": 2278.0,
+            "Days_Since_Last_Purchase": 34.0,
+            "Lifetime_Value": 953.33,
+            "Signup_Quarter": "Q1",
+            "Login_Frequency": 14.0,
+            "Customer_Service_Calls": 9.0,
+            "Wishlist_Items": 3.0,
+            "Social_Media_Engagement_Score": 16.3,
+            "Total_Purchases": 9.0,
+            "Product_Reviews_Written": 4.0,
+            "Churned": 0.0,
+            "Cart_Abandonment_Rate": 50.6,
+            "City": "Marseille",
+            "Gender": "Male",
+            "Membership_Years": 2.9,
+            "Email_Open_Rate": 17.9,
+            "Session_Duration_Avg": 27.4,
+            "Pages_Per_Session": 6.0
+          },
+          "baseline_fingerprint": "90fc8fc2299e141f4258bac1b4ecdcdc8e1b3ba5cb71cb329f417eb39fce81ca",
+          "classification": {
+            "task": "classification",
+            "model": {
+              "model_id": "purchase-level-xgboost",
+              "model_version": "1.0.0",
+              "artifact_sha256": "1bbde6767f3b14bc5d29da3c848e53256363638f34e3263be0238e950e527e8f",
+              "metadata_sha256": "f1e3b720cac81c5e078dbf45443c599c999c969d749cbbe11545bed3a78a0a65",
+              "validation_policy": "what-if-snapshot-v1"
+            },
+            "predicted_class": 0,
+            "purchase_level": "Low",
+            "probabilities": {
+              "Low": 0.5996882915496826,
+              "Medium": 0.39808565378189087,
+              "High": 0.0022260083351284266
+            },
+            "decision_rule": "argmax_probability",
+            "target_thresholds": {
+              "low_inclusive": 10.0,
+              "medium_inclusive": 15.0
+            }
+          },
+          "segmentation": {
+            "task": "segmentation",
+            "model": {
+              "model_id": "customer-segmentation-kmeans",
+              "model_version": "1.0.0",
+              "artifact_sha256": "5ab101792571047b832c82d9b7e64390b158b788b140486742947bfbe796d7d1",
+              "metadata_sha256": "1718061ac0a76657e9f17a2c7377d4cc4d7abcdaf1e5c09c84c8eee67d3326ae",
+              "validation_policy": "what-if-snapshot-v1"
+            },
+            "cluster": 2,
+            "segment_id": "legacy:1.0.0:cluster:2",
+            "segment_name": "Khách hàng tiềm năng",
+            "distance_to_centroid": 1.525176066149531,
+            "distance_kind": "standardized_euclidean_not_probability"
+          },
+          "resolved_customer_id": "ec5b2ce5-5581-4d1d-9d32-18a88d9b9e69",
+          "resolved_snapshot_id": "7c8f626f-1279-451c-9420-dbcd51e31330",
+          "generated_at": "2026-10-26T11:29:05.378374Z",
+          "warnings": [
+            "AVAILABILITY_UNKNOWN",
+            "LEGACY_PROXY_FEATURES_UNVERIFIED",
+            "NON_CAUSAL",
+            "PLAUSIBILITY_NOT_VERIFIED",
+            "SNAPSHOT_ONLY",
+            "SUPPORT_RANGE_UNKNOWN"
+          ],
+          "scope": "snapshot_input_sensitivity_not_causal_or_future",
+          "disclaimer": "Mô phỏng phản ứng của mô hình với input giả định; không phải tác động nhân quả hay dự báo giao dịch tương lai.",
+          "persisted": false
+        },
+        "scenario_input": {
+          "Age": 43.0,
+          "Payment_Method_Diversity": 1.0,
+          "Average_Order_Value": 94.72,
+          "Returns_Rate": 2.0,
+          "Mobile_App_Usage": 20.8,
+          "Country": "France",
+          "Discount_Usage_Rate": 46.4,
+          "Credit_Balance": 2278.0,
+          "Days_Since_Last_Purchase": 34.0,
+          "Lifetime_Value": 953.33,
+          "Signup_Quarter": "Q1",
+          "Login_Frequency": 14.0,
+          "Customer_Service_Calls": 9.0,
+          "Wishlist_Items": 3.0,
+          "Social_Media_Engagement_Score": 16.3,
+          "Total_Purchases": 9.0,
+          "Product_Reviews_Written": 4.0,
+          "Churned": 0.0,
+          "Cart_Abandonment_Rate": 50.6,
+          "City": "Marseille",
+          "Gender": "Male",
+          "Membership_Years": 2.9,
+          "Email_Open_Rate": 17.9,
+          "Session_Duration_Avg": 27.4,
+          "Pages_Per_Session": 6.0
+        },
+        "scenario_classification": {
+          "task": "classification",
+          "model": {
+            "model_id": "purchase-level-xgboost",
+            "model_version": "1.0.0",
+            "artifact_sha256": "1bbde6767f3b14bc5d29da3c848e53256363638f34e3263be0238e950e527e8f",
+            "metadata_sha256": "f1e3b720cac81c5e078dbf45443c599c999c969d749cbbe11545bed3a78a0a65",
+            "validation_policy": "what-if-snapshot-v1"
+          },
+          "predicted_class": 0,
+          "purchase_level": "Low",
+          "probabilities": {
+            "Low": 0.5996882915496826,
+            "Medium": 0.39808565378189087,
+            "High": 0.0022260083351284266
+          },
+          "decision_rule": "argmax_probability",
+          "target_thresholds": {
+            "low_inclusive": 10.0,
+            "medium_inclusive": 15.0
+          }
+        },
+        "scenario_segmentation": {
+          "task": "segmentation",
+          "model": {
+            "model_id": "customer-segmentation-kmeans",
+            "model_version": "1.0.0",
+            "artifact_sha256": "5ab101792571047b832c82d9b7e64390b158b788b140486742947bfbe796d7d1",
+            "metadata_sha256": "1718061ac0a76657e9f17a2c7377d4cc4d7abcdaf1e5c09c84c8eee67d3326ae",
+            "validation_policy": "what-if-snapshot-v1"
+          },
+          "cluster": 2,
+          "segment_id": "legacy:1.0.0:cluster:2",
+          "segment_name": "Khách hàng tiềm năng",
+          "distance_to_centroid": 1.525176066149531,
+          "distance_kind": "standardized_euclidean_not_probability"
+        },
+        "changed_fields": [],
+        "classification_label_changed": false,
+        "probability_deltas": {
+          "absolute": {
+            "Low": 0.0,
+            "Medium": 0.0,
+            "High": 0.0
+          },
+          "percentage_points": {
+            "Low": 0.0,
+            "Medium": 0.0,
+            "High": 0.0
+          },
+          "relative": {
+            "Low": 0.0,
+            "Medium": 0.0,
+            "High": 0.0
+          }
+        },
+        "comparison_fingerprint": "6b191ddaa37ebfe532b2e32910ab8dade91ba77dd08391fccab69064a072637a",
+        "warnings": [
+          "AVAILABILITY_UNKNOWN",
+          "LEGACY_PROXY_FEATURES_UNVERIFIED",
+          "NON_CAUSAL",
+          "NO_INPUT_CHANGE",
+          "PLAUSIBILITY_NOT_VERIFIED",
+          "SNAPSHOT_ONLY",
+          "SUPPORT_RANGE_UNKNOWN"
+        ],
+        "disclaimer": "Mô phỏng phản ứng của mô hình với input giả định; không phải tác động nhân quả hay dự báo giao dịch tương lai.",
+        "persisted": false
+      }
+    },
+    {
+      "request": {
+        "contract_version": "what-if-snapshot-v1",
+        "models": {
+          "classification": "2.0.0-snapshot-conservative12",
+          "segmentation": "2.0.0-snapshot-k3"
+        },
+        "baseline": {
+          "kind": "customer",
+          "customer_id": "ec5b2ce5-5581-4d1d-9d32-18a88d9b9e69",
+          "snapshot_id": "7c8f626f-1279-451c-9420-dbcd51e31330"
+        }
+      },
+      "preview": {
+        "contract_version": "what-if-snapshot-v1",
+        "baseline_input": {
+          "Age": 43.0,
+          "Average_Order_Value": 94.72,
+          "Mobile_App_Usage": 20.8,
+          "Country": "France",
+          "Discount_Usage_Rate": 46.4,
+          "Days_Since_Last_Purchase": 34.0,
+          "Login_Frequency": 14.0,
+          "Signup_Quarter": "Q1",
+          "Wishlist_Items": 3.0,
+          "Total_Purchases": 9.0,
+          "Cart_Abandonment_Rate": 50.6,
+          "City": "Marseille",
+          "Gender": "Male",
+          "Membership_Years": 2.9,
+          "Email_Open_Rate": 17.9,
+          "Session_Duration_Avg": 27.4,
+          "Pages_Per_Session": 6.0
+        },
+        "baseline_fingerprint": "30c3d10c25ec2a7c74efd7b38e068046b360ebee4da30e06dc1c876a2c097a01",
+        "classification": {
+          "task": "classification",
+          "model": {
+            "model_id": "purchase-level-xgboost",
+            "model_version": "2.0.0-snapshot-conservative12",
+            "artifact_sha256": "b9b15c4170dade3d1a62cbfd9ce953e8770e7ac2cb4ff03266f3da3a39515ad3",
+            "metadata_sha256": "ccdaefaec31065bd5b0034ba695950f0d8660471b8402c31c46687a91b102852",
+            "validation_policy": "what-if-snapshot-v1"
+          },
+          "predicted_class": 0,
+          "purchase_level": "Low",
+          "probabilities": {
+            "Low": 0.46987220644950867,
+            "Medium": 0.4473292827606201,
+            "High": 0.0827985480427742
+          },
+          "decision_rule": "argmax_probability",
+          "target_thresholds": {
+            "low_inclusive": 10.0,
+            "medium_inclusive": 15.0
+          }
+        },
+        "segmentation": {
+          "task": "segmentation",
+          "model": {
+            "model_id": "customer-segmentation-kmeans",
+            "model_version": "2.0.0-snapshot-k3",
+            "artifact_sha256": "fcccee53765f9d4825196411aee4a971d1df8a3595b0d4f56210145425e672e3",
+            "metadata_sha256": "929e2edc11aea9244ee60681e64f0e762eb4af1fb56fd78cb199feb290de86c3",
+            "validation_policy": "what-if-snapshot-v1"
+          },
+          "cluster": 1,
+          "segment_id": "engagement_medium",
+          "segment_name": "Tương tác trung bình",
+          "distance_to_centroid": 1.5266805675199802,
+          "distance_kind": "standardized_euclidean_not_probability"
+        },
+        "resolved_customer_id": "ec5b2ce5-5581-4d1d-9d32-18a88d9b9e69",
+        "resolved_snapshot_id": "7c8f626f-1279-451c-9420-dbcd51e31330",
+        "generated_at": "2026-10-26T11:29:05.478242Z",
+        "warnings": [
+          "AVAILABILITY_UNKNOWN",
+          "NON_CAUSAL",
+          "PLAUSIBILITY_NOT_VERIFIED",
+          "SNAPSHOT_ONLY",
+          "SUPPORT_RANGE_UNKNOWN"
+        ],
+        "scope": "snapshot_input_sensitivity_not_causal_or_future",
+        "disclaimer": "Mô phỏng phản ứng của mô hình với input giả định; không phải tác động nhân quả hay dự báo giao dịch tương lai.",
+        "persisted": false
+      },
+      "intent": {
+        "contract_version": "what-if-snapshot-v1",
+        "models": {
+          "classification": "2.0.0-snapshot-conservative12",
+          "segmentation": "2.0.0-snapshot-k3"
+        },
+        "baseline": {
+          "kind": "customer",
+          "customer_id": "ec5b2ce5-5581-4d1d-9d32-18a88d9b9e69",
+          "snapshot_id": "7c8f626f-1279-451c-9420-dbcd51e31330"
+        },
+        "changes": {
+          "Login_Frequency": 20.4,
+          "Email_Open_Rate": 75.5
+        },
+        "expected_baseline_fingerprint": "30c3d10c25ec2a7c74efd7b38e068046b360ebee4da30e06dc1c876a2c097a01"
+      },
+      "comparison": {
+        "contract_version": "what-if-snapshot-v1",
+        "baseline": {
+          "contract_version": "what-if-snapshot-v1",
+          "baseline_input": {
+            "Age": 43.0,
+            "Average_Order_Value": 94.72,
+            "Mobile_App_Usage": 20.8,
+            "Country": "France",
+            "Discount_Usage_Rate": 46.4,
+            "Days_Since_Last_Purchase": 34.0,
+            "Login_Frequency": 14.0,
+            "Signup_Quarter": "Q1",
+            "Wishlist_Items": 3.0,
+            "Total_Purchases": 9.0,
+            "Cart_Abandonment_Rate": 50.6,
+            "City": "Marseille",
+            "Gender": "Male",
+            "Membership_Years": 2.9,
+            "Email_Open_Rate": 17.9,
+            "Session_Duration_Avg": 27.4,
+            "Pages_Per_Session": 6.0
+          },
+          "baseline_fingerprint": "30c3d10c25ec2a7c74efd7b38e068046b360ebee4da30e06dc1c876a2c097a01",
+          "classification": {
+            "task": "classification",
+            "model": {
+              "model_id": "purchase-level-xgboost",
+              "model_version": "2.0.0-snapshot-conservative12",
+              "artifact_sha256": "b9b15c4170dade3d1a62cbfd9ce953e8770e7ac2cb4ff03266f3da3a39515ad3",
+              "metadata_sha256": "ccdaefaec31065bd5b0034ba695950f0d8660471b8402c31c46687a91b102852",
+              "validation_policy": "what-if-snapshot-v1"
+            },
+            "predicted_class": 0,
+            "purchase_level": "Low",
+            "probabilities": {
+              "Low": 0.46987220644950867,
+              "Medium": 0.4473292827606201,
+              "High": 0.0827985480427742
+            },
+            "decision_rule": "argmax_probability",
+            "target_thresholds": {
+              "low_inclusive": 10.0,
+              "medium_inclusive": 15.0
+            }
+          },
+          "segmentation": {
+            "task": "segmentation",
+            "model": {
+              "model_id": "customer-segmentation-kmeans",
+              "model_version": "2.0.0-snapshot-k3",
+              "artifact_sha256": "fcccee53765f9d4825196411aee4a971d1df8a3595b0d4f56210145425e672e3",
+              "metadata_sha256": "929e2edc11aea9244ee60681e64f0e762eb4af1fb56fd78cb199feb290de86c3",
+              "validation_policy": "what-if-snapshot-v1"
+            },
+            "cluster": 1,
+            "segment_id": "engagement_medium",
+            "segment_name": "Tương tác trung bình",
+            "distance_to_centroid": 1.5266805675199802,
+            "distance_kind": "standardized_euclidean_not_probability"
+          },
+          "resolved_customer_id": "ec5b2ce5-5581-4d1d-9d32-18a88d9b9e69",
+          "resolved_snapshot_id": "7c8f626f-1279-451c-9420-dbcd51e31330",
+          "generated_at": "2026-10-26T11:29:05.545020Z",
+          "warnings": [
+            "AVAILABILITY_UNKNOWN",
+            "NON_CAUSAL",
+            "PLAUSIBILITY_NOT_VERIFIED",
+            "SNAPSHOT_ONLY",
+            "SUPPORT_RANGE_UNKNOWN"
+          ],
+          "scope": "snapshot_input_sensitivity_not_causal_or_future",
+          "disclaimer": "Mô phỏng phản ứng của mô hình với input giả định; không phải tác động nhân quả hay dự báo giao dịch tương lai.",
+          "persisted": false
+        },
+        "scenario_input": {
+          "Age": 43.0,
+          "Average_Order_Value": 94.72,
+          "Mobile_App_Usage": 20.8,
+          "Country": "France",
+          "Discount_Usage_Rate": 46.4,
+          "Days_Since_Last_Purchase": 34.0,
+          "Login_Frequency": 20.4,
+          "Signup_Quarter": "Q1",
+          "Wishlist_Items": 3.0,
+          "Total_Purchases": 9.0,
+          "Cart_Abandonment_Rate": 50.6,
+          "City": "Marseille",
+          "Gender": "Male",
+          "Membership_Years": 2.9,
+          "Email_Open_Rate": 75.5,
+          "Session_Duration_Avg": 27.4,
+          "Pages_Per_Session": 6.0
+        },
+        "scenario_classification": {
+          "task": "classification",
+          "model": {
+            "model_id": "purchase-level-xgboost",
+            "model_version": "2.0.0-snapshot-conservative12",
+            "artifact_sha256": "b9b15c4170dade3d1a62cbfd9ce953e8770e7ac2cb4ff03266f3da3a39515ad3",
+            "metadata_sha256": "ccdaefaec31065bd5b0034ba695950f0d8660471b8402c31c46687a91b102852",
+            "validation_policy": "what-if-snapshot-v1"
+          },
+          "predicted_class": 1,
+          "purchase_level": "Medium",
+          "probabilities": {
+            "Low": 0.1840684860944748,
+            "Medium": 0.6343451142311096,
+            "High": 0.1815863996744156
+          },
+          "decision_rule": "argmax_probability",
+          "target_thresholds": {
+            "low_inclusive": 10.0,
+            "medium_inclusive": 15.0
+          }
+        },
+        "scenario_segmentation": {
+          "task": "segmentation",
+          "model": {
+            "model_id": "customer-segmentation-kmeans",
+            "model_version": "2.0.0-snapshot-k3",
+            "artifact_sha256": "fcccee53765f9d4825196411aee4a971d1df8a3595b0d4f56210145425e672e3",
+            "metadata_sha256": "929e2edc11aea9244ee60681e64f0e762eb4af1fb56fd78cb199feb290de86c3",
+            "validation_policy": "what-if-snapshot-v1"
+          },
+          "cluster": 1,
+          "segment_id": "engagement_medium",
+          "segment_name": "Tương tác trung bình",
+          "distance_to_centroid": 1.7952380895684006,
+          "distance_kind": "standardized_euclidean_not_probability"
+        },
+        "changed_fields": [
+          {
+            "feature": "Login_Frequency",
+            "before": 14.0,
+            "after": 20.4
+          },
+          {
+            "feature": "Email_Open_Rate",
+            "before": 17.9,
+            "after": 75.5
+          }
+        ],
+        "classification_label_changed": true,
+        "probability_deltas": {
+          "absolute": {
+            "Low": -0.2858037203550339,
+            "Medium": 0.1870158314704895,
+            "High": 0.09878785163164139
+          },
+          "percentage_points": {
+            "Low": -28.580372035503387,
+            "Medium": 18.70158314704895,
+            "High": 9.878785163164139
+          },
+          "relative": {
+            "Low": -0.6082584082056057,
+            "Medium": 0.4180719632668616,
+            "High": 1.193110917604582
+          }
+        },
+        "comparison_fingerprint": "d8b46e10c58e062494cd773bdc5f1b96e028b141d0f165bb517ea0c0dba6eafa",
+        "warnings": [
+          "AVAILABILITY_UNKNOWN",
+          "NON_CAUSAL",
+          "PLAUSIBILITY_NOT_VERIFIED",
+          "SNAPSHOT_ONLY",
+          "SUPPORT_RANGE_UNKNOWN"
+        ],
+        "disclaimer": "Mô phỏng phản ứng của mô hình với input giả định; không phải tác động nhân quả hay dự báo giao dịch tương lai.",
+        "persisted": false
+      },
+      "no_op": {
+        "contract_version": "what-if-snapshot-v1",
+        "baseline": {
+          "contract_version": "what-if-snapshot-v1",
+          "baseline_input": {
+            "Age": 43.0,
+            "Average_Order_Value": 94.72,
+            "Mobile_App_Usage": 20.8,
+            "Country": "France",
+            "Discount_Usage_Rate": 46.4,
+            "Days_Since_Last_Purchase": 34.0,
+            "Login_Frequency": 14.0,
+            "Signup_Quarter": "Q1",
+            "Wishlist_Items": 3.0,
+            "Total_Purchases": 9.0,
+            "Cart_Abandonment_Rate": 50.6,
+            "City": "Marseille",
+            "Gender": "Male",
+            "Membership_Years": 2.9,
+            "Email_Open_Rate": 17.9,
+            "Session_Duration_Avg": 27.4,
+            "Pages_Per_Session": 6.0
+          },
+          "baseline_fingerprint": "30c3d10c25ec2a7c74efd7b38e068046b360ebee4da30e06dc1c876a2c097a01",
+          "classification": {
+            "task": "classification",
+            "model": {
+              "model_id": "purchase-level-xgboost",
+              "model_version": "2.0.0-snapshot-conservative12",
+              "artifact_sha256": "b9b15c4170dade3d1a62cbfd9ce953e8770e7ac2cb4ff03266f3da3a39515ad3",
+              "metadata_sha256": "ccdaefaec31065bd5b0034ba695950f0d8660471b8402c31c46687a91b102852",
+              "validation_policy": "what-if-snapshot-v1"
+            },
+            "predicted_class": 0,
+            "purchase_level": "Low",
+            "probabilities": {
+              "Low": 0.46987220644950867,
+              "Medium": 0.4473292827606201,
+              "High": 0.0827985480427742
+            },
+            "decision_rule": "argmax_probability",
+            "target_thresholds": {
+              "low_inclusive": 10.0,
+              "medium_inclusive": 15.0
+            }
+          },
+          "segmentation": {
+            "task": "segmentation",
+            "model": {
+              "model_id": "customer-segmentation-kmeans",
+              "model_version": "2.0.0-snapshot-k3",
+              "artifact_sha256": "fcccee53765f9d4825196411aee4a971d1df8a3595b0d4f56210145425e672e3",
+              "metadata_sha256": "929e2edc11aea9244ee60681e64f0e762eb4af1fb56fd78cb199feb290de86c3",
+              "validation_policy": "what-if-snapshot-v1"
+            },
+            "cluster": 1,
+            "segment_id": "engagement_medium",
+            "segment_name": "Tương tác trung bình",
+            "distance_to_centroid": 1.5266805675199802,
+            "distance_kind": "standardized_euclidean_not_probability"
+          },
+          "resolved_customer_id": "ec5b2ce5-5581-4d1d-9d32-18a88d9b9e69",
+          "resolved_snapshot_id": "7c8f626f-1279-451c-9420-dbcd51e31330",
+          "generated_at": "2026-10-26T11:29:05.668095Z",
+          "warnings": [
+            "AVAILABILITY_UNKNOWN",
+            "NON_CAUSAL",
+            "PLAUSIBILITY_NOT_VERIFIED",
+            "SNAPSHOT_ONLY",
+            "SUPPORT_RANGE_UNKNOWN"
+          ],
+          "scope": "snapshot_input_sensitivity_not_causal_or_future",
+          "disclaimer": "Mô phỏng phản ứng của mô hình với input giả định; không phải tác động nhân quả hay dự báo giao dịch tương lai.",
+          "persisted": false
+        },
+        "scenario_input": {
+          "Age": 43.0,
+          "Average_Order_Value": 94.72,
+          "Mobile_App_Usage": 20.8,
+          "Country": "France",
+          "Discount_Usage_Rate": 46.4,
+          "Days_Since_Last_Purchase": 34.0,
+          "Login_Frequency": 14.0,
+          "Signup_Quarter": "Q1",
+          "Wishlist_Items": 3.0,
+          "Total_Purchases": 9.0,
+          "Cart_Abandonment_Rate": 50.6,
+          "City": "Marseille",
+          "Gender": "Male",
+          "Membership_Years": 2.9,
+          "Email_Open_Rate": 17.9,
+          "Session_Duration_Avg": 27.4,
+          "Pages_Per_Session": 6.0
+        },
+        "scenario_classification": {
+          "task": "classification",
+          "model": {
+            "model_id": "purchase-level-xgboost",
+            "model_version": "2.0.0-snapshot-conservative12",
+            "artifact_sha256": "b9b15c4170dade3d1a62cbfd9ce953e8770e7ac2cb4ff03266f3da3a39515ad3",
+            "metadata_sha256": "ccdaefaec31065bd5b0034ba695950f0d8660471b8402c31c46687a91b102852",
+            "validation_policy": "what-if-snapshot-v1"
+          },
+          "predicted_class": 0,
+          "purchase_level": "Low",
+          "probabilities": {
+            "Low": 0.46987220644950867,
+            "Medium": 0.4473292827606201,
+            "High": 0.0827985480427742
+          },
+          "decision_rule": "argmax_probability",
+          "target_thresholds": {
+            "low_inclusive": 10.0,
+            "medium_inclusive": 15.0
+          }
+        },
+        "scenario_segmentation": {
+          "task": "segmentation",
+          "model": {
+            "model_id": "customer-segmentation-kmeans",
+            "model_version": "2.0.0-snapshot-k3",
+            "artifact_sha256": "fcccee53765f9d4825196411aee4a971d1df8a3595b0d4f56210145425e672e3",
+            "metadata_sha256": "929e2edc11aea9244ee60681e64f0e762eb4af1fb56fd78cb199feb290de86c3",
+            "validation_policy": "what-if-snapshot-v1"
+          },
+          "cluster": 1,
+          "segment_id": "engagement_medium",
+          "segment_name": "Tương tác trung bình",
+          "distance_to_centroid": 1.5266805675199802,
+          "distance_kind": "standardized_euclidean_not_probability"
+        },
+        "changed_fields": [],
+        "classification_label_changed": false,
+        "probability_deltas": {
+          "absolute": {
+            "Low": 0.0,
+            "Medium": 0.0,
+            "High": 0.0
+          },
+          "percentage_points": {
+            "Low": 0.0,
+            "Medium": 0.0,
+            "High": 0.0
+          },
+          "relative": {
+            "Low": 0.0,
+            "Medium": 0.0,
+            "High": 0.0
+          }
+        },
+        "comparison_fingerprint": "9548afcd456cd441d531363b99a05596513e2eba5c7c35ac12b2a5d3a5f9fda2",
+        "warnings": [
+          "AVAILABILITY_UNKNOWN",
+          "NON_CAUSAL",
+          "NO_INPUT_CHANGE",
+          "PLAUSIBILITY_NOT_VERIFIED",
+          "SNAPSHOT_ONLY",
+          "SUPPORT_RANGE_UNKNOWN"
+        ],
+        "disclaimer": "Mô phỏng phản ứng của mô hình với input giả định; không phải tác động nhân quả hay dự báo giao dịch tương lai.",
+        "persisted": false
+      }
+    }
+  ],
+  "saved": {
+    "contract_version": "what-if-snapshot-v1",
+    "scenario_id": "757724e8-ec3c-499c-92c6-6e502774256f",
+    "created_at": "2026-10-26T11:29:03.827894Z",
+    "persisted": true,
+    "idempotency_replayed": false,
+    "original_customer_id": "ec5b2ce5-5581-4d1d-9d32-18a88d9b9e69",
+    "original_snapshot_id": "7c8f626f-1279-451c-9420-dbcd51e31330",
+    "current_customer_id": "ec5b2ce5-5581-4d1d-9d32-18a88d9b9e69",
+    "current_snapshot_id": "7c8f626f-1279-451c-9420-dbcd51e31330",
+    "source_link_status": "attached",
+    "name": "SYNTHETIC T16 scenario",
+    "description": "TEST ONLY",
+    "comparison": {
+      "contract_version": "what-if-snapshot-v1",
+      "baseline": {
+        "contract_version": "what-if-snapshot-v1",
+        "baseline_input": {
+          "Age": 43.0,
+          "City": "Marseille",
+          "Gender": "Male",
+          "Churned": 0.0,
+          "Country": "France",
+          "Returns_Rate": 2.0,
+          "Credit_Balance": 2278.0,
+          "Lifetime_Value": 953.33,
+          "Signup_Quarter": "Q1",
+          "Wishlist_Items": 3.0,
+          "Email_Open_Rate": 17.9,
+          "Login_Frequency": 14.0,
+          "Membership_Years": 2.9,
+          "Mobile_App_Usage": 20.8,
+          "Pages_Per_Session": 6.0,
+          "Average_Order_Value": 94.72,
+          "Discount_Usage_Rate": 46.4,
+          "Session_Duration_Avg": 27.4,
+          "Cart_Abandonment_Rate": 50.6,
+          "Customer_Service_Calls": 9.0,
+          "Product_Reviews_Written": 4.0,
+          "Days_Since_Last_Purchase": 34.0,
+          "Payment_Method_Diversity": 1.0,
+          "Social_Media_Engagement_Score": 16.3
+        },
+        "baseline_fingerprint": "5a715b42ec0e183bc465d95f5c6240718fa2becbf01d29c71564bd5e73e5eb78",
+        "classification": {
+          "task": "classification",
+          "model": {
+            "model_id": "purchase-level-xgboost",
+            "model_version": "1.0.0",
+            "artifact_sha256": "1bbde6767f3b14bc5d29da3c848e53256363638f34e3263be0238e950e527e8f",
+            "metadata_sha256": "f1e3b720cac81c5e078dbf45443c599c999c969d749cbbe11545bed3a78a0a65",
+            "validation_policy": "what-if-snapshot-v1"
+          },
+          "predicted_class": 0,
+          "purchase_level": "Low",
+          "probabilities": {
+            "Low": 0.5996882915496826,
+            "Medium": 0.39808565378189087,
+            "High": 0.0022260083351284266
+          },
+          "decision_rule": "argmax_probability",
+          "target_thresholds": {
+            "low_inclusive": 10.0,
+            "medium_inclusive": 15.0
+          }
+        },
+        "segmentation": null,
+        "resolved_customer_id": "ec5b2ce5-5581-4d1d-9d32-18a88d9b9e69",
+        "resolved_snapshot_id": "7c8f626f-1279-451c-9420-dbcd51e31330",
+        "generated_at": "2026-10-26T11:29:05.780333Z",
+        "warnings": [
+          "AVAILABILITY_UNKNOWN",
+          "LEGACY_PROXY_FEATURES_UNVERIFIED",
+          "NON_CAUSAL",
+          "PLAUSIBILITY_NOT_VERIFIED",
+          "SNAPSHOT_ONLY",
+          "SUPPORT_RANGE_UNKNOWN"
+        ],
+        "scope": "snapshot_input_sensitivity_not_causal_or_future",
+        "disclaimer": "Mô phỏng phản ứng của mô hình với input giả định; không phải tác động nhân quả hay dự báo giao dịch tương lai.",
+        "persisted": false
+      },
+      "scenario_input": {
+        "Age": 43.0,
+        "City": "Marseille",
+        "Gender": "Male",
+        "Churned": 0.0,
+        "Country": "France",
+        "Returns_Rate": 2.0,
+        "Credit_Balance": 2278.0,
+        "Lifetime_Value": 953.33,
+        "Signup_Quarter": "Q1",
+        "Wishlist_Items": 3.0,
+        "Email_Open_Rate": 75.5,
+        "Login_Frequency": 20.4,
+        "Membership_Years": 2.9,
+        "Mobile_App_Usage": 20.8,
+        "Pages_Per_Session": 6.0,
+        "Average_Order_Value": 94.72,
+        "Discount_Usage_Rate": 46.4,
+        "Session_Duration_Avg": 27.4,
+        "Cart_Abandonment_Rate": 50.6,
+        "Customer_Service_Calls": 9.0,
+        "Product_Reviews_Written": 4.0,
+        "Days_Since_Last_Purchase": 34.0,
+        "Payment_Method_Diversity": 1.0,
+        "Social_Media_Engagement_Score": 16.3
+      },
+      "scenario_classification": {
+        "task": "classification",
+        "model": {
+          "model_id": "purchase-level-xgboost",
+          "model_version": "1.0.0",
+          "artifact_sha256": "1bbde6767f3b14bc5d29da3c848e53256363638f34e3263be0238e950e527e8f",
+          "metadata_sha256": "f1e3b720cac81c5e078dbf45443c599c999c969d749cbbe11545bed3a78a0a65",
+          "validation_policy": "what-if-snapshot-v1"
+        },
+        "predicted_class": 1,
+        "purchase_level": "Medium",
+        "probabilities": {
+          "Low": 0.37513935565948486,
+          "Medium": 0.6224080920219421,
+          "High": 0.0024525364860892296
+        },
+        "decision_rule": "argmax_probability",
+        "target_thresholds": {
+          "low_inclusive": 10.0,
+          "medium_inclusive": 15.0
+        }
+      },
+      "scenario_segmentation": null,
+      "changed_fields": [
+        {
+          "feature": "Login_Frequency",
+          "before": 14.0,
+          "after": 20.4
+        },
+        {
+          "feature": "Email_Open_Rate",
+          "before": 17.9,
+          "after": 75.5
+        }
+      ],
+      "classification_label_changed": true,
+      "probability_deltas": {
+        "absolute": {
+          "Low": -0.22454893589019775,
+          "High": 0.00022652815096080303,
+          "Medium": 0.22432243824005127
+        },
+        "percentage_points": {
+          "Low": -22.454893589019775,
+          "High": 0.022652815096080303,
+          "Medium": 22.432243824005127
+        },
+        "relative": {
+          "Low": -0.3744427547683653,
+          "High": 0.10176428694627228,
+          "Medium": 0.5635029449289233
+        }
+      },
+      "comparison_fingerprint": "27515ea4a81a1038b0f1d73dae5404ebad6dd47edb04484ce3d6ccb93dfad785",
+      "warnings": [
+        "AVAILABILITY_UNKNOWN",
+        "LEGACY_PROXY_FEATURES_UNVERIFIED",
+        "NON_CAUSAL",
+        "PLAUSIBILITY_NOT_VERIFIED",
+        "SNAPSHOT_ONLY",
+        "SUPPORT_RANGE_UNKNOWN"
+      ],
+      "disclaimer": "Mô phỏng phản ứng của mô hình với input giả định; không phải tác động nhân quả hay dự báo giao dịch tương lai.",
+      "persisted": false
+    },
+    "results": [
+      {
+        "scenario_result_id": "70342367-a196-4174-8952-23485a66db83",
+        "task": "classification",
+        "model_registry_id": "55df78ef-1550-490b-a49c-4ab2450a84d4",
+        "model_identity": {
+          "model_id": "purchase-level-xgboost",
+          "model_version": "1.0.0",
+          "artifact_sha256": "1bbde6767f3b14bc5d29da3c848e53256363638f34e3263be0238e950e527e8f",
+          "metadata_sha256": "f1e3b720cac81c5e078dbf45443c599c999c969d749cbbe11545bed3a78a0a65",
+          "validation_policy": "what-if-snapshot-v1"
+        }
+      }
+    ],
+    "disclaimer": "Mô phỏng phản ứng của mô hình với input giả định; không phải tác động nhân quả hay dự báo giao dịch tương lai.",
+    "integrity_status": "verified"
+  },
+  "history": {
+    "items": [
+      {
+        "scenario_id": "757724e8-ec3c-499c-92c6-6e502774256f",
+        "name": "SYNTHETIC T16 scenario",
+        "created_at": "2026-10-26T11:29:03.827894Z",
+        "customer_id": "ec5b2ce5-5581-4d1d-9d32-18a88d9b9e69",
+        "models": {
+          "classification": "1.0.0",
+          "segmentation": null
+        },
+        "baseline_label": "Low",
+        "scenario_label": "Medium",
+        "classification_label_changed": true,
+        "scope": "snapshot_input_sensitivity_not_causal_or_future",
+        "integrity_status": "verified"
+      }
+    ],
+    "total": 1,
+    "offset": 0,
+    "limit": 20,
+    "disclaimer": "Mô phỏng phản ứng của mô hình với input giả định; không phải tác động nhân quả hay dự báo giao dịch tương lai."
+  }
+}

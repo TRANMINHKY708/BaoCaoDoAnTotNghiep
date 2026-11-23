@@ -1,0 +1,532 @@
+{
+  "contract": "auth01-1.0.0",
+  "status": "DESIGN_COMPLETE_NOT_RUNTIME",
+  "workspace": "shared_no_ownership",
+  "roles": {
+    "VIEWER": [
+      "dashboard.read",
+      "customers.read",
+      "history.read",
+      "models.read",
+      "system.read",
+      "inference.json.run",
+      "what_if.preview_compare"
+    ],
+    "OPERATOR": [
+      "dashboard.read",
+      "customers.read",
+      "history.read",
+      "models.read",
+      "system.read",
+      "inference.json.run",
+      "what_if.preview_compare",
+      "customers.write",
+      "snapshots.create",
+      "inference.csv.run",
+      "analysis.legacy.save",
+      "what_if.legacy.save"
+    ],
+    "ADMIN": [
+      "dashboard.read",
+      "customers.read",
+      "history.read",
+      "models.read",
+      "system.read",
+      "inference.json.run",
+      "what_if.preview_compare",
+      "customers.write",
+      "snapshots.create",
+      "inference.csv.run",
+      "analysis.legacy.save",
+      "what_if.legacy.save",
+      "users.manage"
+    ]
+  },
+  "must_change_password_capabilities": [],
+  "business_operations": [
+    {
+      "method": "POST",
+      "path": "/predict/purchase-level",
+      "public": false,
+      "required_capabilities": [
+        "inference.json.run"
+      ],
+      "conditional_save": {
+        "flag": "save_result",
+        "when_true_requires": [
+          "analysis.legacy.save"
+        ],
+        "model_persistence_required": true
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/predict/segment",
+      "public": false,
+      "required_capabilities": [
+        "inference.json.run"
+      ],
+      "conditional_save": {
+        "flag": "save_result",
+        "when_true_requires": [
+          "analysis.legacy.save"
+        ],
+        "model_persistence_required": true
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/predict/batch/purchase-level",
+      "public": false,
+      "required_capabilities": [
+        "inference.json.run"
+      ],
+      "conditional_save": {
+        "flag": "save_results",
+        "when_true_requires": [
+          "analysis.legacy.save"
+        ],
+        "model_persistence_required": true
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/predict/batch/segment",
+      "public": false,
+      "required_capabilities": [
+        "inference.json.run"
+      ],
+      "conditional_save": {
+        "flag": "save_results",
+        "when_true_requires": [
+          "analysis.legacy.save"
+        ],
+        "model_persistence_required": true
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/predict/csv/purchase-level",
+      "public": false,
+      "required_capabilities": [
+        "inference.csv.run"
+      ],
+      "conditional_save": {
+        "flag": "save_results",
+        "when_true_requires": [
+          "analysis.legacy.save"
+        ],
+        "model_persistence_required": true
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/predict/csv/segment",
+      "public": false,
+      "required_capabilities": [
+        "inference.csv.run"
+      ],
+      "conditional_save": {
+        "flag": "save_results",
+        "when_true_requires": [
+          "analysis.legacy.save"
+        ],
+        "model_persistence_required": true
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/customers",
+      "public": false,
+      "required_capabilities": [
+        "customers.write"
+      ],
+      "conditional_save": null
+    },
+    {
+      "method": "GET",
+      "path": "/customers",
+      "public": false,
+      "required_capabilities": [
+        "customers.read"
+      ],
+      "conditional_save": null
+    },
+    {
+      "method": "GET",
+      "path": "/customers/{customer_id}",
+      "public": false,
+      "required_capabilities": [
+        "customers.read"
+      ],
+      "conditional_save": null
+    },
+    {
+      "method": "PATCH",
+      "path": "/customers/{customer_id}",
+      "public": false,
+      "required_capabilities": [
+        "customers.write"
+      ],
+      "conditional_save": null
+    },
+    {
+      "method": "DELETE",
+      "path": "/customers/{customer_id}",
+      "public": false,
+      "required_capabilities": [
+        "customers.write"
+      ],
+      "conditional_save": null
+    },
+    {
+      "method": "POST",
+      "path": "/customers/{customer_id}/behaviors",
+      "public": false,
+      "required_capabilities": [
+        "snapshots.create"
+      ],
+      "conditional_save": null
+    },
+    {
+      "method": "GET",
+      "path": "/customers/{customer_id}/behaviors",
+      "public": false,
+      "required_capabilities": [
+        "customers.read"
+      ],
+      "conditional_save": null
+    },
+    {
+      "method": "GET",
+      "path": "/customers/{customer_id}/predictions",
+      "public": false,
+      "required_capabilities": [
+        "history.read"
+      ],
+      "conditional_save": null
+    },
+    {
+      "method": "GET",
+      "path": "/customers/{customer_id}/segments",
+      "public": false,
+      "required_capabilities": [
+        "history.read"
+      ],
+      "conditional_save": null
+    },
+    {
+      "method": "GET",
+      "path": "/database/health",
+      "public": false,
+      "required_capabilities": [
+        "system.read"
+      ],
+      "conditional_save": null
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/health",
+      "public": true,
+      "required_capabilities": [],
+      "conditional_save": null
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/ready",
+      "public": false,
+      "required_capabilities": [
+        "system.read"
+      ],
+      "conditional_save": null
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/model-info",
+      "public": false,
+      "required_capabilities": [
+        "models.read"
+      ],
+      "conditional_save": null
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/overview",
+      "public": false,
+      "required_capabilities": [
+        "dashboard.read"
+      ],
+      "conditional_save": null
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/segments",
+      "public": false,
+      "required_capabilities": [
+        "dashboard.read"
+      ],
+      "conditional_save": null
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/predict/purchase-level",
+      "public": false,
+      "required_capabilities": [
+        "inference.json.run"
+      ],
+      "conditional_save": {
+        "flag": "save_result",
+        "when_true_requires": [
+          "analysis.legacy.save"
+        ],
+        "model_persistence_required": true
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/predict/segment",
+      "public": false,
+      "required_capabilities": [
+        "inference.json.run"
+      ],
+      "conditional_save": {
+        "flag": "save_result",
+        "when_true_requires": [
+          "analysis.legacy.save"
+        ],
+        "model_persistence_required": true
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/predict/batch/purchase-level",
+      "public": false,
+      "required_capabilities": [
+        "inference.json.run"
+      ],
+      "conditional_save": {
+        "flag": "save_results",
+        "when_true_requires": [
+          "analysis.legacy.save"
+        ],
+        "model_persistence_required": true
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/predict/batch/segment",
+      "public": false,
+      "required_capabilities": [
+        "inference.json.run"
+      ],
+      "conditional_save": {
+        "flag": "save_results",
+        "when_true_requires": [
+          "analysis.legacy.save"
+        ],
+        "model_persistence_required": true
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/predict/csv/purchase-level",
+      "public": false,
+      "required_capabilities": [
+        "inference.csv.run"
+      ],
+      "conditional_save": {
+        "flag": "save_results",
+        "when_true_requires": [
+          "analysis.legacy.save"
+        ],
+        "model_persistence_required": true
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/predict/csv/segment",
+      "public": false,
+      "required_capabilities": [
+        "inference.csv.run"
+      ],
+      "conditional_save": {
+        "flag": "save_results",
+        "when_true_requires": [
+          "analysis.legacy.save"
+        ],
+        "model_persistence_required": true
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/customers",
+      "public": false,
+      "required_capabilities": [
+        "customers.write"
+      ],
+      "conditional_save": null
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/customers",
+      "public": false,
+      "required_capabilities": [
+        "customers.read"
+      ],
+      "conditional_save": null
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/customers/{customer_id}",
+      "public": false,
+      "required_capabilities": [
+        "customers.read"
+      ],
+      "conditional_save": null
+    },
+    {
+      "method": "PATCH",
+      "path": "/api/v1/customers/{customer_id}",
+      "public": false,
+      "required_capabilities": [
+        "customers.write"
+      ],
+      "conditional_save": null
+    },
+    {
+      "method": "DELETE",
+      "path": "/api/v1/customers/{customer_id}",
+      "public": false,
+      "required_capabilities": [
+        "customers.write"
+      ],
+      "conditional_save": null
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/customers/{customer_id}/behaviors",
+      "public": false,
+      "required_capabilities": [
+        "snapshots.create"
+      ],
+      "conditional_save": null
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/customers/{customer_id}/behaviors",
+      "public": false,
+      "required_capabilities": [
+        "customers.read"
+      ],
+      "conditional_save": null
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/customers/{customer_id}/predictions",
+      "public": false,
+      "required_capabilities": [
+        "history.read"
+      ],
+      "conditional_save": null
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/customers/{customer_id}/segments",
+      "public": false,
+      "required_capabilities": [
+        "history.read"
+      ],
+      "conditional_save": null
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/what-if/schema",
+      "public": false,
+      "required_capabilities": [
+        "what_if.preview_compare"
+      ],
+      "conditional_save": null
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/what-if/preview",
+      "public": false,
+      "required_capabilities": [
+        "what_if.preview_compare"
+      ],
+      "conditional_save": null
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/what-if",
+      "public": false,
+      "required_capabilities": [
+        "what_if.preview_compare"
+      ],
+      "conditional_save": null
+    },
+    {
+      "method": "POST",
+      "path": "/api/v1/what-if/scenarios",
+      "public": false,
+      "required_capabilities": [
+        "what_if.legacy.save"
+      ],
+      "conditional_save": null
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/what-if/scenarios",
+      "public": false,
+      "required_capabilities": [
+        "history.read"
+      ],
+      "conditional_save": null
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/what-if/scenarios/{scenario_id}",
+      "public": false,
+      "required_capabilities": [
+        "history.read"
+      ],
+      "conditional_save": null
+    },
+    {
+      "method": "GET",
+      "path": "/api/v1/dashboard/overview",
+      "public": false,
+      "required_capabilities": [
+        "dashboard.read"
+      ],
+      "conditional_save": null
+    },
+    {
+      "method": "GET",
+      "path": "/",
+      "public": false,
+      "required_capabilities": [
+        "system.read"
+      ],
+      "conditional_save": null
+    },
+    {
+      "method": "GET",
+      "path": "/health",
+      "public": false,
+      "required_capabilities": [
+        "system.read"
+      ],
+      "conditional_save": null
+    },
+    {
+      "method": "GET",
+      "path": "/models/info",
+      "public": false,
+      "required_capabilities": [
+        "models.read"
+      ],
+      "conditional_save": null
+    }
+  ]
+}

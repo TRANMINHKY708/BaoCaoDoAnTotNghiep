@@ -1,0 +1,8 @@
+src/api/generated.ts
+node_modules
+dist
+.sites-runtime
+src/features/insights/researchInsights.json
+src/theme-dark.css
+src/features/explorer/data
+src/features/churn/data

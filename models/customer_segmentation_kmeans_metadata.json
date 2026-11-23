@@ -1,0 +1,46 @@
+{
+    "model_name": "KMeans Customer Segmentation",
+    "algorithm": "KMeans",
+    "n_clusters": 3,
+    "features": [
+        "Login_Frequency",
+        "Session_Duration_Avg",
+        "Pages_Per_Session",
+        "Cart_Abandonment_Rate",
+        "Wishlist_Items",
+        "Total_Purchases",
+        "Average_Order_Value",
+        "Days_Since_Last_Purchase",
+        "Discount_Usage_Rate",
+        "Mobile_App_Usage"
+    ],
+    "preprocessing": {
+        "method": "Quantile Clipping + StandardScaler",
+        "clipped_features": [
+            "Total_Purchases",
+            "Average_Order_Value"
+        ],
+        "clip_bounds": {
+            "Total_Purchases": {
+                "lower": 2.0,
+                "upper": 31.200000000000003
+            },
+            "Average_Order_Value": {
+                "lower": 45.281800000000004,
+                "upper": 252.02409999999998
+            }
+        }
+    },
+    "cluster_names": {
+        "0": "Khách hàng tích cực",
+        "1": "Khách hàng ít tương tác",
+        "2": "Khách hàng tiềm năng"
+    },
+    "metrics": {
+        "silhouette": 0.1689244002804271,
+        "davies_bouldin": 1.766266360700646,
+        "calinski_harabasz": 17239.687356775547,
+        "inertia": 295590.59317450825
+    },
+    "random_state": 42
+}

@@ -1,0 +1,7 @@
+Alembic migration environment for EcommerceAI.
+
+Set DATABASE_URL in the local .env file, then run:
+
+    alembic upgrade head
+
+Never replace migrations with SQLAlchemy create_all() in production.

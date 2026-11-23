@@ -1,0 +1,176 @@
+.batch-analytics {
+  display: grid;
+  gap: 1.25rem;
+  min-width: 0;
+}
+.batch-analytics .panel {
+  padding: 1.25rem;
+  min-width: 0;
+}
+.batch-analytics .panel > p {
+  color: #637084;
+  line-height: 1.6;
+}
+.batch-filters {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+}
+.batch-filters label {
+  display: grid;
+  gap: 0.4rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+.batch-filters input,
+.batch-filters select {
+  width: 100%;
+  min-width: 0;
+  border: 1px solid #d9e1ed;
+  border-radius: 0.6rem;
+  padding: 0.65rem;
+  background: white;
+  color: #25304a;
+}
+.batch-charts {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.25rem;
+}
+.batch-bar {
+  margin: 1rem 0;
+}
+.batch-bar > div {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 0.45rem;
+}
+.batch-bar progress {
+  display: block;
+  width: 100%;
+  height: 1rem;
+  accent-color: var(--cyan-600);
+}
+.batch-bar .button {
+  margin-top: 0.5rem;
+}
+.batch-bar .button[aria-pressed='true'] {
+  border-color: var(--accent);
+  background: var(--accent-soft);
+  color: var(--accent-dark);
+}
+.batch-model-scope {
+  overflow-wrap: anywhere;
+  font-size: 0.875rem;
+}
+.batch-analytics small {
+  color: #637084;
+  line-height: 1.5;
+}
+.batch-analytics details {
+  overflow-wrap: anywhere;
+  font-size: 0.8rem;
+  margin-top: 0.5rem;
+}
+.batch-analytics meter {
+  max-width: 200px;
+  width: 60%;
+}
+.batch-narrative {
+  margin-top: 1rem;
+  padding: 1rem;
+  border-radius: 0.75rem;
+  background: #ecfeff;
+}
+.batch-analytics .bulk-actions {
+  margin: 0.75rem 0;
+}
+@media (max-width: 1000px) {
+  .batch-filters {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+@media (max-width: 640px) {
+  .batch-filters,
+  .batch-charts {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .batch-analytics .panel {
+    padding: 1rem;
+  }
+  .batch-bar > div {
+    flex-wrap: wrap;
+  }
+}
+.insight-list {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  align-items: start;
+  gap: 1rem;
+}
+.insight-list article {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.625rem;
+  padding: 1rem;
+  border: 1px solid var(--border);
+  border-radius: 0.75rem;
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+.insight-list h3 {
+  margin: 0;
+  font-size: 0.95rem;
+  line-height: 1.4;
+}
+.insight-list article > p {
+  margin: 0;
+  font-size: 0.9rem;
+  line-height: 1.55;
+}
+.insight-list article > details {
+  align-self: stretch;
+}
+.insight-panel details {
+  margin-top: 0.75rem;
+  overflow-wrap: anywhere;
+}
+.insight-panel dd {
+  margin-left: 0;
+}
+.insight-panel pre {
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  max-width: 100%;
+}
+[id^='batch-evidence-'] {
+  scroll-margin-top: 1.5rem;
+  min-width: 0;
+}
+@media (max-width: 1200px) {
+  .insight-list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+@media (max-width: 700px) {
+  .insight-list {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+.batch-pending {
+  border: 1px solid #f2c06b;
+  background: #fffbeb;
+}
+.batch-pending h2 {
+  color: #92400e;
+}
+.batch-pending ul {
+  margin: 8px 0 0;
+  padding-left: 20px;
+}
+.batch-pending li {
+  margin: 4px 0;
+}

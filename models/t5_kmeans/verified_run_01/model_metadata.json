@@ -1,0 +1,291 @@
+{
+  "model_version": "2.0.0-snapshot-k3",
+  "protocol": "snapshot-k3-train-only-v1",
+  "features": [
+    "Login_Frequency",
+    "Session_Duration_Avg",
+    "Pages_Per_Session",
+    "Cart_Abandonment_Rate",
+    "Wishlist_Items",
+    "Total_Purchases",
+    "Average_Order_Value",
+    "Days_Since_Last_Purchase",
+    "Discount_Usage_Rate",
+    "Mobile_App_Usage"
+  ],
+  "hyperparameters": {
+    "n_clusters": 3,
+    "init": "k-means++",
+    "n_init": 10,
+    "random_state": 42,
+    "max_iter": 300,
+    "tol": 0.0001,
+    "algorithm": "lloyd"
+  },
+  "k_diagnostics": [
+    2,
+    3,
+    4,
+    5,
+    6
+  ],
+  "k_selection": "fixed3 before all T5 metrics; no auto-selection",
+  "seed_sensitivity": [
+    7,
+    21,
+    42,
+    84,
+    123
+  ],
+  "subsample_seeds": [
+    7,
+    21,
+    84
+  ],
+  "subsample_fraction": 0.8,
+  "silhouette_sample_size": 3000,
+  "silhouette_sample_seed": 42,
+  "cpu_thread_limit": 2,
+  "fit_rows": 39968,
+  "quarantined_rows": 9992,
+  "historical_holdout_scored": false,
+  "raw_sha256": "ada0aaadd75c7815e3ad0270dc8d8617a2baa208f87eada665dca45182ca3889",
+  "reference_sha256": "fbe7ae7d5096dea390b0e662f28b4350866bd125008e383b9e532fb0499854b2",
+  "split_manifest_sha256": "02a064afc0a2e2e5d39aad3ca52ae0364fdaad0873ecb15cb804acc9d25e22a3",
+  "training_index_sha256": "049faaf5c6e5fc446d0b0cc457f5fc764fa34349c176826bb4cb4bca5f65b738",
+  "source_sha256": {
+    "src/segmentation/__init__.py": "0da19844599662d6ed1e570cee0fa14bc0c1dd71351612e506fbf931271cc10d",
+    "src/segmentation/pipeline.py": "c85de45db0aa3b1ea694ea8f3023e414f7bafda2c53cb0fcb50c07acaf7fdbb1",
+    "src/segmentation/evaluation.py": "69ed5ba1480edd93d5817b4fa6203ed7b3163118914c0ea066dec120d74b61ef",
+    "src/segmentation/profiles.py": "22d6f1fec552522590b3200ead8534e8b7186213d5d22e8915c17596a56f7e1e",
+    "src/segmentation/artifacts.py": "f8af11d5087c916a986e43890bbffab19c6ace8f15b46cfa0f1616710727e5c8",
+    "src/segmentation/train_kmeans.py": "24ba56652d3582baa6c7c7ef093ec44ce46bd951f30dcfaee17e8054aa9fe0a4",
+    "src/features/quantile_clipper.py": "f4558e5f4517fb7c4965a0652f0906ae3a2f7acb8306325bd85f0ab2f1a31c07",
+    "src/data/research_split.py": "8ae7bf12812007adc780ff18e758d8146400ea80bb6fb8784cf6b59492b43f30",
+    "src/data/dataset_contract.py": "fb13e4d5f26b695803f11f962a941b1cc83fd1b73e2211bd909361eb86d43059",
+    "src/features/purchase_level_rules.py": "560060796ba667fcd3f380d3a9ca3022c3ad056c78887c89cbf03f118cd72abd",
+    "src/features/leakage_guard.py": "0884ba4d35a637aafbc2afa891495980556c2ed5b8dd1259c26a839a9023da02",
+    "src/training/train_xgboost.py": "6795f0ea447813dfaf3ea9bc29b035893d6cfc4f09ccac6c6ece8dece52de29e",
+    "src/training/artifacts.py": "0fec33d1b29a4536bd11768e1a512a659c9cd7470b874fd7c334a5c600c80725",
+    "requirements-ml.lock.txt": "1452a71996a53a1e393ec518c3f9becf47224cedfb4405c93522b62f5a56a8e0",
+    "docs/t5_segmentation_policy.md": "a1bb9c4158d315ffcbd992485c4e536a09d1f9c3d8db95b7cd3422b18a32f2fe"
+  },
+  "created_at_utc": "2026-10-20T13:22:47.941385+00:00",
+  "algorithm": "KMeans",
+  "n_clusters": 3,
+  "task": "descriptive snapshot segmentation; not a future prediction or causal model",
+  "cluster_names": {
+    "0": "Tương tác thấp",
+    "1": "Tương tác trung bình",
+    "2": "Tương tác cao"
+  },
+  "segment_ids": {
+    "0": "engagement_low",
+    "1": "engagement_medium",
+    "2": "engagement_high"
+  },
+  "feature_schema": [
+    {
+      "name": "Login_Frequency",
+      "type": "number",
+      "nullable": true
+    },
+    {
+      "name": "Session_Duration_Avg",
+      "type": "number",
+      "nullable": true
+    },
+    {
+      "name": "Pages_Per_Session",
+      "type": "number",
+      "nullable": true
+    },
+    {
+      "name": "Cart_Abandonment_Rate",
+      "type": "number",
+      "nullable": true
+    },
+    {
+      "name": "Wishlist_Items",
+      "type": "number",
+      "nullable": true
+    },
+    {
+      "name": "Total_Purchases",
+      "type": "number",
+      "nullable": true
+    },
+    {
+      "name": "Average_Order_Value",
+      "type": "number",
+      "nullable": true
+    },
+    {
+      "name": "Days_Since_Last_Purchase",
+      "type": "number",
+      "nullable": true
+    },
+    {
+      "name": "Discount_Usage_Rate",
+      "type": "number",
+      "nullable": true
+    },
+    {
+      "name": "Mobile_App_Usage",
+      "type": "number",
+      "nullable": true
+    }
+  ],
+  "canonical_mapping": {
+    "raw_to_canonical": {
+      "0": 1,
+      "1": 0,
+      "2": 2
+    },
+    "engagement_scores": [
+      -0.7597967856068785,
+      0.1612601329604265,
+      1.3042326585120068
+    ],
+    "minimum_adjacent_score_gap": 0.921056918567305,
+    "rule": "ascending mean of five positive engagement centroid-z minus cart-abandonment centroid-z"
+  },
+  "runtime_versions": {
+    "numpy": "2.4.6",
+    "pandas": "3.0.6",
+    "scipy": "1.17.1",
+    "scikit-learn": "1.9.1",
+    "xgboost": "3.2.0",
+    "joblib": "1.6.0",
+    "threadpoolctl": "3.7.0",
+    "python-dateutil": "2.9.0.post0",
+    "six": "1.17.0",
+    "tzdata": "2026.4",
+    "cloudpickle": "3.1.2",
+    "narwhals": "2.26.0"
+  },
+  "git_revision": null,
+  "preprocessing": {
+    "steps": [
+      "validity",
+      "imputer",
+      "clipper",
+      "scaler",
+      "kmeans"
+    ],
+    "median_imputation": true,
+    "clipped_features": [
+      "Total_Purchases",
+      "Average_Order_Value"
+    ],
+    "clip_bounds": {
+      "Total_Purchases": {
+        "lower": 2.0,
+        "upper": 31.200000000000003
+      },
+      "Average_Order_Value": {
+        "lower": 45.0767,
+        "upper": 251.50990000000004
+      }
+    }
+  },
+  "fit_state_audit": {
+    "status": "PASSED",
+    "fit_rows": 39968,
+    "medians": {
+      "Login_Frequency": 11.0,
+      "Session_Duration_Avg": 26.8,
+      "Pages_Per_Session": 8.4,
+      "Cart_Abandonment_Rate": 58.1,
+      "Wishlist_Items": 4.0,
+      "Total_Purchases": 12.0,
+      "Average_Order_Value": 112.98,
+      "Days_Since_Last_Purchase": 21.0,
+      "Discount_Usage_Rate": 40.2,
+      "Mobile_App_Usage": 18.6
+    },
+    "clip_bounds": {
+      "Total_Purchases": {
+        "lower": 2.0,
+        "upper": 31.200000000000003
+      },
+      "Average_Order_Value": {
+        "lower": 45.0767,
+        "upper": 251.50990000000004
+      }
+    },
+    "scaler_samples_seen": 39968
+  },
+  "training_ranges": {
+    "Login_Frequency": {
+      "min": 0.0,
+      "max": 46.0
+    },
+    "Session_Duration_Avg": {
+      "min": 1.0,
+      "max": 75.6
+    },
+    "Pages_Per_Session": {
+      "min": 1.0,
+      "max": 24.1
+    },
+    "Cart_Abandonment_Rate": {
+      "min": 0.0,
+      "max": 100.0
+    },
+    "Wishlist_Items": {
+      "min": 0.0,
+      "max": 28.0
+    },
+    "Total_Purchases": {
+      "min": 0.0,
+      "max": 128.70000000000002
+    },
+    "Average_Order_Value": {
+      "min": 26.38,
+      "max": 9666.37917838422
+    },
+    "Days_Since_Last_Purchase": {
+      "min": 0.0,
+      "max": 287.0
+    },
+    "Discount_Usage_Rate": {
+      "min": 0.24,
+      "max": 99.96
+    },
+    "Mobile_App_Usage": {
+      "min": 0.0,
+      "max": 61.9
+    }
+  },
+  "distance_p99": {
+    "0": 4.30555289214544,
+    "1": 4.401035933846869,
+    "2": 5.164749592848291
+  },
+  "training_geometry": {
+    "K": 3,
+    "fit_and_evaluate_seconds": 2.020723800000269,
+    "silhouette_sample": 0.17618132472951048,
+    "silhouette_sample_rows": 3000,
+    "davies_bouldin": 1.7680512134198365,
+    "calinski_harabasz": 13797.85341186902,
+    "cluster_sizes": {
+      "0": 16598,
+      "1": 15671,
+      "2": 7699
+    },
+    "assigned_squared_distance_sum": 236427.89077614353
+  },
+  "artifact_sha256": "fcccee53765f9d4825196411aee4a971d1df8a3595b0d4f56210145425e672e3",
+  "profiles_sha256": "33e26433c875c61f9e7e347b744d456972689b8a339c2eca29b34ceb68f2e9ac",
+  "serving_promoted": false,
+  "t3_status": "PARTIAL – ACCEPTED WITH LIMITATIONS",
+  "limitations": [
+    "unknown original event time/availability/windows",
+    "no verified customer/session identities",
+    "no independent external test cohort",
+    "snapshot/correlational only; distance not probability",
+    "K3 not guaranteed metric optimum; neutral labels relative to training cohort"
+  ]
+}

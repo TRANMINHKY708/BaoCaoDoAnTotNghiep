@@ -1,0 +1,342 @@
+{
+  "test_only": true,
+  "source": "Public model catalog and existing Swagger example; not application records",
+  "catalog": {
+    "contract_version": "1.0.0",
+    "models": [
+      {
+        "task": "segmentation",
+        "model_id": "customer-segmentation-kmeans",
+        "model_version": "1.0.0",
+        "is_default": true,
+        "serving_mode": "legacy_default",
+        "available": true,
+        "unavailable_code": null,
+        "persistence_supported": true,
+        "artifact_sha256": "5ab101792571047b832c82d9b7e64390b158b788b140486742947bfbe796d7d1",
+        "feature_count": 10,
+        "features": [
+          "Login_Frequency",
+          "Session_Duration_Avg",
+          "Pages_Per_Session",
+          "Cart_Abandonment_Rate",
+          "Wishlist_Items",
+          "Total_Purchases",
+          "Average_Order_Value",
+          "Days_Since_Last_Purchase",
+          "Discount_Usage_Rate",
+          "Mobile_App_Usage"
+        ],
+        "input_schema": {
+          "additionalProperties": false,
+          "properties": {
+            "Login_Frequency": {
+              "minimum": 0,
+              "title": "Login Frequency",
+              "type": "number"
+            },
+            "Session_Duration_Avg": {
+              "minimum": 0,
+              "title": "Session Duration Avg",
+              "type": "number"
+            },
+            "Pages_Per_Session": {
+              "minimum": 0,
+              "title": "Pages Per Session",
+              "type": "number"
+            },
+            "Cart_Abandonment_Rate": {
+              "maximum": 100,
+              "minimum": 0,
+              "title": "Cart Abandonment Rate",
+              "type": "number"
+            },
+            "Wishlist_Items": {
+              "minimum": 0,
+              "title": "Wishlist Items",
+              "type": "number"
+            },
+            "Total_Purchases": {
+              "minimum": 0,
+              "title": "Total Purchases",
+              "type": "number"
+            },
+            "Average_Order_Value": {
+              "minimum": 0,
+              "title": "Average Order Value",
+              "type": "number"
+            },
+            "Days_Since_Last_Purchase": {
+              "minimum": 0,
+              "title": "Days Since Last Purchase",
+              "type": "number"
+            },
+            "Discount_Usage_Rate": {
+              "maximum": 100,
+              "minimum": 0,
+              "title": "Discount Usage Rate",
+              "type": "number"
+            },
+            "Mobile_App_Usage": {
+              "minimum": 0,
+              "title": "Mobile App Usage",
+              "type": "number"
+            }
+          },
+          "required": [
+            "Login_Frequency",
+            "Session_Duration_Avg",
+            "Pages_Per_Session",
+            "Cart_Abandonment_Rate",
+            "Wishlist_Items",
+            "Total_Purchases",
+            "Average_Order_Value",
+            "Days_Since_Last_Purchase",
+            "Discount_Usage_Rate",
+            "Mobile_App_Usage"
+          ],
+          "title": "LegacySegmentCustomer",
+          "type": "object"
+        },
+        "label_namespace": "legacy_clusters_v1",
+        "labels": {
+          "0": "Khách hàng tích cực",
+          "1": "Khách hàng ít tương tác",
+          "2": "Khách hàng tiềm năng"
+        },
+        "limitations": [
+          "Historical snapshot model; no independent new test or verified temporal availability"
+        ]
+      },
+      {
+        "task": "segmentation",
+        "model_id": "customer-segmentation-kmeans",
+        "model_version": "2.0.0-snapshot-k3",
+        "is_default": false,
+        "serving_mode": "explicit_research",
+        "available": true,
+        "unavailable_code": null,
+        "persistence_supported": false,
+        "artifact_sha256": "fcccee53765f9d4825196411aee4a971d1df8a3595b0d4f56210145425e672e3",
+        "feature_count": 10,
+        "features": [
+          "Login_Frequency",
+          "Session_Duration_Avg",
+          "Pages_Per_Session",
+          "Cart_Abandonment_Rate",
+          "Wishlist_Items",
+          "Total_Purchases",
+          "Average_Order_Value",
+          "Days_Since_Last_Purchase",
+          "Discount_Usage_Rate",
+          "Mobile_App_Usage"
+        ],
+        "input_schema": {
+          "additionalProperties": false,
+          "properties": {
+            "Login_Frequency": {
+              "anyOf": [
+                {
+                  "type": "number"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Login Frequency"
+            },
+            "Session_Duration_Avg": {
+              "anyOf": [
+                {
+                  "type": "number"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Session Duration Avg"
+            },
+            "Pages_Per_Session": {
+              "anyOf": [
+                {
+                  "type": "number"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Pages Per Session"
+            },
+            "Cart_Abandonment_Rate": {
+              "anyOf": [
+                {
+                  "type": "number"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Cart Abandonment Rate"
+            },
+            "Wishlist_Items": {
+              "anyOf": [
+                {
+                  "type": "number"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Wishlist Items"
+            },
+            "Total_Purchases": {
+              "anyOf": [
+                {
+                  "type": "number"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Total Purchases"
+            },
+            "Average_Order_Value": {
+              "anyOf": [
+                {
+                  "type": "number"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Average Order Value"
+            },
+            "Days_Since_Last_Purchase": {
+              "anyOf": [
+                {
+                  "type": "number"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Days Since Last Purchase"
+            },
+            "Discount_Usage_Rate": {
+              "anyOf": [
+                {
+                  "type": "number"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Discount Usage Rate"
+            },
+            "Mobile_App_Usage": {
+              "anyOf": [
+                {
+                  "type": "number"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Mobile App Usage"
+            }
+          },
+          "required": [
+            "Login_Frequency",
+            "Session_Duration_Avg",
+            "Pages_Per_Session",
+            "Cart_Abandonment_Rate",
+            "Wishlist_Items",
+            "Total_Purchases",
+            "Average_Order_Value",
+            "Days_Since_Last_Purchase",
+            "Discount_Usage_Rate",
+            "Mobile_App_Usage"
+          ],
+          "title": "T5SegmentCustomer",
+          "type": "object"
+        },
+        "label_namespace": "engagement_snapshot_v2",
+        "labels": {
+          "0": "Tương tác thấp",
+          "1": "Tương tác trung bình",
+          "2": "Tương tác cao"
+        },
+        "limitations": [
+          "unknown original event time/availability/windows",
+          "no verified customer/session identities",
+          "no independent external test cohort",
+          "snapshot/correlational only; distance not probability",
+          "K3 not guaranteed metric optimum; neutral labels relative to training cohort"
+        ]
+      }
+    ]
+  },
+  "rows": [
+    {
+      "version": "1.0.0",
+      "customer": {
+        "Login_Frequency": 14.0,
+        "Session_Duration_Avg": 27.4,
+        "Pages_Per_Session": 6.0,
+        "Cart_Abandonment_Rate": 50.6,
+        "Wishlist_Items": 3.0,
+        "Total_Purchases": 9.0,
+        "Average_Order_Value": 94.72,
+        "Days_Since_Last_Purchase": 34.0,
+        "Discount_Usage_Rate": 46.4,
+        "Mobile_App_Usage": 20.8
+      },
+      "result": {
+        "task": "segmentation",
+        "model_id": "customer-segmentation-kmeans",
+        "model_version": "1.0.0",
+        "generated_at": "2026-10-25T00:00:00Z",
+        "cluster": 2,
+        "segment_id": "legacy:1.0.0:cluster:2",
+        "segment_name": "Khách hàng tiềm năng",
+        "distance_to_centroid": 1.525176066149531,
+        "distance_kind": "standardized_euclidean_not_probability",
+        "input_quality": null,
+        "scope": "descriptive_snapshot_not_causal_or_future"
+      }
+    },
+    {
+      "version": "2.0.0-snapshot-k3",
+      "customer": {
+        "Login_Frequency": 14.0,
+        "Session_Duration_Avg": 27.4,
+        "Pages_Per_Session": 6.0,
+        "Cart_Abandonment_Rate": 50.6,
+        "Wishlist_Items": 3.0,
+        "Total_Purchases": 9.0,
+        "Average_Order_Value": 94.72,
+        "Days_Since_Last_Purchase": 34.0,
+        "Discount_Usage_Rate": 46.4,
+        "Mobile_App_Usage": 20.8
+      },
+      "result": {
+        "task": "segmentation",
+        "model_id": "customer-segmentation-kmeans",
+        "model_version": "2.0.0-snapshot-k3",
+        "generated_at": "2026-10-25T00:00:00Z",
+        "cluster": 1,
+        "segment_id": "engagement_medium",
+        "segment_name": "Tương tác trung bình",
+        "distance_to_centroid": 1.5266805675199802,
+        "distance_kind": "standardized_euclidean_not_probability",
+        "input_quality": {
+          "imputed_features": [],
+          "clipped_features": [],
+          "outside_training_range": [],
+          "distance_above_training_cluster_p99": false
+        },
+        "scope": "descriptive_snapshot_not_causal_or_future"
+      }
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "model_id": "customer-churn-xgboost",
+  "model_version": "1.0.0-snapshot-churn",
+  "artifact": "models/k_churn/verified_run_01/pipeline.joblib",
+  "artifact_sha256": "2763321f4d4290ccd74bd94441e04db5795d185f176a7c00a9c0a46a85042408",
+  "metadata": "models/k_churn/verified_run_01/model_metadata.json",
+  "metadata_sha256": "07f6faba658833169af7b350be6dc3d99231728e318ad6c4f00b61fe4ce36e6f",
+  "evaluation": "reports/k/holdout_evaluation.json",
+  "evaluation_sha256": "68dcc2cf058e495a82c53dcdfe562fba739b484e0fdbec0f94122e7e208093ac",
+  "note": "Separate from backend/model_catalog.json so /api/v1/model-info is unchanged. Inference only; no persistence."
+}

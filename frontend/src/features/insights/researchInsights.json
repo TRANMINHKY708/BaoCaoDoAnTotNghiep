@@ -1,0 +1,1802 @@
+{
+ "generated_at": "2026-11-09T15:15:06+00:00",
+ "generator": "scripts/export_research_insights.py",
+ "sources": {
+  "e1_model_comparison.json": "63e7ba9a8adfcf7b",
+  "e3_global_shap.json": "5a9009b231f27790",
+  "e4_segment_behaviour.json": "404bd8f7f85be02c",
+  "e5_ltv_reconstruction.json": "4e5630306b6426b1",
+  "holdout_evaluation.json": "53736dc5c266c597",
+  "holdout_protocol.json": "7f8c827606c9f9b5"
+ },
+ "dataset": {
+  "name": "Ecommerce Customer Behavior Dataset (Kaggle, v1)",
+  "raw_rows": 50000,
+  "research_rows": 49960,
+  "training_rows": 39968,
+  "holdout_rows": 9992
+ },
+ "eda": {
+  "rows": 49960,
+  "source_columns": 25,
+  "class_counts": {
+   "Low": 18953,
+   "Medium": 15130,
+   "High": 15877
+  },
+  "thresholds": {
+   "low_max": 10,
+   "medium_max": 15
+  },
+  "churn_rate_percent": 28.9,
+  "median_by_level": {
+   "Session_Duration_Avg": {
+    "Low": 20.4,
+    "Medium": 26.9,
+    "High": 36.5
+   },
+   "Pages_Per_Session": {
+    "Low": 6.2,
+    "Medium": 8.5,
+    "High": 11.7
+   },
+   "Mobile_App_Usage": {
+    "Low": 13.6,
+    "Medium": 18.6,
+    "High": 26.1
+   },
+   "Login_Frequency": {
+    "Low": 6.0,
+    "Medium": 11.0,
+    "High": 18.0
+   },
+   "Email_Open_Rate": {
+    "Low": 12.2,
+    "Medium": 19.7,
+    "High": 30.9
+   },
+   "Wishlist_Items": {
+    "Low": 2.0,
+    "Medium": 4.0,
+    "High": 6.0
+   },
+   "Cart_Abandonment_Rate": {
+    "Low": 67.7,
+    "Medium": 57.3,
+    "High": 44.3
+   },
+   "Average_Order_Value": {
+    "Low": 113.16,
+    "Medium": 112.96,
+    "High": 112.68
+   },
+   "Discount_Usage_Rate": {
+    "Low": 40.1,
+    "Medium": 40.1,
+    "High": 40.1
+   },
+   "Days_Since_Last_Purchase": {
+    "Low": 21.0,
+    "Medium": 21.0,
+    "High": 21.0
+   },
+   "Membership_Years": {
+    "Low": 2.5,
+    "Medium": 2.5,
+    "High": 2.5
+   },
+   "Age": {
+    "Low": 38.0,
+    "Medium": 38.0,
+    "High": 38.0
+   }
+  },
+  "spearman_with_total_purchases": [
+   {
+    "feature": "Lifetime_Value",
+    "spearman": 0.75
+   },
+   {
+    "feature": "Session_Duration_Avg",
+    "spearman": 0.708
+   },
+   {
+    "feature": "Pages_Per_Session",
+    "spearman": 0.676
+   },
+   {
+    "feature": "Mobile_App_Usage",
+    "spearman": 0.653
+   },
+   {
+    "feature": "Login_Frequency",
+    "spearman": 0.648
+   },
+   {
+    "feature": "Cart_Abandonment_Rate",
+    "spearman": -0.643
+   },
+   {
+    "feature": "Wishlist_Items",
+    "spearman": 0.608
+   },
+   {
+    "feature": "Email_Open_Rate",
+    "spearman": 0.593
+   },
+   {
+    "feature": "Social_Media_Engagement_Score",
+    "spearman": 0.558
+   },
+   {
+    "feature": "Product_Reviews_Written",
+    "spearman": 0.548
+   },
+   {
+    "feature": "Credit_Balance",
+    "spearman": 0.48
+   },
+   {
+    "feature": "Customer_Service_Calls",
+    "spearman": -0.385
+   },
+   {
+    "feature": "Discount_Usage_Rate",
+    "spearman": 0.03
+   },
+   {
+    "feature": "Returns_Rate",
+    "spearman": 0.008
+   },
+   {
+    "feature": "Membership_Years",
+    "spearman": -0.007
+   },
+   {
+    "feature": "Days_Since_Last_Purchase",
+    "spearman": 0.005
+   },
+   {
+    "feature": "Average_Order_Value",
+    "spearman": -0.004
+   },
+   {
+    "feature": "Payment_Method_Diversity",
+    "spearman": 0.003
+   },
+   {
+    "feature": "Age",
+    "spearman": -0.0
+   }
+  ],
+  "behaviour_curves": {
+   "Session_Duration_Avg": [
+    {
+     "median_value": 11.7,
+     "rows": 5064,
+     "high_percent": 3.1,
+     "low_percent": 82.6
+    },
+    {
+     "median_value": 16.9,
+     "rows": 5006,
+     "high_percent": 5.8,
+     "low_percent": 71.8
+    },
+    {
+     "median_value": 20.3,
+     "rows": 4984,
+     "high_percent": 9.6,
+     "low_percent": 61.0
+    },
+    {
+     "median_value": 23.4,
+     "rows": 5035,
+     "high_percent": 14.0,
+     "low_percent": 48.4
+    },
+    {
+     "median_value": 26.8,
+     "rows": 6744,
+     "high_percent": 15.1,
+     "low_percent": 50.3
+    },
+    {
+     "median_value": 27.8,
+     "rows": 3281,
+     "high_percent": 24.8,
+     "low_percent": 27.9
+    },
+    {
+     "median_value": 30.4,
+     "rows": 4916,
+     "high_percent": 35.8,
+     "low_percent": 17.9
+    },
+    {
+     "median_value": 34.1,
+     "rows": 4970,
+     "high_percent": 50.8,
+     "low_percent": 8.5
+    },
+    {
+     "median_value": 38.8,
+     "rows": 4972,
+     "high_percent": 69.7,
+     "low_percent": 1.9
+    },
+    {
+     "median_value": 46.7,
+     "rows": 4988,
+     "high_percent": 93.6,
+     "low_percent": 0.1
+    }
+   ],
+   "Pages_Per_Session": [
+    {
+     "median_value": 3.1,
+     "rows": 5230,
+     "high_percent": 3.5,
+     "low_percent": 80.5
+    },
+    {
+     "median_value": 5.0,
+     "rows": 4909,
+     "high_percent": 6.8,
+     "low_percent": 70.7
+    },
+    {
+     "median_value": 6.2,
+     "rows": 5156,
+     "high_percent": 9.4,
+     "low_percent": 61.8
+    },
+    {
+     "median_value": 7.3,
+     "rows": 4844,
+     "high_percent": 12.9,
+     "low_percent": 51.0
+    },
+    {
+     "median_value": 8.4,
+     "rows": 6435,
+     "high_percent": 26.2,
+     "low_percent": 39.3
+    },
+    {
+     "median_value": 8.9,
+     "rows": 3795,
+     "high_percent": 24.2,
+     "low_percent": 32.6
+    },
+    {
+     "median_value": 9.8,
+     "rows": 4719,
+     "high_percent": 34.2,
+     "low_percent": 22.0
+    },
+    {
+     "median_value": 11.0,
+     "rows": 4885,
+     "high_percent": 46.7,
+     "low_percent": 11.9
+    },
+    {
+     "median_value": 12.6,
+     "rows": 5013,
+     "high_percent": 66.0,
+     "low_percent": 4.0
+    },
+    {
+     "median_value": 15.3,
+     "rows": 4974,
+     "high_percent": 89.4,
+     "low_percent": 0.7
+    }
+   ],
+   "Mobile_App_Usage": [
+    {
+     "median_value": 5.7,
+     "rows": 5115,
+     "high_percent": 4.2,
+     "low_percent": 79.5
+    },
+    {
+     "median_value": 10.25,
+     "rows": 5004,
+     "high_percent": 7.4,
+     "low_percent": 69.1
+    },
+    {
+     "median_value": 13.3,
+     "rows": 5049,
+     "high_percent": 9.9,
+     "low_percent": 60.8
+    },
+    {
+     "median_value": 15.9,
+     "rows": 4840,
+     "high_percent": 14.8,
+     "low_percent": 48.7
+    },
+    {
+     "median_value": 18.6,
+     "rows": 7548,
+     "high_percent": 27.1,
+     "low_percent": 39.3
+    },
+    {
+     "median_value": 19.3,
+     "rows": 2573,
+     "high_percent": 22.7,
+     "low_percent": 35.6
+    },
+    {
+     "median_value": 21.5,
+     "rows": 5005,
+     "high_percent": 31.9,
+     "low_percent": 24.4
+    },
+    {
+     "median_value": 24.7,
+     "rows": 4935,
+     "high_percent": 44.6,
+     "low_percent": 14.1
+    },
+    {
+     "median_value": 28.8,
+     "rows": 4950,
+     "high_percent": 64.9,
+     "low_percent": 3.7
+    },
+    {
+     "median_value": 35.7,
+     "rows": 4941,
+     "high_percent": 89.7,
+     "low_percent": 0.4
+    }
+   ],
+   "Login_Frequency": [
+    {
+     "median_value": 0.0,
+     "rows": 5266,
+     "high_percent": 4.6,
+     "low_percent": 78.6
+    },
+    {
+     "median_value": 3.0,
+     "rows": 4884,
+     "high_percent": 7.6,
+     "low_percent": 68.1
+    },
+    {
+     "median_value": 6.0,
+     "rows": 6486,
+     "high_percent": 11.0,
+     "low_percent": 58.6
+    },
+    {
+     "median_value": 8.0,
+     "rows": 4909,
+     "high_percent": 16.1,
+     "low_percent": 48.6
+    },
+    {
+     "median_value": 11.0,
+     "rows": 4837,
+     "high_percent": 22.8,
+     "low_percent": 40.0
+    },
+    {
+     "median_value": 12.0,
+     "rows": 4509,
+     "high_percent": 28.1,
+     "low_percent": 30.8
+    },
+    {
+     "median_value": 14.0,
+     "rows": 4268,
+     "high_percent": 36.2,
+     "low_percent": 22.2
+    },
+    {
+     "median_value": 17.0,
+     "rows": 5128,
+     "high_percent": 49.5,
+     "low_percent": 13.5
+    },
+    {
+     "median_value": 20.0,
+     "rows": 4876,
+     "high_percent": 63.4,
+     "low_percent": 6.1
+    },
+    {
+     "median_value": 26.0,
+     "rows": 4797,
+     "high_percent": 87.8,
+     "low_percent": 0.9
+    }
+   ],
+   "Email_Open_Rate": [
+    {
+     "median_value": 0.0,
+     "rows": 5000,
+     "high_percent": 5.7,
+     "low_percent": 74.8
+    },
+    {
+     "median_value": 5.5,
+     "rows": 5087,
+     "high_percent": 10.0,
+     "low_percent": 64.9
+    },
+    {
+     "median_value": 10.5,
+     "rows": 4951,
+     "high_percent": 13.0,
+     "low_percent": 55.2
+    },
+    {
+     "median_value": 14.8,
+     "rows": 5037,
+     "high_percent": 18.3,
+     "low_percent": 46.5
+    },
+    {
+     "median_value": 19.3,
+     "rows": 6185,
+     "high_percent": 17.7,
+     "low_percent": 49.2
+    },
+    {
+     "median_value": 21.3,
+     "rows": 3768,
+     "high_percent": 28.5,
+     "low_percent": 32.9
+    },
+    {
+     "median_value": 25.0,
+     "rows": 4979,
+     "high_percent": 35.5,
+     "low_percent": 25.2
+    },
+    {
+     "median_value": 29.7,
+     "rows": 5000,
+     "high_percent": 47.1,
+     "low_percent": 16.2
+    },
+    {
+     "median_value": 35.8,
+     "rows": 4961,
+     "high_percent": 61.0,
+     "low_percent": 8.1
+    },
+    {
+     "median_value": 46.1,
+     "rows": 4992,
+     "high_percent": 84.3,
+     "low_percent": 1.7
+    }
+   ],
+   "Wishlist_Items": [
+    {
+     "median_value": 1.0,
+     "rows": 9320,
+     "high_percent": 6.2,
+     "low_percent": 74.5
+    },
+    {
+     "median_value": 2.0,
+     "rows": 6214,
+     "high_percent": 12.2,
+     "low_percent": 58.9
+    },
+    {
+     "median_value": 3.0,
+     "rows": 6243,
+     "high_percent": 18.8,
+     "low_percent": 44.4
+    },
+    {
+     "median_value": 4.0,
+     "rows": 9494,
+     "high_percent": 28.9,
+     "low_percent": 35.1
+    },
+    {
+     "median_value": 5.0,
+     "rows": 4596,
+     "high_percent": 36.5,
+     "low_percent": 23.6
+    },
+    {
+     "median_value": 6.0,
+     "rows": 6873,
+     "high_percent": 50.8,
+     "low_percent": 13.8
+    },
+    {
+     "median_value": 8.0,
+     "rows": 2269,
+     "high_percent": 64.2,
+     "low_percent": 5.9
+    },
+    {
+     "median_value": 10.0,
+     "rows": 4951,
+     "high_percent": 80.9,
+     "low_percent": 1.6
+    }
+   ]
+  },
+  "signup_quarter": [
+   {
+    "quarter": "Q1",
+    "mean_purchases": 12.24,
+    "median_purchases": 12.0,
+    "rows": 12446
+   },
+   {
+    "quarter": "Q2",
+    "mean_purchases": 12.15,
+    "median_purchases": 11.0,
+    "rows": 12514
+   },
+   {
+    "quarter": "Q3",
+    "mean_purchases": 12.27,
+    "median_purchases": 12.0,
+    "rows": 12546
+   },
+   {
+    "quarter": "Q4",
+    "mean_purchases": 15.86,
+    "median_purchases": 14.3,
+    "rows": 12454
+   }
+  ]
+ },
+ "shap": {
+  "model": "XGBoost T4 · 12 thuộc tính bảo thủ",
+  "rows": 39968,
+  "ranking": [
+   {
+    "feature": "Session_Duration_Avg",
+    "share_percent": 24.8,
+    "by_class": {
+     "Low": 0.8141,
+     "Medium": 0.2649,
+     "High": 0.5409
+    },
+    "direction_high": 0.99
+   },
+   {
+    "feature": "Signup_Quarter",
+    "share_percent": 16.7,
+    "by_class": {
+     "Low": 0.4327,
+     "Medium": 0.0465,
+     "High": 0.6128
+    },
+    "direction_high": null
+   },
+   {
+    "feature": "Pages_Per_Session",
+    "share_percent": 13.2,
+    "by_class": {
+     "Low": 0.4377,
+     "Medium": 0.1195,
+     "High": 0.3075
+    },
+    "direction_high": 0.97
+   },
+   {
+    "feature": "Mobile_App_Usage",
+    "share_percent": 12.7,
+    "by_class": {
+     "Low": 0.4675,
+     "Medium": 0.1358,
+     "High": 0.2255
+    },
+    "direction_high": 0.95
+   },
+   {
+    "feature": "Login_Frequency",
+    "share_percent": 11.6,
+    "by_class": {
+     "Low": 0.4106,
+     "Medium": 0.096,
+     "High": 0.2528
+    },
+    "direction_high": 0.97
+   },
+   {
+    "feature": "Email_Open_Rate",
+    "share_percent": 8.2,
+    "by_class": {
+     "Low": 0.2681,
+     "Medium": 0.0796,
+     "High": 0.1855
+    },
+    "direction_high": 0.95
+   },
+   {
+    "feature": "Wishlist_Items",
+    "share_percent": 7.9,
+    "by_class": {
+     "Low": 0.2437,
+     "Medium": 0.0781,
+     "High": 0.1918
+    },
+    "direction_high": 0.94
+   },
+   {
+    "feature": "Membership_Years",
+    "share_percent": 1.7,
+    "by_class": {
+     "Low": 0.0265,
+     "Medium": 0.0271,
+     "High": 0.0575
+    },
+    "direction_high": -0.27
+   },
+   {
+    "feature": "Age",
+    "share_percent": 1.3,
+    "by_class": {
+     "Low": 0.0348,
+     "Medium": 0.0221,
+     "High": 0.03
+    },
+    "direction_high": 0.1
+   },
+   {
+    "feature": "City",
+    "share_percent": 1.2,
+    "by_class": {
+     "Low": 0.0265,
+     "Medium": 0.0249,
+     "High": 0.0281
+    },
+    "direction_high": null
+   },
+   {
+    "feature": "Country",
+    "share_percent": 0.5,
+    "by_class": {
+     "Low": 0.0107,
+     "Medium": 0.0114,
+     "High": 0.0113
+    },
+    "direction_high": null
+   },
+   {
+    "feature": "Gender",
+    "share_percent": 0.3,
+    "by_class": {
+     "Low": 0.0056,
+     "Medium": 0.0023,
+     "High": 0.009
+    },
+    "direction_high": null
+   }
+  ],
+  "full24_ranking": [
+   {
+    "feature": "Lifetime_Value",
+    "share_percent": 42.6,
+    "by_class": {
+     "Low": 3.5932,
+     "Medium": 0.6515,
+     "High": 3.1035
+    },
+    "direction_high": 0.99
+   },
+   {
+    "feature": "Average_Order_Value",
+    "share_percent": 23.0,
+    "by_class": {
+     "Low": 1.9385,
+     "Medium": 0.1951,
+     "High": 1.8258
+    },
+    "direction_high": -0.97
+   },
+   {
+    "feature": "Signup_Quarter",
+    "share_percent": 14.8,
+    "by_class": {
+     "Low": 1.2594,
+     "Medium": 0.0452,
+     "High": 1.2459
+    },
+    "direction_high": null
+   },
+   {
+    "feature": "Session_Duration_Avg",
+    "share_percent": 4.1,
+    "by_class": {
+     "Low": 0.237,
+     "Medium": 0.129,
+     "High": 0.3333
+    },
+    "direction_high": 0.89
+   },
+   {
+    "feature": "Pages_Per_Session",
+    "share_percent": 2.4,
+    "by_class": {
+     "Low": 0.1821,
+     "Medium": 0.0583,
+     "High": 0.1681
+    },
+    "direction_high": 0.92
+   },
+   {
+    "feature": "Mobile_App_Usage",
+    "share_percent": 2.2,
+    "by_class": {
+     "Low": 0.2271,
+     "Medium": 0.0755,
+     "High": 0.0682
+    },
+    "direction_high": 0.66
+   },
+   {
+    "feature": "Login_Frequency",
+    "share_percent": 1.9,
+    "by_class": {
+     "Low": 0.1454,
+     "Medium": 0.0471,
+     "High": 0.1289
+    },
+    "direction_high": 0.92
+   },
+   {
+    "feature": "Cart_Abandonment_Rate",
+    "share_percent": 1.6,
+    "by_class": {
+     "Low": 0.0839,
+     "Medium": 0.0552,
+     "High": 0.1427
+    },
+    "direction_high": -0.93
+   }
+  ],
+  "thresholds": {
+   "Session_Duration_Avg": {
+    "threshold": 29.9,
+    "median_high_class": 36.8,
+    "median_all": 26.8,
+    "curve": [
+     {
+      "value": 9.2,
+      "shap_high": -1.164
+     },
+     {
+      "value": 13.1,
+      "shap_high": -0.864
+     },
+     {
+      "value": 15.5,
+      "shap_high": -0.835
+     },
+     {
+      "value": 17.3,
+      "shap_high": -0.719
+     },
+     {
+      "value": 19.0,
+      "shap_high": -0.576
+     },
+     {
+      "value": 20.5,
+      "shap_high": -0.422
+     },
+     {
+      "value": 21.9,
+      "shap_high": -0.414
+     },
+     {
+      "value": 23.4,
+      "shap_high": -0.325
+     },
+     {
+      "value": 24.8,
+      "shap_high": -0.303
+     },
+     {
+      "value": 26.1,
+      "shap_high": -0.25
+     },
+     {
+      "value": 27.5,
+      "shap_high": -0.214
+     },
+     {
+      "value": 28.9,
+      "shap_high": -0.172
+     },
+     {
+      "value": 30.4,
+      "shap_high": 0.099
+     },
+     {
+      "value": 32.1,
+      "shap_high": 0.22
+     },
+     {
+      "value": 33.9,
+      "shap_high": 0.468
+     },
+     {
+      "value": 35.9,
+      "shap_high": 0.609
+     },
+     {
+      "value": 38.1,
+      "shap_high": 0.652
+     },
+     {
+      "value": 40.8,
+      "shap_high": 0.773
+     },
+     {
+      "value": 44.5,
+      "shap_high": 0.909
+     },
+     {
+      "value": 50.9,
+      "shap_high": 1.165
+     }
+    ]
+   },
+   "Pages_Per_Session": {
+    "threshold": 9.3,
+    "median_high_class": 11.9,
+    "median_all": 8.4,
+    "curve": [
+     {
+      "value": 2.2,
+      "shap_high": -0.797
+     },
+     {
+      "value": 3.7,
+      "shap_high": -0.603
+     },
+     {
+      "value": 4.5,
+      "shap_high": -0.42
+     },
+     {
+      "value": 5.2,
+      "shap_high": -0.303
+     },
+     {
+      "value": 5.8,
+      "shap_high": -0.311
+     },
+     {
+      "value": 6.3,
+      "shap_high": -0.3
+     },
+     {
+      "value": 6.8,
+      "shap_high": -0.276
+     },
+     {
+      "value": 7.3,
+      "shap_high": -0.28
+     },
+     {
+      "value": 7.7,
+      "shap_high": -0.127
+     },
+     {
+      "value": 8.2,
+      "shap_high": -0.06
+     },
+     {
+      "value": 8.7,
+      "shap_high": -0.11
+     },
+     {
+      "value": 9.2,
+      "shap_high": -0.016
+     },
+     {
+      "value": 9.7,
+      "shap_high": 0.101
+     },
+     {
+      "value": 10.3,
+      "shap_high": 0.093
+     },
+     {
+      "value": 10.9,
+      "shap_high": 0.162
+     },
+     {
+      "value": 11.6,
+      "shap_high": 0.282
+     },
+     {
+      "value": 12.4,
+      "shap_high": 0.407
+     },
+     {
+      "value": 13.4,
+      "shap_high": 0.474
+     },
+     {
+      "value": 14.7,
+      "shap_high": 0.528
+     },
+     {
+      "value": 16.9,
+      "shap_high": 0.772
+     }
+    ]
+   },
+   "Mobile_App_Usage": {
+    "threshold": 20.4,
+    "median_high_class": 27.3,
+    "median_all": 18.6,
+    "curve": [
+     {
+      "value": 3.1,
+      "shap_high": -0.504
+     },
+     {
+      "value": 6.7,
+      "shap_high": -0.463
+     },
+     {
+      "value": 8.8,
+      "shap_high": -0.383
+     },
+     {
+      "value": 10.5,
+      "shap_high": -0.242
+     },
+     {
+      "value": 11.9,
+      "shap_high": -0.197
+     },
+     {
+      "value": 13.1,
+      "shap_high": -0.241
+     },
+     {
+      "value": 14.4,
+      "shap_high": -0.214
+     },
+     {
+      "value": 15.6,
+      "shap_high": -0.198
+     },
+     {
+      "value": 16.8,
+      "shap_high": -0.167
+     },
+     {
+      "value": 18.0,
+      "shap_high": -0.116
+     },
+     {
+      "value": 19.2,
+      "shap_high": -0.041
+     },
+     {
+      "value": 20.5,
+      "shap_high": 0.005
+     },
+     {
+      "value": 21.8,
+      "shap_high": -0.002
+     },
+     {
+      "value": 23.2,
+      "shap_high": 0.03
+     },
+     {
+      "value": 24.7,
+      "shap_high": 0.141
+     },
+     {
+      "value": 26.4,
+      "shap_high": 0.249
+     },
+     {
+      "value": 28.4,
+      "shap_high": 0.309
+     },
+     {
+      "value": 30.8,
+      "shap_high": 0.405
+     },
+     {
+      "value": 34.0,
+      "shap_high": 0.425
+     },
+     {
+      "value": 39.7,
+      "shap_high": 0.524
+     }
+    ]
+   },
+   "Login_Frequency": {
+    "threshold": 14.1,
+    "median_high_class": 18.0,
+    "median_all": 11.0,
+    "curve": [
+     {
+      "value": 0.0,
+      "shap_high": -0.45
+     },
+     {
+      "value": 3.0,
+      "shap_high": -0.367
+     },
+     {
+      "value": 4.0,
+      "shap_high": -0.242
+     },
+     {
+      "value": 6.0,
+      "shap_high": -0.253
+     },
+     {
+      "value": 7.0,
+      "shap_high": -0.266
+     },
+     {
+      "value": 8.0,
+      "shap_high": -0.212
+     },
+     {
+      "value": 9.0,
+      "shap_high": -0.171
+     },
+     {
+      "value": 10.0,
+      "shap_high": -0.08
+     },
+     {
+      "value": 11.0,
+      "shap_high": -0.037
+     },
+     {
+      "value": 12.0,
+      "shap_high": -0.066
+     },
+     {
+      "value": 13.0,
+      "shap_high": -0.069
+     },
+     {
+      "value": 14.0,
+      "shap_high": -0.007
+     },
+     {
+      "value": 15.0,
+      "shap_high": 0.089
+     },
+     {
+      "value": 16.0,
+      "shap_high": 0.181
+     },
+     {
+      "value": 18.0,
+      "shap_high": 0.183
+     },
+     {
+      "value": 19.0,
+      "shap_high": 0.223
+     },
+     {
+      "value": 21.0,
+      "shap_high": 0.367
+     },
+     {
+      "value": 24.0,
+      "shap_high": 0.551
+     },
+     {
+      "value": 29.0,
+      "shap_high": 0.666
+     }
+    ]
+   },
+   "Email_Open_Rate": {
+    "threshold": 22.2,
+    "median_high_class": 31.2,
+    "median_all": 19.7,
+    "curve": [
+     {
+      "value": 0.0,
+      "shap_high": -0.313
+     },
+     {
+      "value": 3.4,
+      "shap_high": -0.254
+     },
+     {
+      "value": 6.3,
+      "shap_high": -0.191
+     },
+     {
+      "value": 8.7,
+      "shap_high": -0.195
+     },
+     {
+      "value": 11.0,
+      "shap_high": -0.199
+     },
+     {
+      "value": 13.1,
+      "shap_high": -0.203
+     },
+     {
+      "value": 15.0,
+      "shap_high": -0.183
+     },
+     {
+      "value": 16.9,
+      "shap_high": -0.154
+     },
+     {
+      "value": 18.8,
+      "shap_high": -0.097
+     },
+     {
+      "value": 20.7,
+      "shap_high": -0.057
+     },
+     {
+      "value": 22.7,
+      "shap_high": 0.018
+     },
+     {
+      "value": 24.7,
+      "shap_high": 0.041
+     },
+     {
+      "value": 26.8,
+      "shap_high": 0.068
+     },
+     {
+      "value": 29.2,
+      "shap_high": 0.112
+     },
+     {
+      "value": 31.7,
+      "shap_high": 0.125
+     },
+     {
+      "value": 34.7,
+      "shap_high": 0.169
+     },
+     {
+      "value": 38.4,
+      "shap_high": 0.259
+     },
+     {
+      "value": 43.2,
+      "shap_high": 0.363
+     },
+     {
+      "value": 51.9,
+      "shap_high": 0.453
+     }
+    ]
+   },
+   "Wishlist_Items": {
+    "threshold": 5.0,
+    "median_high_class": 6.0,
+    "median_all": 4.0,
+    "curve": [
+     {
+      "value": 1.0,
+      "shap_high": -0.275
+     },
+     {
+      "value": 2.0,
+      "shap_high": -0.203
+     },
+     {
+      "value": 3.0,
+      "shap_high": -0.204
+     },
+     {
+      "value": 4.0,
+      "shap_high": -0.043
+     },
+     {
+      "value": 5.0,
+      "shap_high": -0.004
+     },
+     {
+      "value": 6.0,
+      "shap_high": 0.169
+     },
+     {
+      "value": 7.0,
+      "shap_high": 0.165
+     },
+     {
+      "value": 8.0,
+      "shap_high": 0.264
+     },
+     {
+      "value": 9.0,
+      "shap_high": 0.381
+     },
+     {
+      "value": 10.0,
+      "shap_high": 0.429
+     },
+     {
+      "value": 12.0,
+      "shap_high": 0.52
+     }
+    ]
+   }
+  }
+ },
+ "segments": {
+  "items": [
+   {
+    "name": "Tương tác thấp",
+    "rows": 16598,
+    "share_percent": 41.5,
+    "purchase_level_percent": {
+     "Low": 76.3,
+     "Medium": 20.4,
+     "High": 3.3
+    },
+    "churn_rate_percent": 41.4,
+    "medians": {
+     "Login_Frequency": 5.0,
+     "Session_Duration_Avg": 18.4,
+     "Pages_Per_Session": 5.7,
+     "Total_Purchases": 8.0,
+     "Average_Order_Value": 113.1,
+     "Days_Since_Last_Purchase": 21.0,
+     "Cart_Abandonment_Rate": 69.4,
+     "Discount_Usage_Rate": 40.2,
+     "Lifetime_Value": 796.4
+    },
+    "goal": "Giữ chân và kích hoạt lại",
+    "actions": [
+     "Nhắc giỏ hàng bị bỏ dở (tỷ lệ bỏ giỏ cao nhất)",
+     "Khuyến khích cài và dùng ứng dụng di động",
+     "Email cá nhân hóa để tăng tần suất quay lại"
+    ]
+   },
+   {
+    "name": "Tương tác trung bình",
+    "rows": 15671,
+    "share_percent": 39.2,
+    "purchase_level_percent": {
+     "Low": 15.9,
+     "Medium": 51.4,
+     "High": 32.7
+    },
+    "churn_rate_percent": 20.6,
+    "medians": {
+     "Login_Frequency": 13.0,
+     "Session_Duration_Avg": 29.2,
+     "Pages_Per_Session": 9.4,
+     "Total_Purchases": 14.0,
+     "Average_Order_Value": 112.9,
+     "Days_Since_Last_Purchase": 21.0,
+     "Cart_Abandonment_Rate": 54.0,
+     "Discount_Usage_Rate": 40.0,
+     "Lifetime_Value": 1422.8
+    },
+    "goal": "Chuyển đổi lên nhóm mua nhiều",
+    "actions": [
+     "Gợi ý sản phẩm từ danh sách yêu thích",
+     "Nội dung giúp kéo dài phiên: bộ sưu tập, so sánh sản phẩm",
+     "Chương trình tích điểm theo số lần mua"
+    ]
+   },
+   {
+    "name": "Tương tác cao",
+    "rows": 7699,
+    "share_percent": 19.3,
+    "purchase_level_percent": {
+     "Low": 0.0,
+     "Medium": 8.7,
+     "High": 91.3
+    },
+    "churn_rate_percent": 18.8,
+    "medians": {
+     "Login_Frequency": 22.0,
+     "Session_Duration_Avg": 41.6,
+     "Pages_Per_Session": 13.7,
+     "Total_Purchases": 20.8,
+     "Average_Order_Value": 112.8,
+     "Days_Since_Last_Purchase": 21.0,
+     "Cart_Abandonment_Rate": 37.1,
+     "Discount_Usage_Rate": 41.2,
+     "Lifetime_Value": 2152.3
+    },
+    "goal": "Chăm sóc khách hàng trung thành",
+    "actions": [
+     "Ưu đãi hạng thành viên, quyền lợi sớm",
+     "Chương trình giới thiệu bạn bè",
+     "Tránh giảm giá đại trà — nhóm đã mua nhiều"
+    ]
+   }
+  ],
+  "overall_churn_rate_percent": 28.9,
+  "cramers_v_purchase_level": 0.595,
+  "cramers_v_churn": 0.232
+ },
+ "models": {
+  "summary": [
+   {
+    "feature_set": "conservative12",
+    "model": "LogisticRegression",
+    "macro_f1_mean": 0.6882,
+    "macro_f1_std": 0.0052,
+    "accuracy_mean": 0.6999,
+    "medium_f1_mean": 0.5162,
+    "macro_roc_auc_ovr_mean": 0.8621,
+    "log_loss_mean": 0.663,
+    "fit_seconds_mean": 0.6938
+   },
+   {
+    "feature_set": "conservative12",
+    "model": "MLP",
+    "macro_f1_mean": 0.6895,
+    "macro_f1_std": 0.0052,
+    "accuracy_mean": 0.7017,
+    "medium_f1_mean": 0.5248,
+    "macro_roc_auc_ovr_mean": 0.8619,
+    "log_loss_mean": 0.658,
+    "fit_seconds_mean": 18.7138
+   },
+   {
+    "feature_set": "conservative12",
+    "model": "RandomForest",
+    "macro_f1_mean": 0.6893,
+    "macro_f1_std": 0.0045,
+    "accuracy_mean": 0.7004,
+    "medium_f1_mean": 0.5259,
+    "macro_roc_auc_ovr_mean": 0.8584,
+    "log_loss_mean": 0.6729,
+    "fit_seconds_mean": 41.2939
+   },
+   {
+    "feature_set": "conservative12",
+    "model": "XGBoost",
+    "macro_f1_mean": 0.6935,
+    "macro_f1_std": 0.0053,
+    "accuracy_mean": 0.7031,
+    "medium_f1_mean": 0.5366,
+    "macro_roc_auc_ovr_mean": 0.8632,
+    "log_loss_mean": 0.6548,
+    "fit_seconds_mean": 2.1739
+   },
+   {
+    "feature_set": "full24",
+    "model": "LogisticRegression",
+    "macro_f1_mean": 0.7963,
+    "macro_f1_std": 0.0119,
+    "accuracy_mean": 0.8021,
+    "medium_f1_mean": 0.6778,
+    "macro_roc_auc_ovr_mean": 0.933,
+    "log_loss_mean": 0.4686,
+    "fit_seconds_mean": 1.4828
+   },
+   {
+    "feature_set": "full24",
+    "model": "MLP",
+    "macro_f1_mean": 0.8578,
+    "macro_f1_std": 0.0039,
+    "accuracy_mean": 0.8622,
+    "medium_f1_mean": 0.7748,
+    "macro_roc_auc_ovr_mean": 0.9678,
+    "log_loss_mean": 0.3095,
+    "fit_seconds_mean": 7.5935
+   },
+   {
+    "feature_set": "full24",
+    "model": "RandomForest",
+    "macro_f1_mean": 0.7945,
+    "macro_f1_std": 0.0044,
+    "accuracy_mean": 0.8004,
+    "medium_f1_mean": 0.6816,
+    "macro_roc_auc_ovr_mean": 0.9356,
+    "log_loss_mean": 0.4993,
+    "fit_seconds_mean": 6.6739
+   },
+   {
+    "feature_set": "full24",
+    "model": "XGBoost",
+    "macro_f1_mean": 0.8676,
+    "macro_f1_std": 0.0025,
+    "accuracy_mean": 0.8714,
+    "medium_f1_mean": 0.7918,
+    "macro_roc_auc_ovr_mean": 0.9722,
+    "log_loss_mean": 0.2835,
+    "fit_seconds_mean": 5.3646
+   }
+  ],
+  "tests": {
+   "conservative12": {
+    "friedman_p": 8.05321e-05,
+    "best": "XGBoost",
+    "average_rank": {
+     "LogisticRegression": 3.2,
+     "MLP": 2.67,
+     "RandomForest": 2.93,
+     "XGBoost": 1.2
+    },
+    "versus": {
+     "LogisticRegression": {
+      "difference": 0.0053,
+      "wins": 15,
+      "comparisons": 15,
+      "p_holm": 0.010086
+     },
+     "MLP": {
+      "difference": 0.004,
+      "wins": 13,
+      "comparisons": 15,
+      "p_holm": 0.107403
+     },
+     "RandomForest": {
+      "difference": 0.0043,
+      "wins": 14,
+      "comparisons": 15,
+      "p_holm": 0.055069
+     }
+    }
+   },
+   "full24": {
+    "friedman_p": 8.3e-09,
+    "best": "XGBoost",
+    "average_rank": {
+     "LogisticRegression": 3.53,
+     "MLP": 2.0,
+     "RandomForest": 3.47,
+     "XGBoost": 1.0
+    },
+    "versus": {
+     "LogisticRegression": {
+      "difference": 0.0713,
+      "wins": 15,
+      "comparisons": 15,
+      "p_holm": 0.0
+     },
+     "MLP": {
+      "difference": 0.0098,
+      "wins": 15,
+      "comparisons": 15,
+      "p_holm": 0.00045
+     },
+     "RandomForest": {
+      "difference": 0.0731,
+      "wins": 15,
+      "comparisons": 15,
+      "p_holm": 0.0
+     }
+    }
+   }
+  },
+  "feature_set_gain": {
+   "LogisticRegression": 0.1081,
+   "MLP": 0.1683,
+   "RandomForest": 0.1052,
+   "XGBoost": 0.1741
+  }
+ },
+ "holdout": {
+  "protocol_locked_at": "2026-11-09T13:55:48.909535+00:00",
+  "scored_at": "2026-11-09T13:56:39.191538+00:00",
+  "rows": 9992,
+  "bootstrap": 2000,
+  "conservative12": {
+   "metrics": {
+    "accuracy": 0.7123,
+    "macro_precision": 0.7096,
+    "macro_recall": 0.7015,
+    "macro_f1": 0.7034,
+    "macro_roc_auc_ovr": 0.8668,
+    "macro_average_precision_ovr": 0.7481,
+    "multiclass_brier_sum": 0.3882,
+    "log_loss": 0.6494,
+    "top_label_ece_10_bins": 0.0098
+   },
+   "per_class_f1": {
+    "Low": 0.7902,
+    "Medium": 0.5547,
+    "High": 0.7653
+   },
+   "ci95": {
+    "macro_f1": {
+     "low": 0.6944,
+     "high": 0.7122
+    },
+    "accuracy": {
+     "low": 0.703,
+     "high": 0.721
+    }
+   },
+   "confusion_matrix": [
+    [
+     3183,
+     591,
+     17
+    ],
+    [
+     889,
+     1660,
+     477
+    ],
+    [
+     193,
+     708,
+     2274
+    ]
+   ],
+   "reliability_bins": [
+    {
+     "lower": 0.0,
+     "upper": 0.1,
+     "count": 0,
+     "accuracy": null,
+     "confidence": null
+    },
+    {
+     "lower": 0.1,
+     "upper": 0.2,
+     "count": 0,
+     "accuracy": null,
+     "confidence": null
+    },
+    {
+     "lower": 0.2,
+     "upper": 0.3,
+     "count": 0,
+     "accuracy": null,
+     "confidence": null
+    },
+    {
+     "lower": 0.3,
+     "upper": 0.4,
+     "count": 22,
+     "accuracy": 0.3636,
+     "confidence": 0.3882
+    },
+    {
+     "lower": 0.4,
+     "upper": 0.5,
+     "count": 1039,
+     "accuracy": 0.5043,
+     "confidence": 0.4707
+    },
+    {
+     "lower": 0.5,
+     "upper": 0.6,
+     "count": 2380,
+     "accuracy": 0.545,
+     "confidence": 0.5499
+    },
+    {
+     "lower": 0.6,
+     "upper": 0.7,
+     "count": 1797,
+     "accuracy": 0.6427,
+     "confidence": 0.6451
+    },
+    {
+     "lower": 0.7,
+     "upper": 0.8,
+     "count": 1258,
+     "accuracy": 0.7647,
+     "confidence": 0.7496
+    },
+    {
+     "lower": 0.8,
+     "upper": 0.9,
+     "count": 1422,
+     "accuracy": 0.8502,
+     "confidence": 0.8532
+    },
+    {
+     "lower": 0.9,
+     "upper": 1.0,
+     "count": 2074,
+     "accuracy": 0.946,
+     "confidence": 0.9571
+    }
+   ],
+   "error_by_threshold_distance": [
+    {
+     "distance_to_nearest_threshold": "[0;2)",
+     "rows": 3681,
+     "error_rate": 0.4319
+    },
+    {
+     "distance_to_nearest_threshold": "[2;4)",
+     "rows": 3128,
+     "error_rate": 0.3095
+    },
+    {
+     "distance_to_nearest_threshold": "[4;7)",
+     "rows": 1895,
+     "error_rate": 0.1119
+    },
+    {
+     "distance_to_nearest_threshold": "[7;+inf)",
+     "rows": 1288,
+     "error_rate": 0.0815
+    }
+   ]
+  },
+  "full24": {
+   "metrics": {
+    "accuracy": 0.8728,
+    "macro_precision": 0.8707,
+    "macro_recall": 0.8693,
+    "macro_f1": 0.8697,
+    "macro_roc_auc_ovr": 0.9734,
+    "macro_average_precision_ovr": 0.9398,
+    "multiclass_brier_sum": 0.1736,
+    "log_loss": 0.277,
+    "top_label_ece_10_bins": 0.0137
+   },
+   "per_class_f1": {
+    "Low": 0.9131,
+    "Medium": 0.7952,
+    "High": 0.901
+   },
+   "ci95": {
+    "macro_f1": {
+     "low": 0.8627,
+     "high": 0.8765
+    },
+    "accuracy": {
+     "low": 0.8661,
+     "high": 0.8794
+    }
+   },
+   "confusion_matrix": [
+    [
+     3458,
+     333,
+     0
+    ],
+    [
+     322,
+     2461,
+     243
+    ],
+    [
+     3,
+     370,
+     2802
+    ]
+   ],
+   "reliability_bins": [
+    {
+     "lower": 0.0,
+     "upper": 0.1,
+     "count": 0,
+     "accuracy": null,
+     "confidence": null
+    },
+    {
+     "lower": 0.1,
+     "upper": 0.2,
+     "count": 0,
+     "accuracy": null,
+     "confidence": null
+    },
+    {
+     "lower": 0.2,
+     "upper": 0.3,
+     "count": 0,
+     "accuracy": null,
+     "confidence": null
+    },
+    {
+     "lower": 0.3,
+     "upper": 0.4,
+     "count": 0,
+     "accuracy": null,
+     "confidence": null
+    },
+    {
+     "lower": 0.4,
+     "upper": 0.5,
+     "count": 24,
+     "accuracy": 0.5417,
+     "confidence": 0.4938
+    },
+    {
+     "lower": 0.5,
+     "upper": 0.6,
+     "count": 847,
+     "accuracy": 0.5218,
+     "confidence": 0.5499
+    },
+    {
+     "lower": 0.6,
+     "upper": 0.7,
+     "count": 893,
+     "accuracy": 0.6529,
+     "confidence": 0.6534
+    },
+    {
+     "lower": 0.7,
+     "upper": 0.8,
+     "count": 1139,
+     "accuracy": 0.7682,
+     "confidence": 0.7536
+    },
+    {
+     "lower": 0.8,
+     "upper": 0.9,
+     "count": 1794,
+     "accuracy": 0.8673,
+     "confidence": 0.8544
+    },
+    {
+     "lower": 0.9,
+     "upper": 1.0,
+     "count": 5295,
+     "accuracy": 0.9919,
+     "confidence": 0.9783
+    }
+   ],
+   "error_by_threshold_distance": [
+    {
+     "distance_to_nearest_threshold": "[0;2)",
+     "rows": 3681,
+     "error_rate": 0.2804
+    },
+    {
+     "distance_to_nearest_threshold": "[2;4)",
+     "rows": 3128,
+     "error_rate": 0.0697
+    },
+    {
+     "distance_to_nearest_threshold": "[4;7)",
+     "rows": 1895,
+     "error_rate": 0.0095
+    },
+    {
+     "distance_to_nearest_threshold": "[7;+inf)",
+     "rows": 1288,
+     "error_rate": 0.0023
+    }
+   ]
+  },
+  "paired_gain_full24": {
+   "mean": 0.1662,
+   "low": 0.1567,
+   "high": 0.1756
+  }
+ },
+ "leakage": {
+  "rows": 39959,
+  "spearman_ltv_over_aov": 0.939,
+  "spearman_ltv": 0.749,
+  "ratio_quantiles": {
+   "5%": 0.674,
+   "25%": 0.836,
+   "50%": 0.93,
+   "75%": 1.065,
+   "95%": 1.173,
+   "max": 1.2
+  }
+ }
+}

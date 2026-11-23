@@ -1,0 +1,122 @@
+/* Full-width charts keep a readable text size instead of scaling up with the panel. */
+.churn-page .insight-section > .x-chart {
+  max-width: 780px;
+}
+.churn-page .share-bar {
+  margin: 4px 0 8px;
+}
+.churn-risk-dot {
+  display: inline-block;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  margin-right: 7px;
+  vertical-align: middle;
+}
+.churn-direction {
+  display: block;
+  font-size: 10px;
+  color: var(--muted);
+  font-weight: 400;
+}
+.churn-headline {
+  display: flex;
+  gap: 18px;
+  align-items: center;
+  flex-wrap: wrap;
+  margin: 6px 0 10px;
+}
+.churn-headline p {
+  margin: 6px 0 0;
+  font-size: 12px;
+  color: var(--muted);
+  max-width: 520px;
+}
+.churn-gauge {
+  display: grid;
+  place-items: center;
+  min-width: 112px;
+  padding: 12px 14px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--surface-soft);
+}
+.churn-gauge strong {
+  font-size: 26px;
+  color: var(--text);
+}
+.churn-gauge span {
+  font-size: 11px;
+  color: var(--muted);
+}
+.churn-badge {
+  display: inline-block;
+  border: 1.5px solid;
+  border-radius: 999px;
+  padding: 3px 10px;
+  font-size: 12px;
+  font-weight: 600;
+}
+.churn-factors,
+.churn-actions {
+  margin: 0 0 10px;
+  padding-left: 0;
+  list-style: none;
+  display: grid;
+  gap: 6px;
+  font-size: 12px;
+}
+.churn-factors li {
+  display: flex;
+  gap: 8px;
+  align-items: baseline;
+  flex-wrap: wrap;
+}
+.churn-factors li.up span {
+  color: var(--insight-risk);
+}
+.churn-factors li.down span {
+  color: var(--insight-ok);
+}
+.churn-factors small {
+  color: var(--muted);
+}
+.churn-actions li {
+  border-left: 3px solid var(--insight-low);
+  padding: 4px 10px;
+  line-height: 1.6;
+}
+.churn-observed {
+  border-left: 3px solid var(--insight-risk);
+  padding: 6px 10px;
+}
+.churn-card > small {
+  display: block;
+  font-size: 11px;
+  color: var(--muted);
+  line-height: 1.6;
+}
+.churn-prob {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 120px;
+}
+.churn-prob-bar {
+  display: inline-block;
+  height: 6px;
+  border-radius: 3px;
+}
+.churn-watch .page-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 12px;
+}
+.churn-caption {
+  caption-side: top;
+  text-align: left;
+  font-size: 11px;
+  color: var(--muted);
+  padding-bottom: 6px;
+}

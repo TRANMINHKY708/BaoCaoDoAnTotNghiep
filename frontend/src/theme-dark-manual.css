@@ -1,0 +1,87 @@
+/* Hand-tuned night-mode rules that a colour remap cannot express. */
+:root[data-theme='dark'] body {
+  background:
+    radial-gradient(1200px 600px at 85% -10%, #0e3a4a40, transparent 60%),
+    radial-gradient(900px 500px at -10% 110%, #3b1d6a30, transparent 60%), var(--surface-soft);
+  background-attachment: fixed;
+}
+
+/* Bright cyan buttons need dark ink for contrast. */
+:root[data-theme='dark'] .button-primary,
+:root[data-theme='dark'] .button-primary:hover:not(:disabled) {
+  color: #04212b;
+  box-shadow:
+    0 0 0 1px #22d3ee40,
+    0 6px 18px #22d3ee26;
+}
+
+/* Panels: lift off the background with a soft rim instead of a drop shadow. */
+:root[data-theme='dark'] .panel,
+:root[data-theme='dark'] .insight-kpi,
+:root[data-theme='dark'] .threshold-card,
+:root[data-theme='dark'] .segment-card {
+  box-shadow: inset 0 1px 0 #ffffff0a;
+}
+
+/* ---- Charts: vivid strokes with a subtle glow so data reads first ---- */
+:root[data-theme='dark'] .line-chart .series {
+  stroke-width: 2.4;
+  filter: drop-shadow(0 0 4px #22d3ee99);
+}
+:root[data-theme='dark'] .line-chart .dot {
+  fill: #a5f3fc;
+}
+:root[data-theme='dark'] .line-chart .reference {
+  stroke: #fbbf24;
+}
+:root[data-theme='dark'] .line-chart .reference-text {
+  fill: #fbbf24;
+}
+:root[data-theme='dark'] .bar-fill {
+  box-shadow: 0 0 10px #22d3ee33;
+}
+:root[data-theme='dark'] .bar-track,
+:root[data-theme='dark'] .share-bar,
+:root[data-theme='dark'] .behaviour-advice .advice-meter {
+  background: var(--chart-track);
+}
+:root[data-theme='dark'] .donut-wrap svg circle {
+  filter: drop-shadow(0 0 3px #22d3ee55);
+}
+:root[data-theme='dark'] .confusion td {
+  background: rgb(34 211 238 / calc(var(--heat) * 0.55));
+  color: var(--text);
+}
+:root[data-theme='dark'] .confusion td.diag {
+  color: #ffffff;
+  text-shadow: 0 0 6px #0008;
+}
+:root[data-theme='dark'] .confusion td.recall {
+  background: none;
+}
+:root[data-theme='dark'] progress {
+  accent-color: var(--chart-1);
+}
+
+/* Insight finding cards keep their gradient feel on dark. */
+:root[data-theme='dark'] .insight-findings article {
+  background: linear-gradient(135deg, var(--surface), #0c2733);
+  border-color: #164e63;
+}
+:root[data-theme='dark'] .leakage {
+  background: linear-gradient(180deg, #2a1d0b, var(--surface) 45%);
+  border-color: #5c3d12;
+}
+:root[data-theme='dark'] .churn-chip.risk {
+  background: #3a1220;
+}
+:root[data-theme='dark'] .churn-chip.ok {
+  background: #0d2e1d;
+}
+
+.theme-toggle {
+  border: 1px solid var(--border);
+}
+:root[data-theme='dark'] .theme-toggle {
+  color: #fbbf24;
+}

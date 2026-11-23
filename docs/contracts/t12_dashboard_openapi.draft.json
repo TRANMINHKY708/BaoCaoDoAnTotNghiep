@@ -1,0 +1,1559 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "T12 Dashboard aggregation — APPROVED CONTRACT",
+    "version": "0.1.0-design",
+    "description": "Approved T12 contract, implemented as one additive GET. This one-path contract is not the full runtime OpenAPI; use docs/api/t12_openapi.json. Existing45operations unchanged; runtime total46. All examples are synthetic fixtures, not actual data."
+  },
+  "x-approval-status": "APPROVED_IMPLEMENTED_T12",
+  "x-existing-runtime-operations": 45,
+  "x-proposed-runtime-operations": 46,
+  "paths": {
+    "/api/v1/dashboard/overview": {
+      "get": {
+        "operationId": "dashboard_overview_v1_proposed",
+        "tags": [
+          "Dashboard — stored snapshot analytics"
+        ],
+        "summary": "Read-only aggregation with explicit units/cohort/UTC semantics",
+        "description": "Secured viewer/operator only. Local remains explicit unauthenticated demo. Cross-field rules in docs/t12_dashboard_api_design.md. No inference/write/migration/registry/promotion or event-time/causal forecast. No request body; nonempty body400.",
+        "security": [
+          {
+            "DashboardWorkspaceBearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "date_from",
+            "in": "query",
+            "description": "Inclusive UTC date. Both dates or neither; default last30 UTC calendar days including today.",
+            "schema": {
+              "type": "string",
+              "format": "date"
+            }
+          },
+          {
+            "name": "date_to",
+            "in": "query",
+            "description": "Exclusive UTC date;1..366days; no later than tomorrow UTC. Effective data capped at as_of.",
+            "schema": {
+              "type": "string",
+              "format": "date"
+            }
+          },
+          {
+            "name": "classification_model_version",
+            "in": "query",
+            "description": "Task-scoped catalog version; unknown version404, no fallback/promotion.",
+            "schema": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 50,
+              "default": "1.0.0"
+            },
+            "examples": {
+              "legacy": {
+                "value": "1.0.0"
+              },
+              "research": {
+                "value": "2.0.0-snapshot-conservative12"
+              }
+            }
+          },
+          {
+            "name": "segmentation_model_version",
+            "in": "query",
+            "description": "Task-scoped catalog version; unknown version404, no fallback/promotion.",
+            "schema": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 50,
+              "default": "1.0.0"
+            },
+            "examples": {
+              "legacy": {
+                "value": "1.0.0"
+              },
+              "research": {
+                "value": "2.0.0-snapshot-k3"
+              }
+            }
+          },
+          {
+            "name": "segment_id",
+            "in": "query",
+            "description": "Optional latest-segmentation-in-window customer cohort; must match selected version namespace or422.",
+            "schema": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 100
+            }
+          },
+          {
+            "name": "table_limit",
+            "in": "query",
+            "description": "Bounded preview only, not T13 pagination.",
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 20,
+              "default": 10
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Read-only consistent aggregate; empty history is200, not503.",
+            "headers": {
+              "Cache-Control": {
+                "schema": {
+                  "type": "string",
+                  "const": "no-store"
+                }
+              },
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string",
+                  "format": "uuid"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DashboardOverview"
+                },
+                "examples": {
+                  "populated": {
+                    "summary": "SYNTHETIC schema fixture only, NOT application data. Dates2026-10-21..24 and table_limit2.",
+                    "value": {
+                      "contract_version": "dashboard-snapshot-v1",
+                      "generated_at": "2026-10-23T08:00:01Z",
+                      "as_of": "2026-10-23T08:00:00Z",
+                      "source": "application_postgresql_not_research_dataset",
+                      "scope": "stored_snapshot_analysis_not_causal_or_future",
+                      "purchase_level_source": "stored_model_prediction_not_ground_truth",
+                      "target_thresholds": {
+                        "low_inclusive": 10,
+                        "medium_inclusive": 15
+                      },
+                      "filters": {
+                        "date_from": "2026-10-21",
+                        "date_to": "2026-10-24",
+                        "window_start": "2026-10-21T00:00:00Z",
+                        "window_end": "2026-10-23T08:00:00Z",
+                        "timezone": "UTC",
+                        "classification_model_version": "1.0.0",
+                        "segmentation_model_version": "1.0.0",
+                        "segment_id": null
+                      },
+                      "workspace_totals": {
+                        "filter_scope": "all_workspace_as_of_not_filtered",
+                        "customers": 10,
+                        "active_customers": 8,
+                        "behavior_snapshots": 14,
+                        "registered_models": 2
+                      },
+                      "cohort": {
+                        "customers": 10,
+                        "include_inactive": true,
+                        "selection_rule": "all_current_customers"
+                      },
+                      "classification": {
+                        "model": {
+                          "task": "classification",
+                          "model_id": "purchase-level-xgboost",
+                          "model_version": "1.0.0",
+                          "artifact_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+                          "available_for_inference": false,
+                          "persistence_supported": true
+                        },
+                        "stored_results": {
+                          "total": 10,
+                          "linked": 8,
+                          "unlinked": 2,
+                          "excluded_unlinked": 0
+                        },
+                        "customers": {
+                          "with_result": 5,
+                          "without_result": 5
+                        },
+                        "distribution": [
+                          {
+                            "purchase_level": "Low",
+                            "customers": 2,
+                            "share": 0.4
+                          },
+                          {
+                            "purchase_level": "Medium",
+                            "customers": 1,
+                            "share": 0.2
+                          },
+                          {
+                            "purchase_level": "High",
+                            "customers": 2,
+                            "share": 0.4
+                          }
+                        ],
+                        "mean_probabilities": {
+                          "Low": 0.4,
+                          "Medium": 0.25,
+                          "High": 0.35
+                        },
+                        "latest_result_at": "2026-10-23T07:00:00Z"
+                      },
+                      "segmentation": {
+                        "model": {
+                          "task": "segmentation",
+                          "model_id": "customer-segmentation-kmeans",
+                          "model_version": "1.0.0",
+                          "artifact_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+                          "available_for_inference": false,
+                          "persistence_supported": true
+                        },
+                        "stored_results": {
+                          "total": 9,
+                          "linked": 7,
+                          "unlinked": 2,
+                          "excluded_unlinked": 0
+                        },
+                        "customers": {
+                          "with_result": 6,
+                          "without_result": 4
+                        },
+                        "distribution": [
+                          {
+                            "cluster": 0,
+                            "segment_id": "legacy:1.0.0:cluster:0",
+                            "display_label": null,
+                            "customers": 3,
+                            "share": 0.5
+                          },
+                          {
+                            "cluster": 1,
+                            "segment_id": "legacy:1.0.0:cluster:1",
+                            "display_label": null,
+                            "customers": 2,
+                            "share": 0.3333333333333333
+                          },
+                          {
+                            "cluster": 2,
+                            "segment_id": "legacy:1.0.0:cluster:2",
+                            "display_label": null,
+                            "customers": 1,
+                            "share": 0.16666666666666666
+                          }
+                        ],
+                        "latest_result_at": "2026-10-23T07:30:00Z"
+                      },
+                      "what_if": {
+                        "scenarios": 2,
+                        "scenario_results": 3,
+                        "excluded_unlinked_scenarios": 0,
+                        "filter_scope": "window_and_cohort_not_model_selectors",
+                        "integrity": "counts_only_not_verified",
+                        "latest_scenario_at": "2026-10-23T06:00:00Z"
+                      },
+                      "activity_by_day": [
+                        {
+                          "date": "2026-10-21",
+                          "purchase_results": 3,
+                          "segmentation_results": 4,
+                          "what_if_scenarios": 1,
+                          "is_partial": false
+                        },
+                        {
+                          "date": "2026-10-22",
+                          "purchase_results": 3,
+                          "segmentation_results": 3,
+                          "what_if_scenarios": 0,
+                          "is_partial": false
+                        },
+                        {
+                          "date": "2026-10-23",
+                          "purchase_results": 4,
+                          "segmentation_results": 2,
+                          "what_if_scenarios": 1,
+                          "is_partial": true
+                        }
+                      ],
+                      "recent_customers": {
+                        "selection_rule": "cohort_customer_created_at_desc_id_desc",
+                        "limit": 2,
+                        "cohort_total": 10,
+                        "items": [
+                          {
+                            "id": "00000000-0000-4000-8000-000000000002",
+                            "external_id": "SCHEMA-EXAMPLE-002",
+                            "is_active": true,
+                            "created_at": "2026-10-22T00:00:00Z",
+                            "purchase_in_window": {
+                              "purchase_level": "Low",
+                              "created_at": "2026-10-23T07:00:00Z"
+                            },
+                            "segment_in_window": {
+                              "segment_id": "legacy:1.0.0:cluster:0",
+                              "display_label": null,
+                              "created_at": "2026-10-23T07:30:00Z"
+                            }
+                          },
+                          {
+                            "id": "00000000-0000-4000-8000-000000000001",
+                            "external_id": "SCHEMA-EXAMPLE-001",
+                            "is_active": false,
+                            "created_at": "2026-10-21T00:00:00Z",
+                            "purchase_in_window": null,
+                            "segment_in_window": null
+                          }
+                        ]
+                      },
+                      "warnings": [
+                        "PARTIAL_CURRENT_DAY",
+                        "UNLINKED_RESULTS_NOT_CUSTOMERS",
+                        "SEGMENT_LABELS_UNAVAILABLE",
+                        "INFERENCE_MODEL_UNAVAILABLE"
+                      ]
+                    }
+                  },
+                  "empty": {
+                    "summary": "SYNTHETIC empty database fixture, NOT a live API result.",
+                    "value": {
+                      "contract_version": "dashboard-snapshot-v1",
+                      "generated_at": "2026-10-23T08:00:01Z",
+                      "as_of": "2026-10-23T08:00:00Z",
+                      "source": "application_postgresql_not_research_dataset",
+                      "scope": "stored_snapshot_analysis_not_causal_or_future",
+                      "purchase_level_source": "stored_model_prediction_not_ground_truth",
+                      "target_thresholds": {
+                        "low_inclusive": 10,
+                        "medium_inclusive": 15
+                      },
+                      "filters": {
+                        "date_from": "2026-10-21",
+                        "date_to": "2026-10-24",
+                        "window_start": "2026-10-21T00:00:00Z",
+                        "window_end": "2026-10-23T08:00:00Z",
+                        "timezone": "UTC",
+                        "classification_model_version": "1.0.0",
+                        "segmentation_model_version": "1.0.0",
+                        "segment_id": null
+                      },
+                      "workspace_totals": {
+                        "filter_scope": "all_workspace_as_of_not_filtered",
+                        "customers": 0,
+                        "active_customers": 0,
+                        "behavior_snapshots": 0,
+                        "registered_models": 0
+                      },
+                      "cohort": {
+                        "customers": 0,
+                        "include_inactive": true,
+                        "selection_rule": "all_current_customers"
+                      },
+                      "classification": {
+                        "model": {
+                          "task": "classification",
+                          "model_id": "purchase-level-xgboost",
+                          "model_version": "1.0.0",
+                          "artifact_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+                          "available_for_inference": false,
+                          "persistence_supported": true
+                        },
+                        "stored_results": {
+                          "total": 0,
+                          "linked": 0,
+                          "unlinked": 0,
+                          "excluded_unlinked": 0
+                        },
+                        "customers": {
+                          "with_result": 0,
+                          "without_result": 0
+                        },
+                        "distribution": [
+                          {
+                            "purchase_level": "Low",
+                            "customers": 0,
+                            "share": null
+                          },
+                          {
+                            "purchase_level": "Medium",
+                            "customers": 0,
+                            "share": null
+                          },
+                          {
+                            "purchase_level": "High",
+                            "customers": 0,
+                            "share": null
+                          }
+                        ],
+                        "mean_probabilities": null,
+                        "latest_result_at": null
+                      },
+                      "segmentation": {
+                        "model": {
+                          "task": "segmentation",
+                          "model_id": "customer-segmentation-kmeans",
+                          "model_version": "1.0.0",
+                          "artifact_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+                          "available_for_inference": false,
+                          "persistence_supported": true
+                        },
+                        "stored_results": {
+                          "total": 0,
+                          "linked": 0,
+                          "unlinked": 0,
+                          "excluded_unlinked": 0
+                        },
+                        "customers": {
+                          "with_result": 0,
+                          "without_result": 0
+                        },
+                        "distribution": [
+                          {
+                            "cluster": 0,
+                            "segment_id": "legacy:1.0.0:cluster:0",
+                            "display_label": null,
+                            "customers": 0,
+                            "share": null
+                          },
+                          {
+                            "cluster": 1,
+                            "segment_id": "legacy:1.0.0:cluster:1",
+                            "display_label": null,
+                            "customers": 0,
+                            "share": null
+                          },
+                          {
+                            "cluster": 2,
+                            "segment_id": "legacy:1.0.0:cluster:2",
+                            "display_label": null,
+                            "customers": 0,
+                            "share": null
+                          }
+                        ],
+                        "latest_result_at": null
+                      },
+                      "what_if": {
+                        "scenarios": 0,
+                        "scenario_results": 0,
+                        "excluded_unlinked_scenarios": 0,
+                        "filter_scope": "window_and_cohort_not_model_selectors",
+                        "integrity": "counts_only_not_verified",
+                        "latest_scenario_at": null
+                      },
+                      "activity_by_day": [
+                        {
+                          "date": "2026-10-21",
+                          "purchase_results": 0,
+                          "segmentation_results": 0,
+                          "what_if_scenarios": 0,
+                          "is_partial": false
+                        },
+                        {
+                          "date": "2026-10-22",
+                          "purchase_results": 0,
+                          "segmentation_results": 0,
+                          "what_if_scenarios": 0,
+                          "is_partial": false
+                        },
+                        {
+                          "date": "2026-10-23",
+                          "purchase_results": 0,
+                          "segmentation_results": 0,
+                          "what_if_scenarios": 0,
+                          "is_partial": true
+                        }
+                      ],
+                      "recent_customers": {
+                        "selection_rule": "cohort_customer_created_at_desc_id_desc",
+                        "limit": 2,
+                        "cohort_total": 0,
+                        "items": []
+                      },
+                      "warnings": [
+                        "PARTIAL_CURRENT_DAY",
+                        "SEGMENT_LABELS_UNAVAILABLE",
+                        "INFERENCE_MODEL_UNAVAILABLE"
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "INVALID_REQUEST: nonempty GET body unsupported",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../api/t9_openapi.json#/components/schemas/ErrorEnvelope"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Secured profile requires a valid credential",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../api/t9_openapi.json#/components/schemas/ErrorEnvelope"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Secured access denied; no ownership expansion",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../api/t9_openapi.json#/components/schemas/ErrorEnvelope"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "MODEL_VERSION_NOT_FOUND",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../api/t9_openapi.json#/components/schemas/ErrorEnvelope"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "MODEL_REGISTRY_MISMATCH / MODEL_PERSISTENCE_POLICY_MISMATCH / DASHBOARD_DATA_INTEGRITY_ERROR",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../api/t9_openapi.json#/components/schemas/ErrorEnvelope"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "VALIDATION_ERROR / INVALID_SEGMENT_FILTER; also unknown or duplicate query",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../api/t9_openapi.json#/components/schemas/ErrorEnvelope"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Existing T10 quota, Retry-After",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../api/t9_openapi.json#/components/schemas/ErrorEnvelope"
+                }
+              }
+            },
+            "headers": {
+              "Retry-After": {
+                "schema": {
+                  "type": "integer",
+                  "minimum": 1
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Safe INTERNAL_ERROR",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../api/t9_openapi.json#/components/schemas/ErrorEnvelope"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "DATABASE_UNAVAILABLE / DASHBOARD_QUERY_TIMEOUT; timeout Retry-After1",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "../api/t9_openapi.json#/components/schemas/ErrorEnvelope"
+                }
+              }
+            },
+            "headers": {
+              "Retry-After": {
+                "schema": {
+                  "type": "integer",
+                  "minimum": 1
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "DashboardWorkspaceBearer": {
+        "type": "http",
+        "scheme": "bearer",
+        "description": "Only when secured profile enabled. Existing shared workspace credential, not a new login/issuer."
+      }
+    },
+    "schemas": {
+      "DashboardRecordCounts": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "total": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "linked": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "unlinked": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "excluded_unlinked": {
+            "type": "integer",
+            "minimum": 0
+          }
+        },
+        "required": [
+          "total",
+          "linked",
+          "unlinked",
+          "excluded_unlinked"
+        ],
+        "description": "Rows, not customers; total=linked+unlinked. excluded_unlinked is outside total."
+      },
+      "DashboardCoverage": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "with_result": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "without_result": {
+            "type": "integer",
+            "minimum": 0
+          }
+        },
+        "required": [
+          "with_result",
+          "without_result"
+        ],
+        "description": "Linked latest-result customers and missing-result customers; sum equals cohort.customers."
+      },
+      "DashboardClassificationModel": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "task": {
+            "type": "string",
+            "const": "classification"
+          },
+          "model_id": {
+            "type": "string",
+            "const": "purchase-level-xgboost"
+          },
+          "model_version": {
+            "type": "string",
+            "enum": [
+              "1.0.0",
+              "2.0.0-snapshot-conservative12"
+            ]
+          },
+          "artifact_sha256": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$",
+            "description": "Expected pinned checksum, not a newly executed prediction."
+          },
+          "available_for_inference": {
+            "type": "boolean"
+          },
+          "persistence_supported": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "task",
+          "model_id",
+          "model_version",
+          "artifact_sha256",
+          "available_for_inference",
+          "persistence_supported"
+        ]
+      },
+      "DashboardSegmentationModel": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "task": {
+            "type": "string",
+            "const": "segmentation"
+          },
+          "model_id": {
+            "type": "string",
+            "const": "customer-segmentation-kmeans"
+          },
+          "model_version": {
+            "type": "string",
+            "enum": [
+              "1.0.0",
+              "2.0.0-snapshot-k3"
+            ]
+          },
+          "artifact_sha256": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$",
+            "description": "Expected pinned checksum, not a newly executed prediction."
+          },
+          "available_for_inference": {
+            "type": "boolean"
+          },
+          "persistence_supported": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "task",
+          "model_id",
+          "model_version",
+          "artifact_sha256",
+          "available_for_inference",
+          "persistence_supported"
+        ]
+      },
+      "DashboardProbabilities": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "Low": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 1
+          },
+          "Medium": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 1
+          },
+          "High": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 1
+          }
+        },
+        "required": [
+          "Low",
+          "Medium",
+          "High"
+        ],
+        "description": "Mean of latest linked per-customer predictions only; not transaction confidence."
+      },
+      "DashboardPurchaseDistribution": {
+        "type": "array",
+        "minItems": 3,
+        "maxItems": 3,
+        "prefixItems": [
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "purchase_level": {
+                "type": "string",
+                "const": "Low"
+              },
+              "customers": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "share": {
+                "anyOf": [
+                  {
+                    "type": "number",
+                    "minimum": 0,
+                    "maximum": 1
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              }
+            },
+            "required": [
+              "purchase_level",
+              "customers",
+              "share"
+            ]
+          },
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "purchase_level": {
+                "type": "string",
+                "const": "Medium"
+              },
+              "customers": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "share": {
+                "anyOf": [
+                  {
+                    "type": "number",
+                    "minimum": 0,
+                    "maximum": 1
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              }
+            },
+            "required": [
+              "purchase_level",
+              "customers",
+              "share"
+            ]
+          },
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "purchase_level": {
+                "type": "string",
+                "const": "High"
+              },
+              "customers": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "share": {
+                "anyOf": [
+                  {
+                    "type": "number",
+                    "minimum": 0,
+                    "maximum": 1
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              }
+            },
+            "required": [
+              "purchase_level",
+              "customers",
+              "share"
+            ]
+          }
+        ],
+        "items": false
+      },
+      "DashboardSegmentDistribution": {
+        "type": "array",
+        "minItems": 3,
+        "maxItems": 3,
+        "prefixItems": [
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "cluster": {
+                "type": "number",
+                "const": 0
+              },
+              "segment_id": {
+                "type": "string",
+                "enum": [
+                  "legacy:1.0.0:cluster:0",
+                  "legacy:1.0.0:cluster:1",
+                  "legacy:1.0.0:cluster:2",
+                  "engagement_low",
+                  "engagement_medium",
+                  "engagement_high"
+                ]
+              },
+              "display_label": {
+                "anyOf": [
+                  {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 150
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "customers": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "share": {
+                "anyOf": [
+                  {
+                    "type": "number",
+                    "minimum": 0,
+                    "maximum": 1
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              }
+            },
+            "required": [
+              "cluster",
+              "segment_id",
+              "display_label",
+              "customers",
+              "share"
+            ]
+          },
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "cluster": {
+                "type": "number",
+                "const": 1
+              },
+              "segment_id": {
+                "type": "string",
+                "enum": [
+                  "legacy:1.0.0:cluster:0",
+                  "legacy:1.0.0:cluster:1",
+                  "legacy:1.0.0:cluster:2",
+                  "engagement_low",
+                  "engagement_medium",
+                  "engagement_high"
+                ]
+              },
+              "display_label": {
+                "anyOf": [
+                  {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 150
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "customers": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "share": {
+                "anyOf": [
+                  {
+                    "type": "number",
+                    "minimum": 0,
+                    "maximum": 1
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              }
+            },
+            "required": [
+              "cluster",
+              "segment_id",
+              "display_label",
+              "customers",
+              "share"
+            ]
+          },
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "cluster": {
+                "type": "number",
+                "const": 2
+              },
+              "segment_id": {
+                "type": "string",
+                "enum": [
+                  "legacy:1.0.0:cluster:0",
+                  "legacy:1.0.0:cluster:1",
+                  "legacy:1.0.0:cluster:2",
+                  "engagement_low",
+                  "engagement_medium",
+                  "engagement_high"
+                ]
+              },
+              "display_label": {
+                "anyOf": [
+                  {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 150
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "customers": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "share": {
+                "anyOf": [
+                  {
+                    "type": "number",
+                    "minimum": 0,
+                    "maximum": 1
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              }
+            },
+            "required": [
+              "cluster",
+              "segment_id",
+              "display_label",
+              "customers",
+              "share"
+            ]
+          }
+        ],
+        "items": false
+      },
+      "DashboardClassification": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "model": {
+            "$ref": "#/components/schemas/DashboardClassificationModel"
+          },
+          "stored_results": {
+            "$ref": "#/components/schemas/DashboardRecordCounts"
+          },
+          "customers": {
+            "$ref": "#/components/schemas/DashboardCoverage"
+          },
+          "distribution": {
+            "$ref": "#/components/schemas/DashboardPurchaseDistribution"
+          },
+          "mean_probabilities": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/DashboardProbabilities"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "latest_result_at": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "date-time"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        },
+        "required": [
+          "model",
+          "stored_results",
+          "customers",
+          "distribution",
+          "mean_probabilities",
+          "latest_result_at"
+        ]
+      },
+      "DashboardSegmentation": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "model": {
+            "$ref": "#/components/schemas/DashboardSegmentationModel"
+          },
+          "stored_results": {
+            "$ref": "#/components/schemas/DashboardRecordCounts"
+          },
+          "customers": {
+            "$ref": "#/components/schemas/DashboardCoverage"
+          },
+          "distribution": {
+            "$ref": "#/components/schemas/DashboardSegmentDistribution"
+          },
+          "latest_result_at": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "date-time"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        },
+        "required": [
+          "model",
+          "stored_results",
+          "customers",
+          "distribution",
+          "latest_result_at"
+        ]
+      },
+      "DashboardDay": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "date": {
+            "type": "string",
+            "format": "date"
+          },
+          "purchase_results": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "segmentation_results": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "what_if_scenarios": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "is_partial": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "date",
+          "purchase_results",
+          "segmentation_results",
+          "what_if_scenarios",
+          "is_partial"
+        ]
+      },
+      "DashboardCustomerPreview": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "external_id": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100
+          },
+          "is_active": {
+            "type": "boolean"
+          },
+          "created_at": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "purchase_in_window": {
+            "anyOf": [
+              {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "purchase_level": {
+                    "type": "string",
+                    "enum": [
+                      "Low",
+                      "Medium",
+                      "High"
+                    ]
+                  },
+                  "created_at": {
+                    "type": "string",
+                    "format": "date-time"
+                  }
+                },
+                "required": [
+                  "purchase_level",
+                  "created_at"
+                ]
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "segment_in_window": {
+            "anyOf": [
+              {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "segment_id": {
+                    "type": "string",
+                    "enum": [
+                      "legacy:1.0.0:cluster:0",
+                      "legacy:1.0.0:cluster:1",
+                      "legacy:1.0.0:cluster:2",
+                      "engagement_low",
+                      "engagement_medium",
+                      "engagement_high"
+                    ]
+                  },
+                  "display_label": {
+                    "anyOf": [
+                      {
+                        "type": "string",
+                        "minLength": 1,
+                        "maxLength": 150
+                      },
+                      {
+                        "type": "null"
+                      }
+                    ]
+                  },
+                  "created_at": {
+                    "type": "string",
+                    "format": "date-time"
+                  }
+                },
+                "required": [
+                  "segment_id",
+                  "display_label",
+                  "created_at"
+                ]
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        },
+        "required": [
+          "id",
+          "external_id",
+          "is_active",
+          "created_at",
+          "purchase_in_window",
+          "segment_in_window"
+        ]
+      },
+      "DashboardOverview": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "contract_version": {
+            "type": "string",
+            "const": "dashboard-snapshot-v1"
+          },
+          "generated_at": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "as_of": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "source": {
+            "type": "string",
+            "const": "application_postgresql_not_research_dataset"
+          },
+          "scope": {
+            "type": "string",
+            "const": "stored_snapshot_analysis_not_causal_or_future"
+          },
+          "purchase_level_source": {
+            "type": "string",
+            "const": "stored_model_prediction_not_ground_truth"
+          },
+          "target_thresholds": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "low_inclusive": {
+                "type": "number",
+                "const": 10
+              },
+              "medium_inclusive": {
+                "type": "number",
+                "const": 15
+              }
+            },
+            "required": [
+              "low_inclusive",
+              "medium_inclusive"
+            ]
+          },
+          "filters": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "date_from": {
+                "type": "string",
+                "format": "date"
+              },
+              "date_to": {
+                "type": "string",
+                "format": "date"
+              },
+              "window_start": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "window_end": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "timezone": {
+                "type": "string",
+                "const": "UTC"
+              },
+              "classification_model_version": {
+                "type": "string",
+                "enum": [
+                  "1.0.0",
+                  "2.0.0-snapshot-conservative12"
+                ]
+              },
+              "segmentation_model_version": {
+                "type": "string",
+                "enum": [
+                  "1.0.0",
+                  "2.0.0-snapshot-k3"
+                ]
+              },
+              "segment_id": {
+                "anyOf": [
+                  {
+                    "type": "string",
+                    "enum": [
+                      "legacy:1.0.0:cluster:0",
+                      "legacy:1.0.0:cluster:1",
+                      "legacy:1.0.0:cluster:2",
+                      "engagement_low",
+                      "engagement_medium",
+                      "engagement_high"
+                    ]
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              }
+            },
+            "required": [
+              "date_from",
+              "date_to",
+              "window_start",
+              "window_end",
+              "timezone",
+              "classification_model_version",
+              "segmentation_model_version",
+              "segment_id"
+            ]
+          },
+          "workspace_totals": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "filter_scope": {
+                "type": "string",
+                "const": "all_workspace_as_of_not_filtered"
+              },
+              "customers": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "active_customers": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "behavior_snapshots": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "registered_models": {
+                "type": "integer",
+                "minimum": 0
+              }
+            },
+            "required": [
+              "filter_scope",
+              "customers",
+              "active_customers",
+              "behavior_snapshots",
+              "registered_models"
+            ]
+          },
+          "cohort": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "customers": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "include_inactive": {
+                "type": "boolean",
+                "const": true
+              },
+              "selection_rule": {
+                "type": "string",
+                "enum": [
+                  "all_current_customers",
+                  "latest_linked_segmentation_in_window"
+                ]
+              }
+            },
+            "required": [
+              "customers",
+              "include_inactive",
+              "selection_rule"
+            ]
+          },
+          "classification": {
+            "$ref": "#/components/schemas/DashboardClassification"
+          },
+          "segmentation": {
+            "$ref": "#/components/schemas/DashboardSegmentation"
+          },
+          "what_if": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "scenarios": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "scenario_results": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "excluded_unlinked_scenarios": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "filter_scope": {
+                "type": "string",
+                "const": "window_and_cohort_not_model_selectors"
+              },
+              "integrity": {
+                "type": "string",
+                "const": "counts_only_not_verified"
+              },
+              "latest_scenario_at": {
+                "anyOf": [
+                  {
+                    "type": "string",
+                    "format": "date-time"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              }
+            },
+            "required": [
+              "scenarios",
+              "scenario_results",
+              "excluded_unlinked_scenarios",
+              "filter_scope",
+              "integrity",
+              "latest_scenario_at"
+            ]
+          },
+          "activity_by_day": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/DashboardDay"
+            },
+            "minItems": 1,
+            "maxItems": 366
+          },
+          "recent_customers": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "selection_rule": {
+                "type": "string",
+                "const": "cohort_customer_created_at_desc_id_desc"
+              },
+              "limit": {
+                "type": "integer",
+                "minimum": 1,
+                "maximum": 20
+              },
+              "cohort_total": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "items": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/DashboardCustomerPreview"
+                },
+                "maxItems": 20
+              }
+            },
+            "required": [
+              "selection_rule",
+              "limit",
+              "cohort_total",
+              "items"
+            ]
+          },
+          "warnings": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "enum": [
+                "PARTIAL_CURRENT_DAY",
+                "UNLINKED_RESULTS_NOT_CUSTOMERS",
+                "UNLINKED_RESULTS_EXCLUDED_BY_SEGMENT_FILTER",
+                "UNLINKED_SCENARIOS_EXCLUDED_BY_SEGMENT_FILTER",
+                "RESEARCH_PERSISTENCE_UNSUPPORTED",
+                "SEGMENT_LABELS_UNAVAILABLE",
+                "INFERENCE_MODEL_UNAVAILABLE",
+                "CURRENT_CUSTOMERS_NOT_HISTORICAL_POPULATION"
+              ]
+            },
+            "uniqueItems": true,
+            "maxItems": 8
+          }
+        },
+        "required": [
+          "contract_version",
+          "generated_at",
+          "as_of",
+          "source",
+          "scope",
+          "purchase_level_source",
+          "target_thresholds",
+          "filters",
+          "workspace_totals",
+          "cohort",
+          "classification",
+          "segmentation",
+          "what_if",
+          "activity_by_day",
+          "recent_customers",
+          "warnings"
+        ],
+        "description": "Approved T12 snapshot response. Cross-field/filter invariants are enforced by SQL/service/runtime DTO validation; see docs/t12_dashboard_api_design.md."
+      }
+    }
+  }
+}

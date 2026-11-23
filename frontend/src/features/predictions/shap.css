@@ -1,0 +1,124 @@
+.prediction-explain-choice {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  flex-wrap: wrap;
+  margin: 1.2rem 0;
+}
+.prediction-explain-choice small {
+  flex-basis: 100%;
+  font-weight: 400;
+}
+.shap-explanation {
+  border-top: 1px solid #dce3ee;
+  margin-top: 1.5rem;
+  padding-top: 1.2rem;
+  min-width: 0;
+}
+.shap-explanation p {
+  line-height: 1.65;
+}
+.shap-summary {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+.shap-summary div {
+  min-width: 0;
+  flex: 1 1 14rem;
+}
+.shap-summary dd {
+  margin: 0.4rem 0;
+  overflow-wrap: anywhere;
+  font-variant-numeric: tabular-nums;
+}
+.shap-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+.shap-positive {
+  color: #237569;
+}
+.shap-negative {
+  color: #a63a50;
+}
+.shap-rows {
+  list-style: none;
+  padding: 0;
+}
+.shap-rows li {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(100px, 1fr) minmax(0, 0.65fr);
+  gap: 1rem;
+  align-items: center;
+  border-bottom: 1px solid #e6eaf2;
+  padding: 0.9rem 0;
+}
+.shap-feature {
+  display: grid;
+  gap: 0.3rem;
+  overflow-wrap: anywhere;
+}
+.shap-feature span {
+  font-size: 0.8rem;
+}
+.shap-track {
+  position: relative;
+  height: 1.6rem;
+  border-inline: 1px solid #dce3ee;
+}
+.shap-track::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  height: 100%;
+  border-left: 1px solid #39475c;
+}
+.shap-bar {
+  position: absolute;
+  height: 0.8rem;
+  top: 0.7rem;
+}
+.shap-bar.positive {
+  background: #237569;
+}
+.shap-bar.negative {
+  background: #a63a50;
+}
+.shap-zero {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: -0.5rem;
+  font-size: 0.7rem;
+}
+.shap-value {
+  overflow-wrap: anywhere;
+}
+.shap-unavailable {
+  margin-top: 1rem;
+  padding: 1rem;
+  background: #fff6e9;
+  border: 1px solid #e5bf8b;
+  border-radius: 10px;
+}
+@media (max-width: 600px) {
+  .shap-rows li {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: 0.6rem;
+  }
+  .shap-feature {
+    grid-column: 1/-1;
+  }
+  .shap-value {
+    text-align: right;
+  }
+  .shap-summary {
+    display: block;
+  }
+}
+
+.shap-explanation code {
+  overflow-wrap: anywhere;
+}
