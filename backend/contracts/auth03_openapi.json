@@ -1,0 +1,5782 @@
+{
+  "paths": {
+    "/api/v1/auth/csrf": {
+      "get": {
+        "operationId": "auth01_csrf",
+        "tags": [
+          "AUTH-01 Authentication"
+        ],
+        "summary": "csrf",
+        "security": [],
+        "parameters": [
+          {
+            "name": "X-Requested-With",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "const": "MK-eAI"
+            },
+            "description": "Trusted Origin or same-origin Fetch Metadata required; navigation/cross-site denied.",
+            "x-on-missing": {
+              "status": 403,
+              "code": "CSRF_FAILED"
+            }
+          }
+        ],
+        "x-auth01-public-context": true,
+        "x-auth01-capabilities": [],
+        "x-auth01-first-password-change-allowed": true,
+        "x-auth01-idempotency-key": "unsupported;400 after security gates",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "headers": {
+              "Cache-Control": {
+                "schema": {
+                  "type": "string",
+                  "const": "no-store"
+                }
+              },
+              "Set-Cookie": {
+                "schema": {
+                  "type": "string"
+                },
+                "description": "Issue or clear opaque session cookie only as specified; never a JSON session credential."
+              },
+              "X-Security-Profile": {
+                "schema": {
+                  "type": "string",
+                  "const": "accounts"
+                }
+              },
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string",
+                  "format": "uuid"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Auth01CsrfReply"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "INVALID_REQUEST,UNSUPPORTED_IDEMPOTENCY_KEY",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Auth01ErrorEnvelope"
+                }
+              }
+            },
+            "headers": {
+              "Cache-Control": {
+                "schema": {
+                  "type": "string",
+                  "const": "no-store"
+                }
+              },
+              "X-Security-Profile": {
+                "schema": {
+                  "type": "string",
+                  "const": "accounts"
+                }
+              },
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string",
+                  "format": "uuid"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "UNAUTHORIZED",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Auth01ErrorEnvelope"
+                }
+              }
+            },
+            "headers": {
+              "Cache-Control": {
+                "schema": {
+                  "type": "string",
+                  "const": "no-store"
+                }
+              },
+              "X-Security-Profile": {
+                "schema": {
+                  "type": "string",
+                  "const": "accounts"
+                }
+              },
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string",
+                  "format": "uuid"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "ORIGIN_NOT_ALLOWED,CSRF_FAILED",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Auth01ErrorEnvelope"
+                }
+              }
+            },
+            "headers": {
+              "Cache-Control": {
+                "schema": {
+                  "type": "string",
+                  "const": "no-store"
+                }
+              },
+              "X-Security-Profile": {
+                "schema": {
+                  "type": "string",
+                  "const": "accounts"
+                }
+              },
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string",
+                  "format": "uuid"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "VALIDATION_ERROR",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Auth01ErrorEnvelope"
+                }
+              }
+            },
+            "headers": {
+              "Cache-Control": {
+                "schema": {
+                  "type": "string",
+                  "const": "no-store"
+                }
+              },
+              "X-Security-Profile": {
+                "schema": {
+                  "type": "string",
+                  "const": "accounts"
+                }
+              },
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string",
+                  "format": "uuid"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "RATE_LIMITED",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Auth01ErrorEnvelope"
+                }
+              }
+            },
+            "headers": {
+              "Retry-After": {
+                "schema": {
+                  "type": "integer",
+                  "minimum": 1
+                },
+                "description": "429 remaining quota window;503 only SERVER_BUSY=1"
+              },
+              "Cache-Control": {
+                "schema": {
+                  "type": "string",
+                  "const": "no-store"
+                }
+              },
+              "X-Security-Profile": {
+                "schema": {
+                  "type": "string",
+                  "const": "accounts"
+                }
+              },
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string",
+                  "format": "uuid"
+                }
+              }
+            }
+          },
+          "431": {
+            "description": "HEADERS_TOO_LARGE",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Auth01ErrorEnvelope"
+                }
+              }
+            },
+            "headers": {
+              "Cache-Control": {
+                "schema": {
+                  "type": "string",
+                  "const": "no-store"
+                }
+              },
+              "X-Security-Profile": {
+                "schema": {
+                  "type": "string",
+                  "const": "accounts"
+                }
+              },
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string",
+                  "format": "uuid"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "INTERNAL_ERROR",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Auth01ErrorEnvelope"
+                }
+              }
+            },
+            "headers": {
+              "Cache-Control": {
+                "schema": {
+                  "type": "string",
+                  "const": "no-store"
+                }
+              },
+              "X-Security-Profile": {
+                "schema": {
+                  "type": "string",
+                  "const": "accounts"
+                }
+              },
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string",
+                  "format": "uuid"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "AUTH_UNAVAILABLE,SERVER_BUSY",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Auth01ErrorEnvelope"
+                }
+              }
+            },
+            "headers": {
+              "Retry-After": {
+                "schema": {
+                  "type": "integer",
+                  "minimum": 1
+                },
+                "description": "429 remaining quota window;503 only SERVER_BUSY=1"
+              },
+              "Cache-Control": {
+                "schema": {
+                  "type": "string",
+                  "const": "no-store"
+                }
+              },
+              "X-Security-Profile": {
+                "schema": {
+                  "type": "string",
+                  "const": "accounts"
+                }
+              },
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string",
+                  "format": "uuid"
+                }
+              }
+            }
+          }
+        },
+        "x-auth01-forbid-extra-query": true,
+        "x-auth01-error-codes-by-status": {
+          "400": [
+            "INVALID_REQUEST",
+            "UNSUPPORTED_IDEMPOTENCY_KEY"
+          ],
+          "401": [
+            "UNAUTHORIZED"
+          ],
+          "403": [
+            "ORIGIN_NOT_ALLOWED",
+            "CSRF_FAILED"
+          ],
+          "422": [
+            "VALIDATION_ERROR"
+          ],
+          "429": [
+            "RATE_LIMITED"
+          ],
+          "431": [
+            "HEADERS_TOO_LARGE"
+          ],
+          "500": [
+            "INTERNAL_ERROR"
+          ],
+          "503": [
+            "AUTH_UNAVAILABLE",
+            "SERVER_BUSY"
+          ]
+        },
+        "x-auth01-missing-query-policy": "reject extra query parameters with422",
+        "x-auth01-error-precedence": "docs/auth01/api_contract.md#error-precedence"
+      }
+    },
+    "/api/v1/auth/login": {
+      "post": {
+        "operationId": "auth01_login",
+        "tags": [
+          "AUTH-01 Authentication"
+        ],
+        "summary": "login",
+        "security": [],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/Auth01Origin"
+          },
+          {
+            "$ref": "#/components/parameters/Auth01Csrf"
+          },
+          {
+            "$ref": "#/components/parameters/Auth01ContextCookie"
+          }
+        ],
+        "x-auth01-public-context": true,
+        "x-auth01-capabilities": [],
+        "x-auth01-first-password-change-allowed": false,
+        "x-auth01-idempotency-key": "unsupported;400 after security gates",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "headers": {
+              "Cache-Control": {
+                "schema": {
+                  "type": "string",
+                  "const": "no-store"
+                }
+              },
+              "Set-Cookie": {
+                "schema": {
+                  "type": "string"
+                },
+                "description": "Issue or clear opaque session cookie only as specified; never a JSON session credential."
+              },
+              "X-Security-Profile": {
+                "schema": {
+                  "type": "string",
+                  "const": "accounts"
+                }
+              },
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string",
+                  "format": "uuid"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Auth01LoginReply"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "INVALID_REQUEST,UNSUPPORTED_IDEMPOTENCY_KEY,INVALID_JSON",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Auth01ErrorEnvelope"
+                }
+              }
+            },
+            "headers": {
+              "Cache-Control": {
+                "schema": {
+                  "type": "string",
+                  "const": "no-store"
+                }
+              },
+              "X-Security-Profile": {
+                "schema": {
+                  "type": "string",
+                  "const": "accounts"
+                }
+              },
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string",
+                  "format": "uuid"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "UNAUTHORIZED",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Auth01ErrorEnvelope"
+                }
+              }
+            },
+            "headers": {
+              "Cache-Control": {
+                "schema": {
+                  "type": "string",
+                  "const": "no-store"
+                }
+              },
+              "X-Security-Profile": {
+                "schema": {
+                  "type": "string",
+                  "const": "accounts"
+                }
+              },
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string",
+                  "format": "uuid"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "ORIGIN_NOT_ALLOWED,CSRF_FAILED",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Auth01ErrorEnvelope"
+                }
+              }
+            },
+            "headers": {
+              "Cache-Control": {
+                "schema": {
+                  "type": "string",
+                  "const": "no-store"
+                }
+              },
+              "X-Security-Profile": {
+                "schema": {
+                  "type": "string",
+                  "const": "accounts"
+                }
+              },
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string",
+                  "format": "uuid"
+                }
+              }
+            }
+          },
+          "408": {
+            "description": "REQUEST_TIMEOUT",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Auth01ErrorEnvelope"
+                }
+              }
+            },
+            "headers": {
+              "Cache-Control": {
+                "schema": {
+                  "type": "string",
+                  "const": "no-store"
+                }
+              },
+              "X-Security-Profile": {
+                "schema": {
+                  "type": "string",
+                  "const": "accounts"
+                }
+              },
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string",
+                  "format": "uuid"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "ALREADY_AUTHENTICATED",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Auth01ErrorEnvelope"
+                }
+              }
+            },
+            "headers": {
+              "Cache-Control": {
+                "schema": {
+                  "type": "string",
+                  "const": "no-store"
+                }
+              },
+              "X-Security-Profile": {
+                "schema": {
+                  "type": "string",
+                  "const": "accounts"
+                }
+              },
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string",
+                  "format": "uuid"
+                }
+              }
+            }
+          },
+          "413": {
+            "description": "PAYLOAD_TOO_LARGE",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Auth01ErrorEnvelope"
+                }
+              }
+            },
+            "headers": {
+              "Cache-Control": {
+                "schema": {
+                  "type": "string",
+                  "const": "no-store"
+                }
+              },
+              "X-Security-Profile": {
+                "schema": {
+                  "type": "string",
+                  "const": "accounts"
+                }
+              },
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string",
+                  "format": "uuid"
+                }
+              }
+            }
+          },
+          "415": {
+            "description": "UNSUPPORTED_MEDIA_TYPE",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Auth01ErrorEnvelope"
+                }
+              }
+            },
+            "headers": {
+              "Cache-Control": {
+                "schema": {
+                  "type": "string",
+                  "const": "no-store"
+                }
+              },
+              "X-Security-Profile": {
+                "schema": {
+                  "type": "string",
+                  "const": "accounts"
+                }
+              },
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string",
+                  "format": "uuid"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "VALIDATION_ERROR",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Auth01ErrorEnvelope"
+                }
+              }
+            },
+            "headers": {
+              "Cache-Control": {
+                "schema": {
+                  "type": "string",
+                  "const": "no-store"
+                }
+              },
+              "X-Security-Profile": {
+                "schema": {
+                  "type": "string",
+                  "const": "accounts"
+                }
+              },
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string",
+                  "format": "uuid"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "RATE_LIMITED",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Auth01ErrorEnvelope"
+                }
+              }
+            },
+            "headers": {
+              "Retry-After": {
+                "schema": {
+                  "type": "integer",
+                  "minimum": 1
+                },
+                "description": "429 remaining quota window;503 only SERVER_BUSY=1"
+              },
+              "Cache-Control": {
+                "schema": {
+                  "type": "string",
+                  "const": "no-store"
+                }
+              },
+              "X-Security-Profile": {
+                "schema": {
+                  "type": "string",
+                  "const": "accounts"
+                }
+              },
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string",
+                  "format": "uuid"
+                }
+              }
+            }
+          },
+          "431": {
+            "description": "HEADERS_TOO_LARGE",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Auth01ErrorEnvelope"
+                }
+              }
+            },
+            "headers": {
+              "Cache-Control": {
+                "schema": {
+                  "type": "string",
+                  "const": "no-store"
+                }
+              },
+              "X-Security-Profile": {
+                "schema": {
+                  "type": "string",
+                  "const": "accounts"
+                }
+              },
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string",
+                  "format": "uuid"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "INTERNAL_ERROR",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Auth01ErrorEnvelope"
+                }
+              }
+            },
+            "headers": {
+              "Cache-Control": {
+                "schema": {
+                  "type": "string",
+                  "const": "no-store"
+                }
+              },
+              "X-Security-Profile": {
+                "schema": {
+                  "type": "string",
+                  "const": "accounts"
+                }
+              },
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string",
+                  "format": "uuid"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "AUTH_UNAVAILABLE,SERVER_BUSY",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Auth01ErrorEnvelope"
+                }
+              }
+            },
+            "headers": {
+              "Retry-After": {
+                "schema": {
+                  "type": "integer",
+                  "minimum": 1
+                },
+                "description": "429 remaining quota window;503 only SERVER_BUSY=1"
+              },
+              "Cache-Control": {
+                "schema": {
+                  "type": "string",
+                  "const": "no-store"
+                }
+              },
+              "X-Security-Profile": {
+                "schema": {
+                  "type": "string",
+                  "const": "accounts"
+                }
+              },
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string",
+                  "format": "uuid"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Auth01Login"
+              }
+            }
+          }
+        },
+        "x-auth01-forbid-extra-query": true,
+        "x-auth01-error-codes-by-status": {
+          "400": [
+            "INVALID_REQUEST",
+            "UNSUPPORTED_IDEMPOTENCY_KEY",
+            "INVALID_JSON"
+          ],
+          "401": [
+            "UNAUTHORIZED"
+          ],
+          "403": [
+            "ORIGIN_NOT_ALLOWED",
+            "CSRF_FAILED"
+          ],
+          "408": [
+            "REQUEST_TIMEOUT"
+          ],
+          "409": [
+            "ALREADY_AUTHENTICATED"
+          ],
+          "413": [
+            "PAYLOAD_TOO_LARGE"
+          ],
+          "415": [
+            "UNSUPPORTED_MEDIA_TYPE"
+          ],
+          "422": [
+            "VALIDATION_ERROR"
+          ],
+          "429": [
+            "RATE_LIMITED"
+          ],
+          "431": [
+            "HEADERS_TOO_LARGE"
+          ],
+          "500": [
+            "INTERNAL_ERROR"
+          ],
+          "503": [
+            "AUTH_UNAVAILABLE",
+            "SERVER_BUSY"
+          ]
+        },
+        "x-auth01-missing-query-policy": "reject extra query parameters with422",
+        "x-auth01-error-precedence": "docs/auth01/api_contract.md#error-precedence"
+      }
+    },
+    "/api/v1/auth/logout": {
+      "post": {
+        "operationId": "auth01_logout",
+        "tags": [
+          "AUTH-01 Authentication"
+        ],
+        "summary": "logout",
+        "security": [],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/Auth01Origin"
+          },
+          {
+            "$ref": "#/components/parameters/Auth01Csrf"
+          },
+          {
+            "$ref": "#/components/parameters/Auth01ContextCookie"
+          }
+        ],
+        "x-auth01-public-context": true,
+        "x-auth01-capabilities": [],
+        "x-auth01-first-password-change-allowed": true,
+        "x-auth01-idempotency-key": "unsupported;400 after security gates",
+        "responses": {
+          "204": {
+            "description": "Success",
+            "headers": {
+              "Cache-Control": {
+                "schema": {
+                  "type": "string",
+                  "const": "no-store"
+                }
+              },
+              "Set-Cookie": {
+                "schema": {
+                  "type": "string"
+                },
+                "description": "Issue or clear opaque session cookie only as specified; never a JSON session credential."
+              },
+              "X-Security-Profile": {
+                "schema": {
+                  "type": "string",
+                  "const": "accounts"
+                }
+              },
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string",
+                  "format": "uuid"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "INVALID_REQUEST,UNSUPPORTED_IDEMPOTENCY_KEY,INVALID_JSON",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Auth01ErrorEnvelope"
+                }
+              }
+            },
+            "headers": {
+              "Cache-Control": {
+                "schema": {
+                  "type": "string",
+                  "const": "no-store"
+                }
+              },
+              "X-Security-Profile": {
+                "schema": {
+                  "type": "string",
+                  "const": "accounts"
+                }
+              },
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string",
+                  "format": "uuid"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "UNAUTHORIZED",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Auth01ErrorEnvelope"
+                }
+              }
+            },
+            "headers": {
+              "Cache-Control": {
+                "schema": {
+                  "type": "string",
+                  "const": "no-store"
+                }
+              },
+              "X-Security-Profile": {
+                "schema": {
+                  "type": "string",
+                  "const": "accounts"
+                }
+              },
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string",
+                  "format": "uuid"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "ORIGIN_NOT_ALLOWED,CSRF_FAILED",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Auth01ErrorEnvelope"
+                }
+              }
+            },
+            "headers": {
+              "Cache-Control": {
+                "schema": {
+                  "type": "string",
+                  "const": "no-store"
+                }
+              },
+              "X-Security-Profile": {
+                "schema": {
+                  "type": "string",
+                  "const": "accounts"
+                }
+              },
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string",
+                  "format": "uuid"
+                }
+              }
+            }
+          },
+          "408": {
+            "description": "REQUEST_TIMEOUT",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Auth01ErrorEnvelope"
+                }
+              }
+            },
+            "headers": {
+              "Cache-Control": {
+                "schema": {
+                  "type": "string",
+                  "const": "no-store"
+                }
+              },
+              "X-Security-Profile": {
+                "schema": {
+                  "type": "string",
+                  "const": "accounts"
+                }
+              },
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string",
+                  "format": "uuid"
+                }
+              }
+            }
+          },
+          "413": {
+            "description": "PAYLOAD_TOO_LARGE",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Auth01ErrorEnvelope"
+                }
+              }
+            },
+            "headers": {
+              "Cache-Control": {
+                "schema": {
+                  "type": "string",
+                  "const": "no-store"
+                }
+              },
+              "X-Security-Profile": {
+                "schema": {
+                  "type": "string",
+                  "const": "accounts"
+                }
+              },
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string",
+                  "format": "uuid"
+                }
+              }
+            }
+          },
+          "415": {
+            "description": "UNSUPPORTED_MEDIA_TYPE",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Auth01ErrorEnvelope"
+                }
+              }
+            },
+            "headers": {
+              "Cache-Control": {
+                "schema": {
+                  "type": "string",
+                  "const": "no-store"
+                }
+              },
+              "X-Security-Profile": {
+                "schema": {
+                  "type": "string",
+                  "const": "accounts"
+                }
+              },
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string",
+                  "format": "uuid"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "VALIDATION_ERROR",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Auth01ErrorEnvelope"
+                }
+              }
+            },
+            "headers": {
+              "Cache-Control": {
+                "schema": {
+                  "type": "string",
+                  "const": "no-store"
+                }
+              },
+              "X-Security-Profile": {
+                "schema": {
+                  "type": "string",
+                  "const": "accounts"
+                }
+              },
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string",
+                  "format": "uuid"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "RATE_LIMITED",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Auth01ErrorEnvelope"
+                }
+              }
+            },
+            "headers": {
+              "Retry-After": {
+                "schema": {
+                  "type": "integer",
+                  "minimum": 1
+                },
+                "description": "429 remaining quota window;503 only SERVER_BUSY=1"
+              },
+              "Cache-Control": {
+                "schema": {
+                  "type": "string",
+                  "const": "no-store"
+                }
+              },
+              "X-Security-Profile": {
+                "schema": {
+                  "type": "string",
+                  "const": "accounts"
+                }
+              },
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string",
+                  "format": "uuid"
+                }
+              }
+            }
+          },
+          "431": {
+            "description": "HEADERS_TOO_LARGE",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Auth01ErrorEnvelope"
+                }
+              }
+            },
+            "headers": {
+              "Cache-Control": {
+                "schema": {
+                  "type": "string",
+                  "const": "no-store"
+                }
+              },
+              "X-Security-Profile": {
+                "schema": {
+                  "type": "string",
+                  "const": "accounts"
+                }
+              },
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string",
+                  "format": "uuid"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "INTERNAL_ERROR",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Auth01ErrorEnvelope"
+                }
+              }
+            },
+            "headers": {
+              "Cache-Control": {
+                "schema": {
+                  "type": "string",
+                  "const": "no-store"
+                }
+              },
+              "X-Security-Profile": {
+                "schema": {
+                  "type": "string",
+                  "const": "accounts"
+                }
+              },
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string",
+                  "format": "uuid"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "AUTH_UNAVAILABLE,SERVER_BUSY",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Auth01ErrorEnvelope"
+                }
+              }
+            },
+            "headers": {
+              "Retry-After": {
+                "schema": {
+                  "type": "integer",
+                  "minimum": 1
+                },
+                "description": "429 remaining quota window;503 only SERVER_BUSY=1"
+              },
+              "Cache-Control": {
+                "schema": {
+                  "type": "string",
+                  "const": "no-store"
+                }
+              },
+              "X-Security-Profile": {
+                "schema": {
+                  "type": "string",
+                  "const": "accounts"
+                }
+              },
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string",
+                  "format": "uuid"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": false,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Auth01Empty"
+              }
+            }
+          }
+        },
+        "x-auth01-forbid-extra-query": true,
+        "x-auth01-error-codes-by-status": {
+          "400": [
+            "INVALID_REQUEST",
+            "UNSUPPORTED_IDEMPOTENCY_KEY",
+            "INVALID_JSON"
+          ],
+          "401": [
+            "UNAUTHORIZED"
+          ],
+          "403": [
+            "ORIGIN_NOT_ALLOWED",
+            "CSRF_FAILED"
+          ],
+          "408": [
+            "REQUEST_TIMEOUT"
+          ],
+          "413": [
+            "PAYLOAD_TOO_LARGE"
+          ],
+          "415": [
+            "UNSUPPORTED_MEDIA_TYPE"
+          ],
+          "422": [
+            "VALIDATION_ERROR"
+          ],
+          "429": [
+            "RATE_LIMITED"
+          ],
+          "431": [
+            "HEADERS_TOO_LARGE"
+          ],
+          "500": [
+            "INTERNAL_ERROR"
+          ],
+          "503": [
+            "AUTH_UNAVAILABLE",
+            "SERVER_BUSY"
+          ]
+        },
+        "x-auth01-missing-query-policy": "reject extra query parameters with422",
+        "x-auth01-error-precedence": "docs/auth01/api_contract.md#error-precedence"
+      }
+    },
+    "/api/v1/auth/me": {
+      "get": {
+        "operationId": "auth01_me",
+        "tags": [
+          "AUTH-01 Authentication"
+        ],
+        "summary": "me",
+        "security": [
+          {
+            "AccountSession": []
+          }
+        ],
+        "parameters": [],
+        "x-auth01-public-context": false,
+        "x-auth01-capabilities": [],
+        "x-auth01-first-password-change-allowed": true,
+        "x-auth01-idempotency-key": "unsupported;400 after security gates",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "headers": {
+              "Cache-Control": {
+                "schema": {
+                  "type": "string",
+                  "const": "no-store"
+                }
+              },
+              "X-Security-Profile": {
+                "schema": {
+                  "type": "string",
+                  "const": "accounts"
+                }
+              },
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string",
+                  "format": "uuid"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Auth01Me"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "INVALID_REQUEST,UNSUPPORTED_IDEMPOTENCY_KEY",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Auth01ErrorEnvelope"
+                }
+              }
+            },
+            "headers": {
+              "Cache-Control": {
+                "schema": {
+                  "type": "string",
+                  "const": "no-store"
+                }
+              },
+              "X-Security-Profile": {
+                "schema": {
+                  "type": "string",
+                  "const": "accounts"
+                }
+              },
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string",
+                  "format": "uuid"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "UNAUTHORIZED",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Auth01ErrorEnvelope"
+                }
+              }
+            },
+            "headers": {
+              "Cache-Control": {
+                "schema": {
+                  "type": "string",
+                  "const": "no-store"
+                }
+              },
+              "X-Security-Profile": {
+                "schema": {
+                  "type": "string",
+                  "const": "accounts"
+                }
+              },
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string",
+                  "format": "uuid"
+                }
+              },
+              "Set-Cookie": {
+                "schema": {
+                  "type": "string"
+                },
+                "description": "Clear invalid/expired authenticated cookie; never credentials in response JSON."
+              }
+            }
+          },
+          "422": {
+            "description": "VALIDATION_ERROR",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Auth01ErrorEnvelope"
+                }
+              }
+            },
+            "headers": {
+              "Cache-Control": {
+                "schema": {
+                  "type": "string",
+                  "const": "no-store"
+                }
+              },
+              "X-Security-Profile": {
+                "schema": {
+                  "type": "string",
+                  "const": "accounts"
+                }
+              },
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string",
+                  "format": "uuid"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "RATE_LIMITED",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Auth01ErrorEnvelope"
+                }
+              }
+            },
+            "headers": {
+              "Retry-After": {
+                "schema": {
+                  "type": "integer",
+                  "minimum": 1
+                },
+                "description": "429 remaining quota window;503 only SERVER_BUSY=1"
+              },
+              "Cache-Control": {
+                "schema": {
+                  "type": "string",
+                  "const": "no-store"
+                }
+              },
+              "X-Security-Profile": {
+                "schema": {
+                  "type": "string",
+                  "const": "accounts"
+                }
+              },
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string",
+                  "format": "uuid"
+                }
+              }
+            }
+          },
+          "431": {
+            "description": "HEADERS_TOO_LARGE",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Auth01ErrorEnvelope"
+                }
+              }
+            },
+            "headers": {
+              "Cache-Control": {
+                "schema": {
+                  "type": "string",
+                  "const": "no-store"
+                }
+              },
+              "X-Security-Profile": {
+                "schema": {
+                  "type": "string",
+                  "const": "accounts"
+                }
+              },
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string",
+                  "format": "uuid"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "INTERNAL_ERROR",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Auth01ErrorEnvelope"
+                }
+              }
+            },
+            "headers": {
+              "Cache-Control": {
+                "schema": {
+                  "type": "string",
+                  "const": "no-store"
+                }
+              },
+              "X-Security-Profile": {
+                "schema": {
+                  "type": "string",
+                  "const": "accounts"
+                }
+              },
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string",
+                  "format": "uuid"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "AUTH_UNAVAILABLE,SERVER_BUSY",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Auth01ErrorEnvelope"
+                }
+              }
+            },
+            "headers": {
+              "Retry-After": {
+                "schema": {
+                  "type": "integer",
+                  "minimum": 1
+                },
+                "description": "429 remaining quota window;503 only SERVER_BUSY=1"
+              },
+              "Cache-Control": {
+                "schema": {
+                  "type": "string",
+                  "const": "no-store"
+                }
+              },
+              "X-Security-Profile": {
+                "schema": {
+                  "type": "string",
+                  "const": "accounts"
+                }
+              },
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string",
+                  "format": "uuid"
+                }
+              }
+            }
+          }
+        },
+        "x-auth01-forbid-extra-query": true,
+        "x-auth01-error-codes-by-status": {
+          "400": [
+            "INVALID_REQUEST",
+            "UNSUPPORTED_IDEMPOTENCY_KEY"
+          ],
+          "401": [
+            "UNAUTHORIZED"
+          ],
+          "422": [
+            "VALIDATION_ERROR"
+          ],
+          "429": [
+            "RATE_LIMITED"
+          ],
+          "431": [
+            "HEADERS_TOO_LARGE"
+          ],
+          "500": [
+            "INTERNAL_ERROR"
+          ],
+          "503": [
+            "AUTH_UNAVAILABLE",
+            "SERVER_BUSY"
+          ]
+        },
+        "x-auth01-missing-query-policy": "reject extra query parameters with422",
+        "x-auth01-error-precedence": "docs/auth01/api_contract.md#error-precedence"
+      }
+    },
+    "/api/v1/auth/change-password": {
+      "post": {
+        "operationId": "auth01_change_password",
+        "tags": [
+          "AUTH-01 Authentication"
+        ],
+        "summary": "change password",
+        "security": [
+          {
+            "AccountSession": []
+          }
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/Auth01Origin"
+          },
+          {
+            "$ref": "#/components/parameters/Auth01Csrf"
+          }
+        ],
+        "x-auth01-public-context": false,
+        "x-auth01-capabilities": [],
+        "x-auth01-first-password-change-allowed": true,
+        "x-auth01-idempotency-key": "unsupported;400 after security gates",
+        "responses": {
+          "204": {
+            "description": "Success",
+            "headers": {
+              "Cache-Control": {
+                "schema": {
+                  "type": "string",
+                  "const": "no-store"
+                }
+              },
+              "Set-Cookie": {
+                "schema": {
+                  "type": "string"
+                },
+                "description": "Issue or clear opaque session cookie only as specified; never a JSON session credential."
+              },
+              "X-Security-Profile": {
+                "schema": {
+                  "type": "string",
+                  "const": "accounts"
+                }
+              },
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string",
+                  "format": "uuid"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "INVALID_REQUEST,UNSUPPORTED_IDEMPOTENCY_KEY,INVALID_JSON",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Auth01ErrorEnvelope"
+                }
+              }
+            },
+            "headers": {
+              "Cache-Control": {
+                "schema": {
+                  "type": "string",
+                  "const": "no-store"
+                }
+              },
+              "X-Security-Profile": {
+                "schema": {
+                  "type": "string",
+                  "const": "accounts"
+                }
+              },
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string",
+                  "format": "uuid"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "UNAUTHORIZED",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Auth01ErrorEnvelope"
+                }
+              }
+            },
+            "headers": {
+              "Cache-Control": {
+                "schema": {
+                  "type": "string",
+                  "const": "no-store"
+                }
+              },
+              "X-Security-Profile": {
+                "schema": {
+                  "type": "string",
+                  "const": "accounts"
+                }
+              },
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string",
+                  "format": "uuid"
+                }
+              },
+              "Set-Cookie": {
+                "schema": {
+                  "type": "string"
+                },
+                "description": "Clear invalid/expired authenticated cookie; never credentials in response JSON."
+              }
+            }
+          },
+          "403": {
+            "description": "ORIGIN_NOT_ALLOWED,CSRF_FAILED,REAUTH_FAILED",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Auth01ErrorEnvelope"
+                }
+              }
+            },
+            "headers": {
+              "Cache-Control": {
+                "schema": {
+                  "type": "string",
+                  "const": "no-store"
+                }
+              },
+              "X-Security-Profile": {
+                "schema": {
+                  "type": "string",
+                  "const": "accounts"
+                }
+              },
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string",
+                  "format": "uuid"
+                }
+              }
+            }
+          },
+          "408": {
+            "description": "REQUEST_TIMEOUT",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Auth01ErrorEnvelope"
+                }
+              }
+            },
+            "headers": {
+              "Cache-Control": {
+                "schema": {
+                  "type": "string",
+                  "const": "no-store"
+                }
+              },
+              "X-Security-Profile": {
+                "schema": {
+                  "type": "string",
+                  "const": "accounts"
+                }
+              },
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string",
+                  "format": "uuid"
+                }
+              }
+            }
+          },
+          "413": {
+            "description": "PAYLOAD_TOO_LARGE",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Auth01ErrorEnvelope"
+                }
+              }
+            },
+            "headers": {
+              "Cache-Control": {
+                "schema": {
+                  "type": "string",
+                  "const": "no-store"
+                }
+              },
+              "X-Security-Profile": {
+                "schema": {
+                  "type": "string",
+                  "const": "accounts"
+                }
+              },
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string",
+                  "format": "uuid"
+                }
+              }
+            }
+          },
+          "415": {
+            "description": "UNSUPPORTED_MEDIA_TYPE",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Auth01ErrorEnvelope"
+                }
+              }
+            },
+            "headers": {
+              "Cache-Control": {
+                "schema": {
+                  "type": "string",
+                  "const": "no-store"
+                }
+              },
+              "X-Security-Profile": {
+                "schema": {
+                  "type": "string",
+                  "const": "accounts"
+                }
+              },
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string",
+                  "format": "uuid"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "VALIDATION_ERROR,PASSWORD_UNCHANGED",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Auth01ErrorEnvelope"
+                }
+              }
+            },
+            "headers": {
+              "Cache-Control": {
+                "schema": {
+                  "type": "string",
+                  "const": "no-store"
+                }
+              },
+              "X-Security-Profile": {
+                "schema": {
+                  "type": "string",
+                  "const": "accounts"
+                }
+              },
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string",
+                  "format": "uuid"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "RATE_LIMITED",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Auth01ErrorEnvelope"
+                }
+              }
+            },
+            "headers": {
+              "Retry-After": {
+                "schema": {
+                  "type": "integer",
+                  "minimum": 1
+                },
+                "description": "429 remaining quota window;503 only SERVER_BUSY=1"
+              },
+              "Cache-Control": {
+                "schema": {
+                  "type": "string",
+                  "const": "no-store"
+                }
+              },
+              "X-Security-Profile": {
+                "schema": {
+                  "type": "string",
+                  "const": "accounts"
+                }
+              },
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string",
+                  "format": "uuid"
+                }
+              }
+            }
+          },
+          "431": {
+            "description": "HEADERS_TOO_LARGE",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Auth01ErrorEnvelope"
+                }
+              }
+            },
+            "headers": {
+              "Cache-Control": {
+                "schema": {
+                  "type": "string",
+                  "const": "no-store"
+                }
+              },
+              "X-Security-Profile": {
+                "schema": {
+                  "type": "string",
+                  "const": "accounts"
+                }
+              },
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string",
+                  "format": "uuid"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "INTERNAL_ERROR",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Auth01ErrorEnvelope"
+                }
+              }
+            },
+            "headers": {
+              "Cache-Control": {
+                "schema": {
+                  "type": "string",
+                  "const": "no-store"
+                }
+              },
+              "X-Security-Profile": {
+                "schema": {
+                  "type": "string",
+                  "const": "accounts"
+                }
+              },
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string",
+                  "format": "uuid"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "AUTH_UNAVAILABLE,SERVER_BUSY",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Auth01ErrorEnvelope"
+                }
+              }
+            },
+            "headers": {
+              "Retry-After": {
+                "schema": {
+                  "type": "integer",
+                  "minimum": 1
+                },
+                "description": "429 remaining quota window;503 only SERVER_BUSY=1"
+              },
+              "Cache-Control": {
+                "schema": {
+                  "type": "string",
+                  "const": "no-store"
+                }
+              },
+              "X-Security-Profile": {
+                "schema": {
+                  "type": "string",
+                  "const": "accounts"
+                }
+              },
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string",
+                  "format": "uuid"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Auth01PasswordChange"
+              }
+            }
+          }
+        },
+        "x-auth01-forbid-extra-query": true,
+        "x-auth01-error-codes-by-status": {
+          "400": [
+            "INVALID_REQUEST",
+            "UNSUPPORTED_IDEMPOTENCY_KEY",
+            "INVALID_JSON"
+          ],
+          "401": [
+            "UNAUTHORIZED"
+          ],
+          "403": [
+            "ORIGIN_NOT_ALLOWED",
+            "CSRF_FAILED",
+            "REAUTH_FAILED"
+          ],
+          "408": [
+            "REQUEST_TIMEOUT"
+          ],
+          "413": [
+            "PAYLOAD_TOO_LARGE"
+          ],
+          "415": [
+            "UNSUPPORTED_MEDIA_TYPE"
+          ],
+          "422": [
+            "VALIDATION_ERROR",
+            "PASSWORD_UNCHANGED"
+          ],
+          "429": [
+            "RATE_LIMITED"
+          ],
+          "431": [
+            "HEADERS_TOO_LARGE"
+          ],
+          "500": [
+            "INTERNAL_ERROR"
+          ],
+          "503": [
+            "AUTH_UNAVAILABLE",
+            "SERVER_BUSY"
+          ]
+        },
+        "x-auth01-missing-query-policy": "reject extra query parameters with422",
+        "x-auth01-error-precedence": "docs/auth01/api_contract.md#error-precedence"
+      }
+    },
+    "/api/v1/admin/users": {
+      "get": {
+        "operationId": "auth01_list_users",
+        "tags": [
+          "AUTH-01 Admin"
+        ],
+        "summary": "list users",
+        "security": [
+          {
+            "AccountSession": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "q",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 100
+            }
+          },
+          {
+            "name": "role",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "$ref": "#/components/schemas/Auth01Role"
+            }
+          },
+          {
+            "name": "status",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "$ref": "#/components/schemas/Auth01Status"
+            }
+          },
+          {
+            "name": "sort",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "created_at",
+                "username"
+              ],
+              "default": "created_at"
+            }
+          },
+          {
+            "name": "direction",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "asc",
+                "desc"
+              ],
+              "default": "desc"
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 100,
+              "default": 20
+            }
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "minimum": 0,
+              "default": 0
+            }
+          }
+        ],
+        "x-auth01-public-context": false,
+        "x-auth01-capabilities": [
+          "users.manage"
+        ],
+        "x-auth01-first-password-change-allowed": false,
+        "x-auth01-idempotency-key": "unsupported;400 after security gates",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "headers": {
+              "Cache-Control": {
+                "schema": {
+                  "type": "string",
+                  "const": "no-store"
+                }
+              },
+              "X-Security-Profile": {
+                "schema": {
+                  "type": "string",
+                  "const": "accounts"
+                }
+              },
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string",
+                  "format": "uuid"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Auth01UserList"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "INVALID_REQUEST,UNSUPPORTED_IDEMPOTENCY_KEY",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Auth01ErrorEnvelope"
+                }
+              }
+            },
+            "headers": {
+              "Cache-Control": {
+                "schema": {
+                  "type": "string",
+                  "const": "no-store"
+                }
+              },
+              "X-Security-Profile": {
+                "schema": {
+                  "type": "string",
+                  "const": "accounts"
+                }
+              },
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string",
+                  "format": "uuid"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "UNAUTHORIZED",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Auth01ErrorEnvelope"
+                }
+              }
+            },
+            "headers": {
+              "Cache-Control": {
+                "schema": {
+                  "type": "string",
+                  "const": "no-store"
+                }
+              },
+              "X-Security-Profile": {
+                "schema": {
+                  "type": "string",
+                  "const": "accounts"
+                }
+              },
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string",
+                  "format": "uuid"
+                }
+              },
+              "Set-Cookie": {
+                "schema": {
+                  "type": "string"
+                },
+                "description": "Clear invalid/expired authenticated cookie; never credentials in response JSON."
+              }
+            }
+          },
+          "403": {
+            "description": "PASSWORD_CHANGE_REQUIRED,FORBIDDEN",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Auth01ErrorEnvelope"
+                }
+              }
+            },
+            "headers": {
+              "Cache-Control": {
+                "schema": {
+                  "type": "string",
+                  "const": "no-store"
+                }
+              },
+              "X-Security-Profile": {
+                "schema": {
+                  "type": "string",
+                  "const": "accounts"
+                }
+              },
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string",
+                  "format": "uuid"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "VALIDATION_ERROR",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Auth01ErrorEnvelope"
+                }
+              }
+            },
+            "headers": {
+              "Cache-Control": {
+                "schema": {
+                  "type": "string",
+                  "const": "no-store"
+                }
+              },
+              "X-Security-Profile": {
+                "schema": {
+                  "type": "string",
+                  "const": "accounts"
+                }
+              },
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string",
+                  "format": "uuid"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "RATE_LIMITED",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Auth01ErrorEnvelope"
+                }
+              }
+            },
+            "headers": {
+              "Retry-After": {
+                "schema": {
+                  "type": "integer",
+                  "minimum": 1
+                },
+                "description": "429 remaining quota window;503 only SERVER_BUSY=1"
+              },
+              "Cache-Control": {
+                "schema": {
+                  "type": "string",
+                  "const": "no-store"
+                }
+              },
+              "X-Security-Profile": {
+                "schema": {
+                  "type": "string",
+                  "const": "accounts"
+                }
+              },
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string",
+                  "format": "uuid"
+                }
+              }
+            }
+          },
+          "431": {
+            "description": "HEADERS_TOO_LARGE",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Auth01ErrorEnvelope"
+                }
+              }
+            },
+            "headers": {
+              "Cache-Control": {
+                "schema": {
+                  "type": "string",
+                  "const": "no-store"
+                }
+              },
+              "X-Security-Profile": {
+                "schema": {
+                  "type": "string",
+                  "const": "accounts"
+                }
+              },
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string",
+                  "format": "uuid"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "INTERNAL_ERROR",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Auth01ErrorEnvelope"
+                }
+              }
+            },
+            "headers": {
+              "Cache-Control": {
+                "schema": {
+                  "type": "string",
+                  "const": "no-store"
+                }
+              },
+              "X-Security-Profile": {
+                "schema": {
+                  "type": "string",
+                  "const": "accounts"
+                }
+              },
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string",
+                  "format": "uuid"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "AUTH_UNAVAILABLE,SERVER_BUSY",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Auth01ErrorEnvelope"
+                }
+              }
+            },
+            "headers": {
+              "Retry-After": {
+                "schema": {
+                  "type": "integer",
+                  "minimum": 1
+                },
+                "description": "429 remaining quota window;503 only SERVER_BUSY=1"
+              },
+              "Cache-Control": {
+                "schema": {
+                  "type": "string",
+                  "const": "no-store"
+                }
+              },
+              "X-Security-Profile": {
+                "schema": {
+                  "type": "string",
+                  "const": "accounts"
+                }
+              },
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string",
+                  "format": "uuid"
+                }
+              }
+            }
+          }
+        },
+        "x-auth01-forbid-extra-query": true,
+        "x-auth01-error-codes-by-status": {
+          "400": [
+            "INVALID_REQUEST",
+            "UNSUPPORTED_IDEMPOTENCY_KEY"
+          ],
+          "401": [
+            "UNAUTHORIZED"
+          ],
+          "403": [
+            "PASSWORD_CHANGE_REQUIRED",
+            "FORBIDDEN"
+          ],
+          "422": [
+            "VALIDATION_ERROR"
+          ],
+          "429": [
+            "RATE_LIMITED"
+          ],
+          "431": [
+            "HEADERS_TOO_LARGE"
+          ],
+          "500": [
+            "INTERNAL_ERROR"
+          ],
+          "503": [
+            "AUTH_UNAVAILABLE",
+            "SERVER_BUSY"
+          ]
+        },
+        "x-auth01-missing-query-policy": "reject extra query parameters with422",
+        "x-auth01-error-precedence": "docs/auth01/api_contract.md#error-precedence"
+      },
+      "post": {
+        "operationId": "auth01_create_user",
+        "tags": [
+          "AUTH-01 Admin"
+        ],
+        "summary": "create user",
+        "security": [
+          {
+            "AccountSession": []
+          }
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/Auth01Origin"
+          },
+          {
+            "$ref": "#/components/parameters/Auth01Csrf"
+          }
+        ],
+        "x-auth01-public-context": false,
+        "x-auth01-capabilities": [
+          "users.manage"
+        ],
+        "x-auth01-first-password-change-allowed": false,
+        "x-auth01-idempotency-key": "unsupported;400 after security gates",
+        "responses": {
+          "201": {
+            "description": "Success",
+            "headers": {
+              "Cache-Control": {
+                "schema": {
+                  "type": "string",
+                  "const": "no-store"
+                }
+              },
+              "ETag": {
+                "description": "Strong AdminUser representation ETag",
+                "schema": {
+                  "type": "string",
+                  "pattern": "^\"au1-[0-9a-f]{64}\"$"
+                }
+              },
+              "Location": {
+                "schema": {
+                  "type": "string"
+                },
+                "description": "/api/v1/admin/users/{created UUID}"
+              },
+              "X-Security-Profile": {
+                "schema": {
+                  "type": "string",
+                  "const": "accounts"
+                }
+              },
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string",
+                  "format": "uuid"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Auth01User"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "INVALID_REQUEST,UNSUPPORTED_IDEMPOTENCY_KEY,INVALID_JSON",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Auth01ErrorEnvelope"
+                }
+              }
+            },
+            "headers": {
+              "Cache-Control": {
+                "schema": {
+                  "type": "string",
+                  "const": "no-store"
+                }
+              },
+              "X-Security-Profile": {
+                "schema": {
+                  "type": "string",
+                  "const": "accounts"
+                }
+              },
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string",
+                  "format": "uuid"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "UNAUTHORIZED",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Auth01ErrorEnvelope"
+                }
+              }
+            },
+            "headers": {
+              "Cache-Control": {
+                "schema": {
+                  "type": "string",
+                  "const": "no-store"
+                }
+              },
+              "X-Security-Profile": {
+                "schema": {
+                  "type": "string",
+                  "const": "accounts"
+                }
+              },
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string",
+                  "format": "uuid"
+                }
+              },
+              "Set-Cookie": {
+                "schema": {
+                  "type": "string"
+                },
+                "description": "Clear invalid/expired authenticated cookie; never credentials in response JSON."
+              }
+            }
+          },
+          "403": {
+            "description": "PASSWORD_CHANGE_REQUIRED,FORBIDDEN,ORIGIN_NOT_ALLOWED,CSRF_FAILED,REAUTH_FAILED",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Auth01ErrorEnvelope"
+                }
+              }
+            },
+            "headers": {
+              "Cache-Control": {
+                "schema": {
+                  "type": "string",
+                  "const": "no-store"
+                }
+              },
+              "X-Security-Profile": {
+                "schema": {
+                  "type": "string",
+                  "const": "accounts"
+                }
+              },
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string",
+                  "format": "uuid"
+                }
+              }
+            }
+          },
+          "408": {
+            "description": "REQUEST_TIMEOUT",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Auth01ErrorEnvelope"
+                }
+              }
+            },
+            "headers": {
+              "Cache-Control": {
+                "schema": {
+                  "type": "string",
+                  "const": "no-store"
+                }
+              },
+              "X-Security-Profile": {
+                "schema": {
+                  "type": "string",
+                  "const": "accounts"
+                }
+              },
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string",
+                  "format": "uuid"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "USERNAME_UNAVAILABLE",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Auth01ErrorEnvelope"
+                }
+              }
+            },
+            "headers": {
+              "Cache-Control": {
+                "schema": {
+                  "type": "string",
+                  "const": "no-store"
+                }
+              },
+              "X-Security-Profile": {
+                "schema": {
+                  "type": "string",
+                  "const": "accounts"
+                }
+              },
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string",
+                  "format": "uuid"
+                }
+              }
+            }
+          },
+          "413": {
+            "description": "PAYLOAD_TOO_LARGE",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Auth01ErrorEnvelope"
+                }
+              }
+            },
+            "headers": {
+              "Cache-Control": {
+                "schema": {
+                  "type": "string",
+                  "const": "no-store"
+                }
+              },
+              "X-Security-Profile": {
+                "schema": {
+                  "type": "string",
+                  "const": "accounts"
+                }
+              },
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string",
+                  "format": "uuid"
+                }
+              }
+            }
+          },
+          "415": {
+            "description": "UNSUPPORTED_MEDIA_TYPE",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Auth01ErrorEnvelope"
+                }
+              }
+            },
+            "headers": {
+              "Cache-Control": {
+                "schema": {
+                  "type": "string",
+                  "const": "no-store"
+                }
+              },
+              "X-Security-Profile": {
+                "schema": {
+                  "type": "string",
+                  "const": "accounts"
+                }
+              },
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string",
+                  "format": "uuid"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "VALIDATION_ERROR",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Auth01ErrorEnvelope"
+                }
+              }
+            },
+            "headers": {
+              "Cache-Control": {
+                "schema": {
+                  "type": "string",
+                  "const": "no-store"
+                }
+              },
+              "X-Security-Profile": {
+                "schema": {
+                  "type": "string",
+                  "const": "accounts"
+                }
+              },
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string",
+                  "format": "uuid"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "RATE_LIMITED",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Auth01ErrorEnvelope"
+                }
+              }
+            },
+            "headers": {
+              "Retry-After": {
+                "schema": {
+                  "type": "integer",
+                  "minimum": 1
+                },
+                "description": "429 remaining quota window;503 only SERVER_BUSY=1"
+              },
+              "Cache-Control": {
+                "schema": {
+                  "type": "string",
+                  "const": "no-store"
+                }
+              },
+              "X-Security-Profile": {
+                "schema": {
+                  "type": "string",
+                  "const": "accounts"
+                }
+              },
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string",
+                  "format": "uuid"
+                }
+              }
+            }
+          },
+          "431": {
+            "description": "HEADERS_TOO_LARGE",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Auth01ErrorEnvelope"
+                }
+              }
+            },
+            "headers": {
+              "Cache-Control": {
+                "schema": {
+                  "type": "string",
+                  "const": "no-store"
+                }
+              },
+              "X-Security-Profile": {
+                "schema": {
+                  "type": "string",
+                  "const": "accounts"
+                }
+              },
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string",
+                  "format": "uuid"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "INTERNAL_ERROR",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Auth01ErrorEnvelope"
+                }
+              }
+            },
+            "headers": {
+              "Cache-Control": {
+                "schema": {
+                  "type": "string",
+                  "const": "no-store"
+                }
+              },
+              "X-Security-Profile": {
+                "schema": {
+                  "type": "string",
+                  "const": "accounts"
+                }
+              },
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string",
+                  "format": "uuid"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "AUTH_UNAVAILABLE,SERVER_BUSY",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Auth01ErrorEnvelope"
+                }
+              }
+            },
+            "headers": {
+              "Retry-After": {
+                "schema": {
+                  "type": "integer",
+                  "minimum": 1
+                },
+                "description": "429 remaining quota window;503 only SERVER_BUSY=1"
+              },
+              "Cache-Control": {
+                "schema": {
+                  "type": "string",
+                  "const": "no-store"
+                }
+              },
+              "X-Security-Profile": {
+                "schema": {
+                  "type": "string",
+                  "const": "accounts"
+                }
+              },
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string",
+                  "format": "uuid"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Auth01CreateUser"
+              }
+            }
+          }
+        },
+        "x-auth01-forbid-extra-query": true,
+        "x-auth01-error-codes-by-status": {
+          "400": [
+            "INVALID_REQUEST",
+            "UNSUPPORTED_IDEMPOTENCY_KEY",
+            "INVALID_JSON"
+          ],
+          "401": [
+            "UNAUTHORIZED"
+          ],
+          "403": [
+            "PASSWORD_CHANGE_REQUIRED",
+            "FORBIDDEN",
+            "ORIGIN_NOT_ALLOWED",
+            "CSRF_FAILED",
+            "REAUTH_FAILED"
+          ],
+          "408": [
+            "REQUEST_TIMEOUT"
+          ],
+          "409": [
+            "USERNAME_UNAVAILABLE"
+          ],
+          "413": [
+            "PAYLOAD_TOO_LARGE"
+          ],
+          "415": [
+            "UNSUPPORTED_MEDIA_TYPE"
+          ],
+          "422": [
+            "VALIDATION_ERROR"
+          ],
+          "429": [
+            "RATE_LIMITED"
+          ],
+          "431": [
+            "HEADERS_TOO_LARGE"
+          ],
+          "500": [
+            "INTERNAL_ERROR"
+          ],
+          "503": [
+            "AUTH_UNAVAILABLE",
+            "SERVER_BUSY"
+          ]
+        },
+        "x-auth01-missing-query-policy": "reject extra query parameters with422",
+        "x-auth01-error-precedence": "docs/auth01/api_contract.md#error-precedence"
+      }
+    },
+    "/api/v1/admin/users/{user_id}": {
+      "get": {
+        "operationId": "auth01_get_user",
+        "tags": [
+          "AUTH-01 Admin"
+        ],
+        "summary": "get user",
+        "security": [
+          {
+            "AccountSession": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "user_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "x-auth01-public-context": false,
+        "x-auth01-capabilities": [
+          "users.manage"
+        ],
+        "x-auth01-first-password-change-allowed": false,
+        "x-auth01-idempotency-key": "unsupported;400 after security gates",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "headers": {
+              "Cache-Control": {
+                "schema": {
+                  "type": "string",
+                  "const": "no-store"
+                }
+              },
+              "ETag": {
+                "description": "Strong AdminUser representation ETag",
+                "schema": {
+                  "type": "string",
+                  "pattern": "^\"au1-[0-9a-f]{64}\"$"
+                }
+              },
+              "X-Security-Profile": {
+                "schema": {
+                  "type": "string",
+                  "const": "accounts"
+                }
+              },
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string",
+                  "format": "uuid"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Auth01User"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "INVALID_REQUEST,UNSUPPORTED_IDEMPOTENCY_KEY",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Auth01ErrorEnvelope"
+                }
+              }
+            },
+            "headers": {
+              "Cache-Control": {
+                "schema": {
+                  "type": "string",
+                  "const": "no-store"
+                }
+              },
+              "X-Security-Profile": {
+                "schema": {
+                  "type": "string",
+                  "const": "accounts"
+                }
+              },
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string",
+                  "format": "uuid"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "UNAUTHORIZED",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Auth01ErrorEnvelope"
+                }
+              }
+            },
+            "headers": {
+              "Cache-Control": {
+                "schema": {
+                  "type": "string",
+                  "const": "no-store"
+                }
+              },
+              "X-Security-Profile": {
+                "schema": {
+                  "type": "string",
+                  "const": "accounts"
+                }
+              },
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string",
+                  "format": "uuid"
+                }
+              },
+              "Set-Cookie": {
+                "schema": {
+                  "type": "string"
+                },
+                "description": "Clear invalid/expired authenticated cookie; never credentials in response JSON."
+              }
+            }
+          },
+          "403": {
+            "description": "PASSWORD_CHANGE_REQUIRED,FORBIDDEN",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Auth01ErrorEnvelope"
+                }
+              }
+            },
+            "headers": {
+              "Cache-Control": {
+                "schema": {
+                  "type": "string",
+                  "const": "no-store"
+                }
+              },
+              "X-Security-Profile": {
+                "schema": {
+                  "type": "string",
+                  "const": "accounts"
+                }
+              },
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string",
+                  "format": "uuid"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "TARGET_USER_NOT_FOUND",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Auth01ErrorEnvelope"
+                }
+              }
+            },
+            "headers": {
+              "Cache-Control": {
+                "schema": {
+                  "type": "string",
+                  "const": "no-store"
+                }
+              },
+              "X-Security-Profile": {
+                "schema": {
+                  "type": "string",
+                  "const": "accounts"
+                }
+              },
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string",
+                  "format": "uuid"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "VALIDATION_ERROR",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Auth01ErrorEnvelope"
+                }
+              }
+            },
+            "headers": {
+              "Cache-Control": {
+                "schema": {
+                  "type": "string",
+                  "const": "no-store"
+                }
+              },
+              "X-Security-Profile": {
+                "schema": {
+                  "type": "string",
+                  "const": "accounts"
+                }
+              },
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string",
+                  "format": "uuid"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "RATE_LIMITED",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Auth01ErrorEnvelope"
+                }
+              }
+            },
+            "headers": {
+              "Retry-After": {
+                "schema": {
+                  "type": "integer",
+                  "minimum": 1
+                },
+                "description": "429 remaining quota window;503 only SERVER_BUSY=1"
+              },
+              "Cache-Control": {
+                "schema": {
+                  "type": "string",
+                  "const": "no-store"
+                }
+              },
+              "X-Security-Profile": {
+                "schema": {
+                  "type": "string",
+                  "const": "accounts"
+                }
+              },
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string",
+                  "format": "uuid"
+                }
+              }
+            }
+          },
+          "431": {
+            "description": "HEADERS_TOO_LARGE",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Auth01ErrorEnvelope"
+                }
+              }
+            },
+            "headers": {
+              "Cache-Control": {
+                "schema": {
+                  "type": "string",
+                  "const": "no-store"
+                }
+              },
+              "X-Security-Profile": {
+                "schema": {
+                  "type": "string",
+                  "const": "accounts"
+                }
+              },
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string",
+                  "format": "uuid"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "INTERNAL_ERROR",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Auth01ErrorEnvelope"
+                }
+              }
+            },
+            "headers": {
+              "Cache-Control": {
+                "schema": {
+                  "type": "string",
+                  "const": "no-store"
+                }
+              },
+              "X-Security-Profile": {
+                "schema": {
+                  "type": "string",
+                  "const": "accounts"
+                }
+              },
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string",
+                  "format": "uuid"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "AUTH_UNAVAILABLE,SERVER_BUSY",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Auth01ErrorEnvelope"
+                }
+              }
+            },
+            "headers": {
+              "Retry-After": {
+                "schema": {
+                  "type": "integer",
+                  "minimum": 1
+                },
+                "description": "429 remaining quota window;503 only SERVER_BUSY=1"
+              },
+              "Cache-Control": {
+                "schema": {
+                  "type": "string",
+                  "const": "no-store"
+                }
+              },
+              "X-Security-Profile": {
+                "schema": {
+                  "type": "string",
+                  "const": "accounts"
+                }
+              },
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string",
+                  "format": "uuid"
+                }
+              }
+            }
+          }
+        },
+        "x-auth01-forbid-extra-query": true,
+        "x-auth01-error-codes-by-status": {
+          "400": [
+            "INVALID_REQUEST",
+            "UNSUPPORTED_IDEMPOTENCY_KEY"
+          ],
+          "401": [
+            "UNAUTHORIZED"
+          ],
+          "403": [
+            "PASSWORD_CHANGE_REQUIRED",
+            "FORBIDDEN"
+          ],
+          "404": [
+            "TARGET_USER_NOT_FOUND"
+          ],
+          "422": [
+            "VALIDATION_ERROR"
+          ],
+          "429": [
+            "RATE_LIMITED"
+          ],
+          "431": [
+            "HEADERS_TOO_LARGE"
+          ],
+          "500": [
+            "INTERNAL_ERROR"
+          ],
+          "503": [
+            "AUTH_UNAVAILABLE",
+            "SERVER_BUSY"
+          ]
+        },
+        "x-auth01-missing-query-policy": "reject extra query parameters with422",
+        "x-auth01-error-precedence": "docs/auth01/api_contract.md#error-precedence"
+      },
+      "patch": {
+        "operationId": "auth01_patch_user",
+        "tags": [
+          "AUTH-01 Admin"
+        ],
+        "summary": "patch user",
+        "security": [
+          {
+            "AccountSession": []
+          }
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/Auth01Origin"
+          },
+          {
+            "$ref": "#/components/parameters/Auth01Csrf"
+          },
+          {
+            "name": "user_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "$ref": "#/components/parameters/Auth01IfMatch"
+          }
+        ],
+        "x-auth01-public-context": false,
+        "x-auth01-capabilities": [
+          "users.manage"
+        ],
+        "x-auth01-first-password-change-allowed": false,
+        "x-auth01-idempotency-key": "unsupported;400 after security gates",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "headers": {
+              "Cache-Control": {
+                "schema": {
+                  "type": "string",
+                  "const": "no-store"
+                }
+              },
+              "ETag": {
+                "description": "Strong AdminUser representation ETag",
+                "schema": {
+                  "type": "string",
+                  "pattern": "^\"au1-[0-9a-f]{64}\"$"
+                }
+              },
+              "Set-Cookie": {
+                "schema": {
+                  "type": "string"
+                },
+                "description": "Issue or clear opaque session cookie only as specified; never a JSON session credential."
+              },
+              "X-Security-Profile": {
+                "schema": {
+                  "type": "string",
+                  "const": "accounts"
+                }
+              },
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string",
+                  "format": "uuid"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Auth01User"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "INVALID_REQUEST,UNSUPPORTED_IDEMPOTENCY_KEY,INVALID_JSON,INVALID_IF_MATCH",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Auth01ErrorEnvelope"
+                }
+              }
+            },
+            "headers": {
+              "Cache-Control": {
+                "schema": {
+                  "type": "string",
+                  "const": "no-store"
+                }
+              },
+              "X-Security-Profile": {
+                "schema": {
+                  "type": "string",
+                  "const": "accounts"
+                }
+              },
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string",
+                  "format": "uuid"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "UNAUTHORIZED",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Auth01ErrorEnvelope"
+                }
+              }
+            },
+            "headers": {
+              "Cache-Control": {
+                "schema": {
+                  "type": "string",
+                  "const": "no-store"
+                }
+              },
+              "X-Security-Profile": {
+                "schema": {
+                  "type": "string",
+                  "const": "accounts"
+                }
+              },
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string",
+                  "format": "uuid"
+                }
+              },
+              "Set-Cookie": {
+                "schema": {
+                  "type": "string"
+                },
+                "description": "Clear invalid/expired authenticated cookie; never credentials in response JSON."
+              }
+            }
+          },
+          "403": {
+            "description": "PASSWORD_CHANGE_REQUIRED,FORBIDDEN,ORIGIN_NOT_ALLOWED,CSRF_FAILED,REAUTH_FAILED",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Auth01ErrorEnvelope"
+                }
+              }
+            },
+            "headers": {
+              "Cache-Control": {
+                "schema": {
+                  "type": "string",
+                  "const": "no-store"
+                }
+              },
+              "X-Security-Profile": {
+                "schema": {
+                  "type": "string",
+                  "const": "accounts"
+                }
+              },
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string",
+                  "format": "uuid"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "TARGET_USER_NOT_FOUND",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Auth01ErrorEnvelope"
+                }
+              }
+            },
+            "headers": {
+              "Cache-Control": {
+                "schema": {
+                  "type": "string",
+                  "const": "no-store"
+                }
+              },
+              "X-Security-Profile": {
+                "schema": {
+                  "type": "string",
+                  "const": "accounts"
+                }
+              },
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string",
+                  "format": "uuid"
+                }
+              }
+            }
+          },
+          "408": {
+            "description": "REQUEST_TIMEOUT",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Auth01ErrorEnvelope"
+                }
+              }
+            },
+            "headers": {
+              "Cache-Control": {
+                "schema": {
+                  "type": "string",
+                  "const": "no-store"
+                }
+              },
+              "X-Security-Profile": {
+                "schema": {
+                  "type": "string",
+                  "const": "accounts"
+                }
+              },
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string",
+                  "format": "uuid"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "SELF_OPERATION_NOT_ALLOWED,LAST_ADMIN_PROTECTED",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Auth01ErrorEnvelope"
+                }
+              }
+            },
+            "headers": {
+              "Cache-Control": {
+                "schema": {
+                  "type": "string",
+                  "const": "no-store"
+                }
+              },
+              "X-Security-Profile": {
+                "schema": {
+                  "type": "string",
+                  "const": "accounts"
+                }
+              },
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string",
+                  "format": "uuid"
+                }
+              }
+            }
+          },
+          "412": {
+            "description": "STALE_USER_VERSION",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Auth01ErrorEnvelope"
+                }
+              }
+            },
+            "headers": {
+              "Cache-Control": {
+                "schema": {
+                  "type": "string",
+                  "const": "no-store"
+                }
+              },
+              "X-Security-Profile": {
+                "schema": {
+                  "type": "string",
+                  "const": "accounts"
+                }
+              },
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string",
+                  "format": "uuid"
+                }
+              }
+            }
+          },
+          "413": {
+            "description": "PAYLOAD_TOO_LARGE",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Auth01ErrorEnvelope"
+                }
+              }
+            },
+            "headers": {
+              "Cache-Control": {
+                "schema": {
+                  "type": "string",
+                  "const": "no-store"
+                }
+              },
+              "X-Security-Profile": {
+                "schema": {
+                  "type": "string",
+                  "const": "accounts"
+                }
+              },
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string",
+                  "format": "uuid"
+                }
+              }
+            }
+          },
+          "415": {
+            "description": "UNSUPPORTED_MEDIA_TYPE",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Auth01ErrorEnvelope"
+                }
+              }
+            },
+            "headers": {
+              "Cache-Control": {
+                "schema": {
+                  "type": "string",
+                  "const": "no-store"
+                }
+              },
+              "X-Security-Profile": {
+                "schema": {
+                  "type": "string",
+                  "const": "accounts"
+                }
+              },
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string",
+                  "format": "uuid"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "VALIDATION_ERROR",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Auth01ErrorEnvelope"
+                }
+              }
+            },
+            "headers": {
+              "Cache-Control": {
+                "schema": {
+                  "type": "string",
+                  "const": "no-store"
+                }
+              },
+              "X-Security-Profile": {
+                "schema": {
+                  "type": "string",
+                  "const": "accounts"
+                }
+              },
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string",
+                  "format": "uuid"
+                }
+              }
+            }
+          },
+          "428": {
+            "description": "PRECONDITION_REQUIRED",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Auth01ErrorEnvelope"
+                }
+              }
+            },
+            "headers": {
+              "Cache-Control": {
+                "schema": {
+                  "type": "string",
+                  "const": "no-store"
+                }
+              },
+              "X-Security-Profile": {
+                "schema": {
+                  "type": "string",
+                  "const": "accounts"
+                }
+              },
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string",
+                  "format": "uuid"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "RATE_LIMITED",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Auth01ErrorEnvelope"
+                }
+              }
+            },
+            "headers": {
+              "Retry-After": {
+                "schema": {
+                  "type": "integer",
+                  "minimum": 1
+                },
+                "description": "429 remaining quota window;503 only SERVER_BUSY=1"
+              },
+              "Cache-Control": {
+                "schema": {
+                  "type": "string",
+                  "const": "no-store"
+                }
+              },
+              "X-Security-Profile": {
+                "schema": {
+                  "type": "string",
+                  "const": "accounts"
+                }
+              },
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string",
+                  "format": "uuid"
+                }
+              }
+            }
+          },
+          "431": {
+            "description": "HEADERS_TOO_LARGE",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Auth01ErrorEnvelope"
+                }
+              }
+            },
+            "headers": {
+              "Cache-Control": {
+                "schema": {
+                  "type": "string",
+                  "const": "no-store"
+                }
+              },
+              "X-Security-Profile": {
+                "schema": {
+                  "type": "string",
+                  "const": "accounts"
+                }
+              },
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string",
+                  "format": "uuid"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "INTERNAL_ERROR",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Auth01ErrorEnvelope"
+                }
+              }
+            },
+            "headers": {
+              "Cache-Control": {
+                "schema": {
+                  "type": "string",
+                  "const": "no-store"
+                }
+              },
+              "X-Security-Profile": {
+                "schema": {
+                  "type": "string",
+                  "const": "accounts"
+                }
+              },
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string",
+                  "format": "uuid"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "AUTH_UNAVAILABLE,SERVER_BUSY",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Auth01ErrorEnvelope"
+                }
+              }
+            },
+            "headers": {
+              "Retry-After": {
+                "schema": {
+                  "type": "integer",
+                  "minimum": 1
+                },
+                "description": "429 remaining quota window;503 only SERVER_BUSY=1"
+              },
+              "Cache-Control": {
+                "schema": {
+                  "type": "string",
+                  "const": "no-store"
+                }
+              },
+              "X-Security-Profile": {
+                "schema": {
+                  "type": "string",
+                  "const": "accounts"
+                }
+              },
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string",
+                  "format": "uuid"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Auth01PatchUser"
+              }
+            }
+          }
+        },
+        "x-auth01-forbid-extra-query": true,
+        "x-auth01-error-codes-by-status": {
+          "400": [
+            "INVALID_REQUEST",
+            "UNSUPPORTED_IDEMPOTENCY_KEY",
+            "INVALID_JSON",
+            "INVALID_IF_MATCH"
+          ],
+          "401": [
+            "UNAUTHORIZED"
+          ],
+          "403": [
+            "PASSWORD_CHANGE_REQUIRED",
+            "FORBIDDEN",
+            "ORIGIN_NOT_ALLOWED",
+            "CSRF_FAILED",
+            "REAUTH_FAILED"
+          ],
+          "404": [
+            "TARGET_USER_NOT_FOUND"
+          ],
+          "408": [
+            "REQUEST_TIMEOUT"
+          ],
+          "409": [
+            "SELF_OPERATION_NOT_ALLOWED",
+            "LAST_ADMIN_PROTECTED"
+          ],
+          "412": [
+            "STALE_USER_VERSION"
+          ],
+          "413": [
+            "PAYLOAD_TOO_LARGE"
+          ],
+          "415": [
+            "UNSUPPORTED_MEDIA_TYPE"
+          ],
+          "422": [
+            "VALIDATION_ERROR"
+          ],
+          "428": [
+            "PRECONDITION_REQUIRED"
+          ],
+          "429": [
+            "RATE_LIMITED"
+          ],
+          "431": [
+            "HEADERS_TOO_LARGE"
+          ],
+          "500": [
+            "INTERNAL_ERROR"
+          ],
+          "503": [
+            "AUTH_UNAVAILABLE",
+            "SERVER_BUSY"
+          ]
+        },
+        "x-auth01-missing-query-policy": "reject extra query parameters with422",
+        "x-auth01-error-precedence": "docs/auth01/api_contract.md#error-precedence"
+      }
+    },
+    "/api/v1/admin/users/{user_id}/reset-password": {
+      "post": {
+        "operationId": "auth01_reset_password",
+        "tags": [
+          "AUTH-01 Admin"
+        ],
+        "summary": "reset password",
+        "security": [
+          {
+            "AccountSession": []
+          }
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/Auth01Origin"
+          },
+          {
+            "$ref": "#/components/parameters/Auth01Csrf"
+          },
+          {
+            "name": "user_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "$ref": "#/components/parameters/Auth01IfMatch"
+          }
+        ],
+        "x-auth01-public-context": false,
+        "x-auth01-capabilities": [
+          "users.manage"
+        ],
+        "x-auth01-first-password-change-allowed": false,
+        "x-auth01-idempotency-key": "unsupported;400 after security gates",
+        "responses": {
+          "204": {
+            "description": "Success",
+            "headers": {
+              "Cache-Control": {
+                "schema": {
+                  "type": "string",
+                  "const": "no-store"
+                }
+              },
+              "ETag": {
+                "description": "Strong AdminUser representation ETag",
+                "schema": {
+                  "type": "string",
+                  "pattern": "^\"au1-[0-9a-f]{64}\"$"
+                }
+              },
+              "X-Security-Profile": {
+                "schema": {
+                  "type": "string",
+                  "const": "accounts"
+                }
+              },
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string",
+                  "format": "uuid"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "INVALID_REQUEST,UNSUPPORTED_IDEMPOTENCY_KEY,INVALID_JSON,INVALID_IF_MATCH",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Auth01ErrorEnvelope"
+                }
+              }
+            },
+            "headers": {
+              "Cache-Control": {
+                "schema": {
+                  "type": "string",
+                  "const": "no-store"
+                }
+              },
+              "X-Security-Profile": {
+                "schema": {
+                  "type": "string",
+                  "const": "accounts"
+                }
+              },
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string",
+                  "format": "uuid"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "UNAUTHORIZED",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Auth01ErrorEnvelope"
+                }
+              }
+            },
+            "headers": {
+              "Cache-Control": {
+                "schema": {
+                  "type": "string",
+                  "const": "no-store"
+                }
+              },
+              "X-Security-Profile": {
+                "schema": {
+                  "type": "string",
+                  "const": "accounts"
+                }
+              },
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string",
+                  "format": "uuid"
+                }
+              },
+              "Set-Cookie": {
+                "schema": {
+                  "type": "string"
+                },
+                "description": "Clear invalid/expired authenticated cookie; never credentials in response JSON."
+              }
+            }
+          },
+          "403": {
+            "description": "PASSWORD_CHANGE_REQUIRED,FORBIDDEN,ORIGIN_NOT_ALLOWED,CSRF_FAILED,REAUTH_FAILED",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Auth01ErrorEnvelope"
+                }
+              }
+            },
+            "headers": {
+              "Cache-Control": {
+                "schema": {
+                  "type": "string",
+                  "const": "no-store"
+                }
+              },
+              "X-Security-Profile": {
+                "schema": {
+                  "type": "string",
+                  "const": "accounts"
+                }
+              },
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string",
+                  "format": "uuid"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "TARGET_USER_NOT_FOUND",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Auth01ErrorEnvelope"
+                }
+              }
+            },
+            "headers": {
+              "Cache-Control": {
+                "schema": {
+                  "type": "string",
+                  "const": "no-store"
+                }
+              },
+              "X-Security-Profile": {
+                "schema": {
+                  "type": "string",
+                  "const": "accounts"
+                }
+              },
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string",
+                  "format": "uuid"
+                }
+              }
+            }
+          },
+          "408": {
+            "description": "REQUEST_TIMEOUT",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Auth01ErrorEnvelope"
+                }
+              }
+            },
+            "headers": {
+              "Cache-Control": {
+                "schema": {
+                  "type": "string",
+                  "const": "no-store"
+                }
+              },
+              "X-Security-Profile": {
+                "schema": {
+                  "type": "string",
+                  "const": "accounts"
+                }
+              },
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string",
+                  "format": "uuid"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "SELF_OPERATION_NOT_ALLOWED",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Auth01ErrorEnvelope"
+                }
+              }
+            },
+            "headers": {
+              "Cache-Control": {
+                "schema": {
+                  "type": "string",
+                  "const": "no-store"
+                }
+              },
+              "X-Security-Profile": {
+                "schema": {
+                  "type": "string",
+                  "const": "accounts"
+                }
+              },
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string",
+                  "format": "uuid"
+                }
+              }
+            }
+          },
+          "412": {
+            "description": "STALE_USER_VERSION",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Auth01ErrorEnvelope"
+                }
+              }
+            },
+            "headers": {
+              "Cache-Control": {
+                "schema": {
+                  "type": "string",
+                  "const": "no-store"
+                }
+              },
+              "X-Security-Profile": {
+                "schema": {
+                  "type": "string",
+                  "const": "accounts"
+                }
+              },
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string",
+                  "format": "uuid"
+                }
+              }
+            }
+          },
+          "413": {
+            "description": "PAYLOAD_TOO_LARGE",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Auth01ErrorEnvelope"
+                }
+              }
+            },
+            "headers": {
+              "Cache-Control": {
+                "schema": {
+                  "type": "string",
+                  "const": "no-store"
+                }
+              },
+              "X-Security-Profile": {
+                "schema": {
+                  "type": "string",
+                  "const": "accounts"
+                }
+              },
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string",
+                  "format": "uuid"
+                }
+              }
+            }
+          },
+          "415": {
+            "description": "UNSUPPORTED_MEDIA_TYPE",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Auth01ErrorEnvelope"
+                }
+              }
+            },
+            "headers": {
+              "Cache-Control": {
+                "schema": {
+                  "type": "string",
+                  "const": "no-store"
+                }
+              },
+              "X-Security-Profile": {
+                "schema": {
+                  "type": "string",
+                  "const": "accounts"
+                }
+              },
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string",
+                  "format": "uuid"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "VALIDATION_ERROR,PASSWORD_UNCHANGED",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Auth01ErrorEnvelope"
+                }
+              }
+            },
+            "headers": {
+              "Cache-Control": {
+                "schema": {
+                  "type": "string",
+                  "const": "no-store"
+                }
+              },
+              "X-Security-Profile": {
+                "schema": {
+                  "type": "string",
+                  "const": "accounts"
+                }
+              },
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string",
+                  "format": "uuid"
+                }
+              }
+            }
+          },
+          "428": {
+            "description": "PRECONDITION_REQUIRED",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Auth01ErrorEnvelope"
+                }
+              }
+            },
+            "headers": {
+              "Cache-Control": {
+                "schema": {
+                  "type": "string",
+                  "const": "no-store"
+                }
+              },
+              "X-Security-Profile": {
+                "schema": {
+                  "type": "string",
+                  "const": "accounts"
+                }
+              },
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string",
+                  "format": "uuid"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "RATE_LIMITED",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Auth01ErrorEnvelope"
+                }
+              }
+            },
+            "headers": {
+              "Retry-After": {
+                "schema": {
+                  "type": "integer",
+                  "minimum": 1
+                },
+                "description": "429 remaining quota window;503 only SERVER_BUSY=1"
+              },
+              "Cache-Control": {
+                "schema": {
+                  "type": "string",
+                  "const": "no-store"
+                }
+              },
+              "X-Security-Profile": {
+                "schema": {
+                  "type": "string",
+                  "const": "accounts"
+                }
+              },
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string",
+                  "format": "uuid"
+                }
+              }
+            }
+          },
+          "431": {
+            "description": "HEADERS_TOO_LARGE",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Auth01ErrorEnvelope"
+                }
+              }
+            },
+            "headers": {
+              "Cache-Control": {
+                "schema": {
+                  "type": "string",
+                  "const": "no-store"
+                }
+              },
+              "X-Security-Profile": {
+                "schema": {
+                  "type": "string",
+                  "const": "accounts"
+                }
+              },
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string",
+                  "format": "uuid"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "INTERNAL_ERROR",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Auth01ErrorEnvelope"
+                }
+              }
+            },
+            "headers": {
+              "Cache-Control": {
+                "schema": {
+                  "type": "string",
+                  "const": "no-store"
+                }
+              },
+              "X-Security-Profile": {
+                "schema": {
+                  "type": "string",
+                  "const": "accounts"
+                }
+              },
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string",
+                  "format": "uuid"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "AUTH_UNAVAILABLE,SERVER_BUSY",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Auth01ErrorEnvelope"
+                }
+              }
+            },
+            "headers": {
+              "Retry-After": {
+                "schema": {
+                  "type": "integer",
+                  "minimum": 1
+                },
+                "description": "429 remaining quota window;503 only SERVER_BUSY=1"
+              },
+              "Cache-Control": {
+                "schema": {
+                  "type": "string",
+                  "const": "no-store"
+                }
+              },
+              "X-Security-Profile": {
+                "schema": {
+                  "type": "string",
+                  "const": "accounts"
+                }
+              },
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string",
+                  "format": "uuid"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Auth01ResetPassword"
+              }
+            }
+          }
+        },
+        "x-auth01-forbid-extra-query": true,
+        "x-auth01-error-codes-by-status": {
+          "400": [
+            "INVALID_REQUEST",
+            "UNSUPPORTED_IDEMPOTENCY_KEY",
+            "INVALID_JSON",
+            "INVALID_IF_MATCH"
+          ],
+          "401": [
+            "UNAUTHORIZED"
+          ],
+          "403": [
+            "PASSWORD_CHANGE_REQUIRED",
+            "FORBIDDEN",
+            "ORIGIN_NOT_ALLOWED",
+            "CSRF_FAILED",
+            "REAUTH_FAILED"
+          ],
+          "404": [
+            "TARGET_USER_NOT_FOUND"
+          ],
+          "408": [
+            "REQUEST_TIMEOUT"
+          ],
+          "409": [
+            "SELF_OPERATION_NOT_ALLOWED"
+          ],
+          "412": [
+            "STALE_USER_VERSION"
+          ],
+          "413": [
+            "PAYLOAD_TOO_LARGE"
+          ],
+          "415": [
+            "UNSUPPORTED_MEDIA_TYPE"
+          ],
+          "422": [
+            "VALIDATION_ERROR",
+            "PASSWORD_UNCHANGED"
+          ],
+          "428": [
+            "PRECONDITION_REQUIRED"
+          ],
+          "429": [
+            "RATE_LIMITED"
+          ],
+          "431": [
+            "HEADERS_TOO_LARGE"
+          ],
+          "500": [
+            "INTERNAL_ERROR"
+          ],
+          "503": [
+            "AUTH_UNAVAILABLE",
+            "SERVER_BUSY"
+          ]
+        },
+        "x-auth01-missing-query-policy": "reject extra query parameters with422",
+        "x-auth01-error-precedence": "docs/auth01/api_contract.md#error-precedence"
+      }
+    },
+    "/api/v1/admin/users/{user_id}/revoke-sessions": {
+      "post": {
+        "operationId": "auth01_revoke_sessions",
+        "tags": [
+          "AUTH-01 Admin"
+        ],
+        "summary": "revoke sessions",
+        "security": [
+          {
+            "AccountSession": []
+          }
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/Auth01Origin"
+          },
+          {
+            "$ref": "#/components/parameters/Auth01Csrf"
+          },
+          {
+            "name": "user_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "$ref": "#/components/parameters/Auth01IfMatch"
+          }
+        ],
+        "x-auth01-public-context": false,
+        "x-auth01-capabilities": [
+          "users.manage"
+        ],
+        "x-auth01-first-password-change-allowed": false,
+        "x-auth01-idempotency-key": "unsupported;400 after security gates",
+        "responses": {
+          "204": {
+            "description": "Success",
+            "headers": {
+              "Cache-Control": {
+                "schema": {
+                  "type": "string",
+                  "const": "no-store"
+                }
+              },
+              "ETag": {
+                "description": "Strong AdminUser representation ETag",
+                "schema": {
+                  "type": "string",
+                  "pattern": "^\"au1-[0-9a-f]{64}\"$"
+                }
+              },
+              "Set-Cookie": {
+                "schema": {
+                  "type": "string"
+                },
+                "description": "Issue or clear opaque session cookie only as specified; never a JSON session credential."
+              },
+              "X-Security-Profile": {
+                "schema": {
+                  "type": "string",
+                  "const": "accounts"
+                }
+              },
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string",
+                  "format": "uuid"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "INVALID_REQUEST,UNSUPPORTED_IDEMPOTENCY_KEY,INVALID_JSON,INVALID_IF_MATCH",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Auth01ErrorEnvelope"
+                }
+              }
+            },
+            "headers": {
+              "Cache-Control": {
+                "schema": {
+                  "type": "string",
+                  "const": "no-store"
+                }
+              },
+              "X-Security-Profile": {
+                "schema": {
+                  "type": "string",
+                  "const": "accounts"
+                }
+              },
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string",
+                  "format": "uuid"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "UNAUTHORIZED",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Auth01ErrorEnvelope"
+                }
+              }
+            },
+            "headers": {
+              "Cache-Control": {
+                "schema": {
+                  "type": "string",
+                  "const": "no-store"
+                }
+              },
+              "X-Security-Profile": {
+                "schema": {
+                  "type": "string",
+                  "const": "accounts"
+                }
+              },
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string",
+                  "format": "uuid"
+                }
+              },
+              "Set-Cookie": {
+                "schema": {
+                  "type": "string"
+                },
+                "description": "Clear invalid/expired authenticated cookie; never credentials in response JSON."
+              }
+            }
+          },
+          "403": {
+            "description": "PASSWORD_CHANGE_REQUIRED,FORBIDDEN,ORIGIN_NOT_ALLOWED,CSRF_FAILED,REAUTH_FAILED",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Auth01ErrorEnvelope"
+                }
+              }
+            },
+            "headers": {
+              "Cache-Control": {
+                "schema": {
+                  "type": "string",
+                  "const": "no-store"
+                }
+              },
+              "X-Security-Profile": {
+                "schema": {
+                  "type": "string",
+                  "const": "accounts"
+                }
+              },
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string",
+                  "format": "uuid"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "TARGET_USER_NOT_FOUND",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Auth01ErrorEnvelope"
+                }
+              }
+            },
+            "headers": {
+              "Cache-Control": {
+                "schema": {
+                  "type": "string",
+                  "const": "no-store"
+                }
+              },
+              "X-Security-Profile": {
+                "schema": {
+                  "type": "string",
+                  "const": "accounts"
+                }
+              },
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string",
+                  "format": "uuid"
+                }
+              }
+            }
+          },
+          "408": {
+            "description": "REQUEST_TIMEOUT",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Auth01ErrorEnvelope"
+                }
+              }
+            },
+            "headers": {
+              "Cache-Control": {
+                "schema": {
+                  "type": "string",
+                  "const": "no-store"
+                }
+              },
+              "X-Security-Profile": {
+                "schema": {
+                  "type": "string",
+                  "const": "accounts"
+                }
+              },
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string",
+                  "format": "uuid"
+                }
+              }
+            }
+          },
+          "412": {
+            "description": "STALE_USER_VERSION",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Auth01ErrorEnvelope"
+                }
+              }
+            },
+            "headers": {
+              "Cache-Control": {
+                "schema": {
+                  "type": "string",
+                  "const": "no-store"
+                }
+              },
+              "X-Security-Profile": {
+                "schema": {
+                  "type": "string",
+                  "const": "accounts"
+                }
+              },
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string",
+                  "format": "uuid"
+                }
+              }
+            }
+          },
+          "413": {
+            "description": "PAYLOAD_TOO_LARGE",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Auth01ErrorEnvelope"
+                }
+              }
+            },
+            "headers": {
+              "Cache-Control": {
+                "schema": {
+                  "type": "string",
+                  "const": "no-store"
+                }
+              },
+              "X-Security-Profile": {
+                "schema": {
+                  "type": "string",
+                  "const": "accounts"
+                }
+              },
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string",
+                  "format": "uuid"
+                }
+              }
+            }
+          },
+          "415": {
+            "description": "UNSUPPORTED_MEDIA_TYPE",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Auth01ErrorEnvelope"
+                }
+              }
+            },
+            "headers": {
+              "Cache-Control": {
+                "schema": {
+                  "type": "string",
+                  "const": "no-store"
+                }
+              },
+              "X-Security-Profile": {
+                "schema": {
+                  "type": "string",
+                  "const": "accounts"
+                }
+              },
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string",
+                  "format": "uuid"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "VALIDATION_ERROR",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Auth01ErrorEnvelope"
+                }
+              }
+            },
+            "headers": {
+              "Cache-Control": {
+                "schema": {
+                  "type": "string",
+                  "const": "no-store"
+                }
+              },
+              "X-Security-Profile": {
+                "schema": {
+                  "type": "string",
+                  "const": "accounts"
+                }
+              },
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string",
+                  "format": "uuid"
+                }
+              }
+            }
+          },
+          "428": {
+            "description": "PRECONDITION_REQUIRED",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Auth01ErrorEnvelope"
+                }
+              }
+            },
+            "headers": {
+              "Cache-Control": {
+                "schema": {
+                  "type": "string",
+                  "const": "no-store"
+                }
+              },
+              "X-Security-Profile": {
+                "schema": {
+                  "type": "string",
+                  "const": "accounts"
+                }
+              },
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string",
+                  "format": "uuid"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "RATE_LIMITED",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Auth01ErrorEnvelope"
+                }
+              }
+            },
+            "headers": {
+              "Retry-After": {
+                "schema": {
+                  "type": "integer",
+                  "minimum": 1
+                },
+                "description": "429 remaining quota window;503 only SERVER_BUSY=1"
+              },
+              "Cache-Control": {
+                "schema": {
+                  "type": "string",
+                  "const": "no-store"
+                }
+              },
+              "X-Security-Profile": {
+                "schema": {
+                  "type": "string",
+                  "const": "accounts"
+                }
+              },
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string",
+                  "format": "uuid"
+                }
+              }
+            }
+          },
+          "431": {
+            "description": "HEADERS_TOO_LARGE",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Auth01ErrorEnvelope"
+                }
+              }
+            },
+            "headers": {
+              "Cache-Control": {
+                "schema": {
+                  "type": "string",
+                  "const": "no-store"
+                }
+              },
+              "X-Security-Profile": {
+                "schema": {
+                  "type": "string",
+                  "const": "accounts"
+                }
+              },
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string",
+                  "format": "uuid"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "INTERNAL_ERROR",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Auth01ErrorEnvelope"
+                }
+              }
+            },
+            "headers": {
+              "Cache-Control": {
+                "schema": {
+                  "type": "string",
+                  "const": "no-store"
+                }
+              },
+              "X-Security-Profile": {
+                "schema": {
+                  "type": "string",
+                  "const": "accounts"
+                }
+              },
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string",
+                  "format": "uuid"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "AUTH_UNAVAILABLE,SERVER_BUSY",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Auth01ErrorEnvelope"
+                }
+              }
+            },
+            "headers": {
+              "Retry-After": {
+                "schema": {
+                  "type": "integer",
+                  "minimum": 1
+                },
+                "description": "429 remaining quota window;503 only SERVER_BUSY=1"
+              },
+              "Cache-Control": {
+                "schema": {
+                  "type": "string",
+                  "const": "no-store"
+                }
+              },
+              "X-Security-Profile": {
+                "schema": {
+                  "type": "string",
+                  "const": "accounts"
+                }
+              },
+              "X-Request-ID": {
+                "schema": {
+                  "type": "string",
+                  "format": "uuid"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Auth01RevokeSessions"
+              }
+            }
+          }
+        },
+        "x-auth01-forbid-extra-query": true,
+        "x-auth01-error-codes-by-status": {
+          "400": [
+            "INVALID_REQUEST",
+            "UNSUPPORTED_IDEMPOTENCY_KEY",
+            "INVALID_JSON",
+            "INVALID_IF_MATCH"
+          ],
+          "401": [
+            "UNAUTHORIZED"
+          ],
+          "403": [
+            "PASSWORD_CHANGE_REQUIRED",
+            "FORBIDDEN",
+            "ORIGIN_NOT_ALLOWED",
+            "CSRF_FAILED",
+            "REAUTH_FAILED"
+          ],
+          "404": [
+            "TARGET_USER_NOT_FOUND"
+          ],
+          "408": [
+            "REQUEST_TIMEOUT"
+          ],
+          "412": [
+            "STALE_USER_VERSION"
+          ],
+          "413": [
+            "PAYLOAD_TOO_LARGE"
+          ],
+          "415": [
+            "UNSUPPORTED_MEDIA_TYPE"
+          ],
+          "422": [
+            "VALIDATION_ERROR"
+          ],
+          "428": [
+            "PRECONDITION_REQUIRED"
+          ],
+          "429": [
+            "RATE_LIMITED"
+          ],
+          "431": [
+            "HEADERS_TOO_LARGE"
+          ],
+          "500": [
+            "INTERNAL_ERROR"
+          ],
+          "503": [
+            "AUTH_UNAVAILABLE",
+            "SERVER_BUSY"
+          ]
+        },
+        "x-auth01-missing-query-policy": "reject extra query parameters with422",
+        "x-auth01-error-precedence": "docs/auth01/api_contract.md#error-precedence"
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Auth01Role": {
+        "type": "string",
+        "enum": [
+          "ADMIN",
+          "OPERATOR",
+          "VIEWER"
+        ]
+      },
+      "Auth01Capability": {
+        "type": "string",
+        "enum": [
+          "dashboard.read",
+          "customers.read",
+          "history.read",
+          "models.read",
+          "system.read",
+          "inference.json.run",
+          "what_if.preview_compare",
+          "customers.write",
+          "snapshots.create",
+          "inference.csv.run",
+          "analysis.legacy.save",
+          "what_if.legacy.save",
+          "users.manage"
+        ]
+      },
+      "Auth01Status": {
+        "type": "string",
+        "enum": [
+          "ACTIVE",
+          "DISABLED",
+          "TEMPORARILY_LOCKED"
+        ]
+      },
+      "Auth01User": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "username": {
+            "type": "string",
+            "minLength": 3,
+            "maxLength": 64,
+            "pattern": "^[a-z0-9][a-z0-9._-]{2,63}$"
+          },
+          "display_name": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100,
+            "x-normalization": "NFC then trim"
+          },
+          "role": {
+            "$ref": "#/components/schemas/Auth01Role"
+          },
+          "is_active": {
+            "type": "boolean"
+          },
+          "must_change_password": {
+            "type": "boolean"
+          },
+          "created_at": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "updated_at": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "row_version": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "status": {
+            "$ref": "#/components/schemas/Auth01Status"
+          },
+          "locked_until": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "date-time"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        },
+        "required": [
+          "id",
+          "username",
+          "display_name",
+          "role",
+          "is_active",
+          "must_change_password",
+          "created_at",
+          "updated_at",
+          "row_version",
+          "status",
+          "locked_until"
+        ],
+        "additionalProperties": false
+      },
+      "Auth01Session": {
+        "type": "object",
+        "properties": {
+          "idle_expires_at": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "expires_at": {
+            "type": "string",
+            "format": "date-time"
+          }
+        },
+        "required": [
+          "idle_expires_at",
+          "expires_at"
+        ],
+        "additionalProperties": false
+      },
+      "Auth01Me": {
+        "type": "object",
+        "properties": {
+          "user": {
+            "$ref": "#/components/schemas/Auth01User"
+          },
+          "capabilities": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Auth01Capability"
+            },
+            "uniqueItems": true
+          },
+          "session": {
+            "$ref": "#/components/schemas/Auth01Session"
+          }
+        },
+        "required": [
+          "user",
+          "capabilities",
+          "session"
+        ],
+        "additionalProperties": false
+      },
+      "Auth01LoginReply": {
+        "type": "object",
+        "properties": {
+          "user": {
+            "$ref": "#/components/schemas/Auth01User"
+          },
+          "capabilities": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Auth01Capability"
+            },
+            "uniqueItems": true
+          },
+          "session": {
+            "$ref": "#/components/schemas/Auth01Session"
+          },
+          "csrf_token": {
+            "type": "string",
+            "pattern": "^[A-Za-z0-9_-]{43}$"
+          }
+        },
+        "required": [
+          "user",
+          "capabilities",
+          "session",
+          "csrf_token"
+        ],
+        "additionalProperties": false
+      },
+      "Auth01CsrfReply": {
+        "type": "object",
+        "properties": {
+          "csrf_token": {
+            "type": "string",
+            "pattern": "^[A-Za-z0-9_-]{43}$"
+          },
+          "state": {
+            "type": "string",
+            "enum": [
+              "preauth",
+              "authenticated"
+            ]
+          },
+          "expires_at": {
+            "type": "string",
+            "format": "date-time"
+          }
+        },
+        "required": [
+          "csrf_token",
+          "state",
+          "expires_at"
+        ],
+        "additionalProperties": false
+      },
+      "Auth01Login": {
+        "type": "object",
+        "properties": {
+          "username": {
+            "type": "string",
+            "minLength": 3,
+            "maxLength": 64,
+            "pattern": "^[a-z0-9][a-z0-9._-]{2,63}$"
+          },
+          "password": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 512,
+            "writeOnly": true,
+            "x-normalization": "NFC, no trim or truncation",
+            "x-normalized-min-length": 15,
+            "x-normalized-max-length": 128,
+            "description": "After NFC:15-128 Unicode code points; non-whitespace; local blocklist applies. Raw512 bound only a precheck."
+          }
+        },
+        "required": [
+          "username",
+          "password"
+        ],
+        "additionalProperties": false
+      },
+      "Auth01PasswordChange": {
+        "type": "object",
+        "properties": {
+          "current_password": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 512,
+            "writeOnly": true,
+            "x-normalization": "NFC, no trim or truncation",
+            "x-normalized-min-length": 15,
+            "x-normalized-max-length": 128,
+            "description": "After NFC:15-128 Unicode code points; non-whitespace; local blocklist applies. Raw512 bound only a precheck."
+          },
+          "new_password": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 512,
+            "writeOnly": true,
+            "x-normalization": "NFC, no trim or truncation",
+            "x-normalized-min-length": 15,
+            "x-normalized-max-length": 128,
+            "description": "After NFC:15-128 Unicode code points; non-whitespace; local blocklist applies. Raw512 bound only a precheck."
+          }
+        },
+        "required": [
+          "current_password",
+          "new_password"
+        ],
+        "additionalProperties": false,
+        "x-password-must-differ-from-current": true
+      },
+      "Auth01CreateUser": {
+        "type": "object",
+        "properties": {
+          "username": {
+            "type": "string",
+            "minLength": 3,
+            "maxLength": 64,
+            "pattern": "^[a-z0-9][a-z0-9._-]{2,63}$"
+          },
+          "display_name": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100,
+            "x-normalization": "NFC then trim"
+          },
+          "role": {
+            "$ref": "#/components/schemas/Auth01Role"
+          },
+          "initial_password": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 512,
+            "writeOnly": true,
+            "x-normalization": "NFC, no trim or truncation",
+            "x-normalized-min-length": 15,
+            "x-normalized-max-length": 128,
+            "description": "After NFC:15-128 Unicode code points; non-whitespace; local blocklist applies. Raw512 bound only a precheck."
+          },
+          "admin_password": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 512,
+            "writeOnly": true,
+            "x-normalization": "NFC, no trim or truncation",
+            "x-normalized-min-length": 15,
+            "x-normalized-max-length": 128,
+            "description": "After NFC:15-128 Unicode code points; non-whitespace; local blocklist applies. Raw512 bound only a precheck."
+          }
+        },
+        "required": [
+          "username",
+          "display_name",
+          "role",
+          "initial_password",
+          "admin_password"
+        ],
+        "additionalProperties": false
+      },
+      "Auth01PatchUser": {
+        "type": "object",
+        "properties": {
+          "admin_password": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 512,
+            "writeOnly": true,
+            "x-normalization": "NFC, no trim or truncation",
+            "x-normalized-min-length": 15,
+            "x-normalized-max-length": 128,
+            "description": "After NFC:15-128 Unicode code points; non-whitespace; local blocklist applies. Raw512 bound only a precheck."
+          },
+          "display_name": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100,
+            "x-normalization": "NFC then trim"
+          },
+          "role": {
+            "$ref": "#/components/schemas/Auth01Role"
+          },
+          "is_active": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "admin_password"
+        ],
+        "additionalProperties": false,
+        "anyOf": [
+          {
+            "required": [
+              "display_name"
+            ]
+          },
+          {
+            "required": [
+              "role"
+            ]
+          },
+          {
+            "required": [
+              "is_active"
+            ]
+          }
+        ]
+      },
+      "Auth01ResetPassword": {
+        "type": "object",
+        "properties": {
+          "admin_password": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 512,
+            "writeOnly": true,
+            "x-normalization": "NFC, no trim or truncation",
+            "x-normalized-min-length": 15,
+            "x-normalized-max-length": 128,
+            "description": "After NFC:15-128 Unicode code points; non-whitespace; local blocklist applies. Raw512 bound only a precheck."
+          },
+          "initial_password": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 512,
+            "writeOnly": true,
+            "x-normalization": "NFC, no trim or truncation",
+            "x-normalized-min-length": 15,
+            "x-normalized-max-length": 128,
+            "description": "After NFC:15-128 Unicode code points; non-whitespace; local blocklist applies. Raw512 bound only a precheck."
+          }
+        },
+        "required": [
+          "admin_password",
+          "initial_password"
+        ],
+        "additionalProperties": false,
+        "x-password-must-differ-from-current": true
+      },
+      "Auth01RevokeSessions": {
+        "type": "object",
+        "properties": {
+          "admin_password": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 512,
+            "writeOnly": true,
+            "x-normalization": "NFC, no trim or truncation",
+            "x-normalized-min-length": 15,
+            "x-normalized-max-length": 128,
+            "description": "After NFC:15-128 Unicode code points; non-whitespace; local blocklist applies. Raw512 bound only a precheck."
+          }
+        },
+        "required": [
+          "admin_password"
+        ],
+        "additionalProperties": false
+      },
+      "Auth01Empty": {
+        "type": "object",
+        "properties": {},
+        "required": [],
+        "additionalProperties": false
+      },
+      "Auth01UserList": {
+        "type": "object",
+        "properties": {
+          "items": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Auth01User"
+            }
+          },
+          "total": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "limit": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 100
+          },
+          "offset": {
+            "type": "integer",
+            "minimum": 0
+          }
+        },
+        "required": [
+          "items",
+          "total",
+          "limit",
+          "offset"
+        ],
+        "additionalProperties": false
+      },
+      "Auth01Error": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "code",
+          "message",
+          "details",
+          "request_id"
+        ],
+        "properties": {
+          "code": {
+            "type": "string",
+            "enum": [
+              "ALREADY_AUTHENTICATED",
+              "AUTH_UNAVAILABLE",
+              "CSRF_FAILED",
+              "FORBIDDEN",
+              "HEADERS_TOO_LARGE",
+              "INTERNAL_ERROR",
+              "INVALID_IF_MATCH",
+              "INVALID_JSON",
+              "INVALID_REQUEST",
+              "LAST_ADMIN_PROTECTED",
+              "ORIGIN_NOT_ALLOWED",
+              "PASSWORD_CHANGE_REQUIRED",
+              "PASSWORD_UNCHANGED",
+              "PAYLOAD_TOO_LARGE",
+              "PRECONDITION_REQUIRED",
+              "RATE_LIMITED",
+              "REAUTH_FAILED",
+              "REQUEST_TIMEOUT",
+              "SELF_OPERATION_NOT_ALLOWED",
+              "SERVER_BUSY",
+              "STALE_USER_VERSION",
+              "TARGET_USER_NOT_FOUND",
+              "UNAUTHORIZED",
+              "UNSUPPORTED_IDEMPOTENCY_KEY",
+              "UNSUPPORTED_MEDIA_TYPE",
+              "USERNAME_UNAVAILABLE",
+              "VALIDATION_ERROR"
+            ]
+          },
+          "message": {
+            "type": "string"
+          },
+          "details": {
+            "type": "array",
+            "maxItems": 0,
+            "items": {}
+          },
+          "request_id": {
+            "type": "string",
+            "format": "uuid"
+          }
+        }
+      },
+      "Auth01ErrorEnvelope": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "error"
+        ],
+        "properties": {
+          "error": {
+            "$ref": "#/components/schemas/Auth01Error"
+          }
+        }
+      }
+    },
+    "securitySchemes": {
+      "AccountSession": {
+        "type": "apiKey",
+        "in": "cookie",
+        "name": "__Host-mkeai_session",
+        "description": "Opaque HttpOnly session credential. PostgreSQL stores SHA256 digest. No shared Bearer/JWT/refresh. Explicit loopback HTTP development uses mkeai_dev_session instead."
+      }
+    },
+    "parameters": {
+      "Auth01Csrf": {
+        "name": "X-CSRF-Token",
+        "in": "header",
+        "required": true,
+        "schema": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9_-]{43}$"
+        },
+        "description": "Synchronizer nonce for this cookie context, required for every unsafe request including logout.",
+        "x-on-missing": {
+          "status": 403,
+          "code": "CSRF_FAILED"
+        }
+      },
+      "Auth01Origin": {
+        "name": "Origin",
+        "in": "header",
+        "required": true,
+        "schema": {
+          "type": "string",
+          "format": "uri"
+        },
+        "description": "Exact configured trusted origin; null/missing/evil origin rejected, no Referer or CLI bypass."
+      },
+      "Auth01IfMatch": {
+        "name": "If-Match",
+        "in": "header",
+        "required": true,
+        "schema": {
+          "type": "string",
+          "pattern": "^\"au1-[0-9a-f]{64}\"$"
+        },
+        "description": "One exact strong AdminUser ETag; missing428, invalid400, stale412.",
+        "x-on-missing": {
+          "status": 428,
+          "code": "PRECONDITION_REQUIRED"
+        }
+      },
+      "Auth01ContextCookie": {
+        "name": "__Host-mkeai_session",
+        "in": "cookie",
+        "required": true,
+        "schema": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9_-]{43}$"
+        },
+        "description": "Browser-managed HttpOnly context; login requires unexpired preauth, logout accepts retained context with matching nonce. Not a user Bearer credential. Explicit dev alias mkeai_dev_session."
+      }
+    }
+  }
+}
