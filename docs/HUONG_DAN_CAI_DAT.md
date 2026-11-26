@@ -72,7 +72,7 @@ copy .env.example .env
 notepad .env
 ```
 
-Trong Notepad, sửa dòng `DATABASE_URL` cho đúng mật khẩu `postgres` trên máy, rồi lưu lại:
+Trong Notepad, ở dòng `DATABASE_URL` chỉ cần thay chữ `MAT_KHAU_POSTGRES` bằng mật khẩu tài khoản `postgres` trên máy, giữ nguyên phần còn lại, rồi lưu lại. Dòng đúng có dạng:
 
 ```
 DATABASE_URL=postgresql+psycopg://postgres:MAT_KHAU_POSTGRES@localhost:5432/ecommerce_ai
@@ -135,7 +135,7 @@ Lệnh sau chỉ đọc, không sửa gì, và báo mục nào chưa sẵn sàng
 | `createdb: password authentication failed` | Sai mật khẩu `postgres`, nhập lại mật khẩu đã đặt khi cài PostgreSQL |
 | `database "ecommerce_ai" already exists` | Database đã có từ lần trước; bỏ qua lệnh `createdb`, hoặc xóa bằng `& "$pg\dropdb.exe" -U postgres ecommerce_ai` rồi làm lại |
 | `running scripts is disabled on this system` | Chưa chạy dòng `Set-ExecutionPolicy -Scope Process Bypass` trong cửa sổ đó |
-| Backend dừng ngay với dòng `Accounts startup refused` | Kiểm tra ba điều: tên database trong `DATABASE_URL` phải đúng là `ecommerce_ai` (backend từ chối chạy với tên khác để tránh dùng nhầm database); đã chạy bước 4 để tạo dữ liệu; không có cửa sổ backend khác đang chạy |
+| Backend dừng ngay với dòng `Accounts startup refused` | Đọc dòng `Gợi ý:` in ngay bên dưới, nó cho biết nguyên nhân. Hay gặp nhất: sai tài khoản hoặc mật khẩu ở dòng `DATABASE_URL` (phải là tài khoản `postgres`); tên database không phải `ecommerce_ai`; chưa làm bước 4; đang có cửa sổ backend khác chạy |
 | Trang báo không kết nối được máy chủ | Cửa sổ backend chưa chạy hoặc đã bị đóng |
 | Không đăng nhập được, dù đúng mật khẩu | Đang mở bằng `localhost`; đổi sang `http://127.0.0.1:5173` |
 | Nút Xuất PDF hoặc Excel không tải được tệp | Phần mềm Internet Download Manager chặn tải; tạm tắt IDM |

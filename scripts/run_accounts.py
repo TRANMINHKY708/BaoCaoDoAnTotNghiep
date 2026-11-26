@@ -85,10 +85,38 @@ def main():
             service.engine.dispose()
 
 
+def startup_hint(exc):
+    """A fixed Vietnamese hint chosen from the error kind; never echoes the error text (it may hold credentials)."""
+    chain, seen = [], exc
+    while seen is not None and len(chain) < 10:
+        chain.append(seen)
+        seen = seen.__cause__ or seen.__context__
+    text = " ".join(str(e) for e in chain).lower()
+    names = {type(e).__name__ for e in chain}
+    if "password authentication failed" in text:
+        return "Gợi ý: sai tài khoản hoặc mật khẩu PostgreSQL ở dòng DATABASE_URL trong tệp .env."
+    if "does not exist" in text and "database" in text:
+        return "Gợi ý: chưa có database ecommerce_ai; làm lại bước tạo cơ sở dữ liệu từ bản mẫu."
+    if "OperationalError" in names:
+        return "Gợi ý: không kết nối được PostgreSQL; kiểm tra PostgreSQL đang chạy và cổng 5432."
+    if "database identity refused" in text:
+        return "Gợi ý: tên database trong DATABASE_URL phải đúng là ecommerce_ai."
+    if "explicit localhost accounts configuration" in text:
+        return r"Gợi ý: chưa chạy '. .\scripts\accounts_local.ps1' trong cửa sổ này."
+    if "already running" in text:
+        return "Gợi ý: đang có một backend khác chạy; đóng cửa sổ đó rồi chạy lại."
+    if "migration" in text or "schema" in text:
+        return "Gợi ý: database chưa đúng phiên bản lược đồ; tạo lại từ tệp database/MK-eAI-demo-database.sql."
+    if "FileNotFoundError" in names:
+        return "Gợi ý: thiếu tệp của dự án; tải lại mã nguồn đầy đủ."
+    return "Gợi ý: chạy 'python -m scripts.preflight_demo' để xem mục nào chưa sẵn sàng."
+
+
 if __name__ == "__main__":
     try:
         main()
-    except Exception:  # noqa: BLE001 -- do not print credentials in startup failures
+    except Exception as exc:  # noqa: BLE001 -- do not print credentials in startup failures
         raise SystemExit(
-            "Accounts startup refused; check configuration, revision and existing launcher."
+            "Accounts startup refused; check configuration, revision and existing launcher.\n"
+            + startup_hint(exc)
         ) from None
