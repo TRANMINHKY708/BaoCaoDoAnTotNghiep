@@ -67,5 +67,6 @@ Tài khoản demo: `minhky` / `Admin@2026` (Admin), `operator1` / `Operator@2026
 | `data/` | Dữ liệu nghiên cứu đã làm sạch, dùng cho trang phân tích dữ liệu nghiên cứu |
 | `du-lieu-mau/` | Tệp CSV, JSON mẫu để thử chức năng nhập dữ liệu và dự đoán theo danh sách |
 | `scripts/` | Lệnh chạy ứng dụng, khởi tạo cơ sở dữ liệu, kiểm tra cài đặt |
+| `notebooks/` | Notebook nghiên cứu: khám phá dữ liệu, thử thuật toán, phân khúc; đọc trực tiếp trên GitHub, xem [notebooks/README.md](notebooks/README.md) |
 
 ![Tổng quan](docs/images/dashboard-dark.png)
